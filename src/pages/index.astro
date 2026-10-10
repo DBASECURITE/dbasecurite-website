@@ -6,7 +6,6 @@ import { services } from '../data/services';
 import { medias } from '../data/medias';
 import PartnerEdgward from '../components/PartnerEdgward.astro';
 import TrustBar from '../components/TrustBar.astro';
-import BrandVideo from '../components/BrandVideo.astro';
 
 const pillars = [
   {
@@ -29,18 +28,26 @@ const pillars = [
 <Base>
   <!-- HERO -->
   <section class="hero section--dark">
-    <div class="container hero-inner">
-      <p class="eyebrow">DBA Sécurité Sàrl</p>
-      <h1>Une expertise sécurité<br />à votre service</h1>
-      <p class="lead hero-lead">
-        Consulting, audits et expertise dans la sécurité physique des
-        infrastructures, des biens et des personnes - en Suisse et à l’international.
-      </p>
-      <div class="hero-actions">
-        <a href="/contact" class="btn btn--light">
-          Contactez-nous <Icon name="arrow" size={18} />
-        </a>
-        <a href="/services" class="btn btn--ghost-light">Découvrir nos services</a>
+    <div class="container hero-grid">
+      <div class="hero-inner">
+        <p class="eyebrow">DBA Sécurité Sàrl</p>
+        <h1>Une expertise sécurité<br />à votre service</h1>
+        <p class="lead hero-lead">
+          Consulting, audits et expertise dans la sécurité physique des
+          infrastructures, des biens et des personnes - en Suisse et à l’international.
+        </p>
+        <div class="hero-actions">
+          <a href="/contact" class="btn btn--light">
+            Contactez-nous <Icon name="arrow" size={18} />
+          </a>
+          <a href="/services" class="btn btn--ghost-light">Découvrir nos services</a>
+        </div>
+      </div>
+      <div class="hero-media" aria-hidden="true">
+        <video class="hero-video" autoplay muted loop playsinline preload="auto"
+          poster="/assets/video/dba-presentation-poster.jpg">
+          <source src="/assets/video/dba-presentation.mp4" type="video/mp4" />
+        </video>
       </div>
     </div>
     <div class="hero-glow" aria-hidden="true"></div>
@@ -69,9 +76,6 @@ const pillars = [
       </div>
     </div>
   </section>
-
-  <!-- VIDÉO DE PRÉSENTATION -->
-  <BrandVideo />
 
   <!-- SERVICES -->
   <section class="section section--soft">
@@ -178,11 +182,26 @@ const pillars = [
 
 <style>
   /* HERO */
-  .hero { position: relative; overflow: hidden; padding: 120px 0 108px; }
-  .hero-inner { position: relative; z-index: 2; max-width: 780px; }
+  .hero { position: relative; overflow: hidden; padding: 104px 0 96px; }
+  .hero-grid {
+    position: relative; z-index: 2;
+    display: grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: center;
+  }
+  .hero-inner { max-width: 640px; }
   .hero h1 { margin-bottom: 20px; }
   .hero-lead { max-width: 620px; margin-bottom: 32px; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  .hero-media { display: flex; justify-content: center; }
+  .hero-video {
+    width: 380px;
+    height: 480px;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.95;
+    pointer-events: none;
+    -webkit-mask-image: radial-gradient(ellipse 74% 68% at 50% 50%, #000 50%, transparent 100%);
+    mask-image: radial-gradient(ellipse 74% 68% at 50% 50%, #000 50%, transparent 100%);
+  }
   .hero-glow {
     position: absolute;
     top: -30%;
@@ -330,6 +349,9 @@ const pillars = [
   .cta-final .lead { margin-bottom: 28px; }
 
   @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+    .hero-media { justify-content: flex-start; }
+    .hero-video { width: 300px; height: 380px; }
     .intro-grid { grid-template-columns: 1fr; gap: 20px; }
     .services-grid { grid-template-columns: 1fr 1fr; }
     .pillars-grid { grid-template-columns: 1fr; gap: 36px; }
