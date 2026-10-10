@@ -3,9 +3,9 @@ import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
 import { services } from '../data/services';
-import { references } from '../data/references';
 import { medias } from '../data/medias';
 import PartnerEdgward from '../components/PartnerEdgward.astro';
+import TrustBar from '../components/TrustBar.astro';
 
 const pillars = [
   {
@@ -126,14 +126,7 @@ const pillars = [
           aux organisations humanitaires.
         </p>
       </div>
-      <div class="refs-grid">
-        {references.slice(0, 5).map((r) => (
-          <div class="ref-chip">
-            <span class="ref-name">{r.name}</span>
-            <span class="ref-tag">{r.tag}</span>
-          </div>
-        ))}
-      </div>
+      <TrustBar />
       <div class="text-center">
         <a href="/references" class="btn btn--outline">Voir toutes nos références <Icon name="arrow" size={16} /></a>
       </div>
