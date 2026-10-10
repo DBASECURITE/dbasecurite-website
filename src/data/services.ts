@@ -41,7 +41,7 @@ export const services: Service[] = [
       'Dispositif adapté à l’événement',
     ],
     icon: 'calendar',
-    image: '/assets/photos/securite-evenementielle-wef.jpg',
+    image: '/assets/photos/services-coordination.jpg',
   },
   {
     slug: 'formations',
@@ -56,7 +56,7 @@ export const services: Service[] = [
       'Coaching des cadres',
     ],
     icon: 'graduation',
-    image: '/assets/photos/scrasa-chantier.jpg',
+    image: '/assets/photos/services-formation.jpg',
   },
   {
     slug: 'services-specialises',
@@ -66,6 +66,7 @@ export const services: Service[] = [
       "Pour des menaces et des risques spécifiques, nous concevons des prestations de sécurité personnalisées, menées avec rigueur, minutie et discrétion.",
     points: ['Surveillance', 'Protection', 'Observations'],
     icon: 'eye',
+    image: '/assets/photos/services-specialises-wef.jpg',
   },
   {
     slug: 'tests-intrusion',

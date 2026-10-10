@@ -1,0 +1,149 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+
+const secteurs = [
+  { icon: 'calendar', title: 'Grands événements & stades', text: "Manifestations sportives et de prestige, du concept de sûreté à la coordination opérationnelle." },
+  { icon: 'spark', title: 'Mode & luxe', text: "Défilés et événements haut de gamme, exigeant discrétion et excellence." },
+  { icon: 'users', title: 'Humanitaire & institutions', text: "Organisations internationales et institutions aux enjeux sensibles." },
+  { icon: 'shield', title: 'Entreprises & infrastructures', text: "Protection des sites, des biens et des personnes face aux risques accidentels et malveillants." },
+];
+
+const methode = [
+  { n: '01', title: 'Analyse de risques', text: "Cartographie des risques accidentels et intentionnels propres à votre site ou événement." },
+  { n: '02', title: 'Concept de sûreté', text: "Élaboration d'un dispositif cohérent, dimensionné à la menace et à vos contraintes." },
+  { n: '03', title: 'Coordination & mise en œuvre', text: "Pilotage des intervenants et partenaires, du plan à l'opérationnel." },
+  { n: '04', title: 'Exercices & tests', text: "Mise à l'épreuve du dispositif en conditions réalistes pour révéler les failles avant le jour J." },
+  { n: '05', title: 'Formation & débriefing', text: "Montée en compétence des équipes et retour d'expérience structuré." },
+];
+---
+<Base title={`Notre expertise - ${site.name}`} description="DBA Sécurité, expert en sûreté et sécurité physique : concepts de sûreté, analyse de risques, sécurité événementielle, formation et exercices grandeur nature.">
+  <PageHero
+    eyebrow="Notre expertise"
+    title="Expert en sûreté et sécurité physique"
+    subtitle="DBA Sécurité conçoit, audite et éprouve la protection des infrastructures, des biens et des personnes - en Suisse et à l'international."
+  />
+
+  <!-- POSITIONNEMENT -->
+  <section class="section">
+    <div class="container">
+      <div class="expertise-intro">
+        <div>
+          <p class="eyebrow">Notre métier</p>
+          <h2>La sûreté physique, de la stratégie au terrain</h2>
+        </div>
+        <div class="expertise-text">
+          <p>DBA Sécurité est spécialisée dans le <strong>conseil et l'audit en sûreté</strong> : analyse de risques, concepts de sûreté et plans d'action pour protéger les infrastructures, les biens et les personnes.</p>
+          <p>Notre singularité : nous ne nous limitons pas à concevoir des dispositifs - nous les <strong>éprouvons en conditions réelles</strong>, par des exercices grandeur nature et des tests d'intrusion, pour révéler les failles avant qu'elles ne soient exploitées.</p>
+          <p>Chaque mandat est mené avec rigueur, confidentialité et un engagement total, de l'analyse initiale jusqu'au débriefing.</p>
+        </div>
+      </div>
+      <div class="expertise-photos">
+        <figure class="xp-photo"><img src="/assets/photos/expertise-evenement.jpg" alt="Sécurisation et coordination d'un événement par DBA Sécurité" loading="lazy" /></figure>
+        <figure class="xp-photo"><img src="/assets/photos/expertise-defile.jpg" alt="Dispositif de sécurité sur un événement de prestige" loading="lazy" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- SÛRETÉ VS SÉCURITÉ -->
+  <section class="section section--soft">
+    <div class="container">
+      <SectionHeader eyebrow="Point d'expert" title="Sûreté ou sécurité ?" center />
+      <div class="ss-grid">
+        <div class="ss-card">
+          <span class="ss-tag">Sécurité</span>
+          <h3>Les risques accidentels</h3>
+          <p>Incendie, panne, accident, mouvement de foule non maîtrisé. On réduit la probabilité et on limite les conséquences.</p>
+        </div>
+        <div class="ss-card ss-card--gold">
+          <span class="ss-tag">Sûreté</span>
+          <h3>Les actes intentionnels</h3>
+          <p>Intrusion, agression, malveillance, menace terroriste. Face à un adversaire qui s'adapte.</p>
+        </div>
+      </div>
+      <p class="ss-note">Notre métier couvre les deux - et arbitre leurs tensions. <a href="/blog/surete-ou-securite">Lire notre analyse</a></p>
+    </div>
+  </section>
+
+  <!-- DOMAINES / SECTEURS -->
+  <section class="section">
+    <div class="container">
+      <SectionHeader eyebrow="Domaines d'intervention" title="Une expertise éprouvée sur le terrain" center />
+      <div class="secteurs-grid">
+        {secteurs.map((s) => (
+          <div class="secteur-card">
+            <span class="secteur-icon"><Icon name={s.icon} size={24} /></span>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </div>
+        ))}
+      </div>
+      <div class="text-center secteurs-cta">
+        <a href="/references" class="btn btn--outline">Voir nos références <Icon name="arrow" size={16} /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTHODOLOGIE -->
+  <section class="section section--soft">
+    <div class="container">
+      <SectionHeader eyebrow="Notre méthodologie" title="Une démarche structurée, en cinq temps" center />
+      <div class="method-list">
+        {methode.map((m) => (
+          <div class="method-item">
+            <span class="method-num">{m.n}</span>
+            <div>
+              <h3>{m.title}</h3>
+              <p>{m.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FinalCTA />
+</Base>
+
+<style>
+  .expertise-intro { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 48px; align-items: start; }
+  .expertise-text p { font-size: 1.05rem; }
+  .expertise-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 44px; }
+  .xp-photo { margin: 0; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); }
+  .xp-photo img { width: 100%; height: 300px; object-fit: cover; display: block; }
+
+  .ss-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; max-width: 860px; margin: 0 auto 24px; }
+  .ss-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+  .ss-card--gold { border-top: 3px solid var(--gold); }
+  .ss-tag { display: inline-block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-strong); margin-bottom: 8px; }
+  .ss-card p { color: var(--text-muted); margin: 0; }
+  .ss-note { text-align: center; color: var(--text-muted); }
+  .ss-note a { font-weight: 600; }
+
+  .secteurs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 36px; }
+  .secteur-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 26px; }
+  .secteur-icon { display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 12px; background: var(--mist); color: var(--brand); margin-bottom: 14px; }
+  .secteur-card h3 { font-size: 1.1rem; margin-bottom: 6px; }
+  .secteur-card p { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
+
+  .method-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
+  .method-item { display: flex; gap: 22px; align-items: flex-start; padding: 22px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: #fff; }
+  .method-num { font-size: 1.3rem; font-weight: 700; color: var(--gold-strong); min-width: 44px; }
+  .method-item h3 { margin-bottom: 4px; }
+  .method-item p { color: var(--text-muted); margin: 0; }
+
+  @media (max-width: 860px) {
+    .expertise-intro { grid-template-columns: 1fr; gap: 18px; }
+    .secteurs-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .ss-grid { grid-template-columns: 1fr; }
+    .secteurs-grid { grid-template-columns: 1fr; }
+    .expertise-photos { grid-template-columns: 1fr; }
+    .xp-photo img { height: 240px; }
+  }
+</style>

@@ -20,6 +20,7 @@ const typeIcon: Record<string, string> = { Presse: 'file', TV: 'play', Radio: 's
       <div class="media-list">
         {medias.map((m) => (
           <a href={m.url} target="_blank" rel="noopener" class="media-card">
+            {m.image && <img src={m.image} alt="" class="media-thumb" loading="lazy" />}
             <div class="media-top">
               <span class="media-outlet">{m.outlet}</span>
               <span class="media-badge"><Icon name={typeIcon[m.type] ?? 'file'} size={13} /> {m.type}</span>
@@ -49,6 +50,7 @@ const typeIcon: Record<string, string> = { Presse: 'file', TV: 'play', Radio: 's
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
   .media-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: transparent; text-decoration: none; }
+  .media-thumb { width: 100%; height: 170px; object-fit: cover; border-radius: var(--radius); margin-bottom: 18px; }
   .media-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
   .media-outlet { font-weight: 700; color: var(--navy); font-size: 1.05rem; }
   .media-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--gold-strong); background: rgba(201,162,75,0.1); padding: 4px 10px; border-radius: 20px; }
