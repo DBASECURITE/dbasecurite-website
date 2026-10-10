@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { site } from '../data/site';
+---
+<Base title={`Mentions légales - ${site.name}`} description="Mentions légales du site de DBA Sécurité Sàrl.">
+  <PageHero eyebrow="Informations légales" title="Mentions légales" />
+  <section class="section">
+    <div class="container legal-body">
+      <h2>Éditeur du site</h2>
+      <p>
+        {site.name}<br />
+        {site.address.street}, {site.address.city}, {site.address.country}<br />
+        Email : <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+
+      <h2>Hébergement</h2>
+      <p>Ce site est hébergé via GitHub Pages (GitHub, Inc.).</p>
+
+      <h2>Propriété intellectuelle</h2>
+      <p>L'ensemble des contenus de ce site (textes, logos, visuels) est la propriété de {site.name}, sauf mention contraire. Toute reproduction sans autorisation est interdite.</p>
+
+      <div class="editor-note">
+        <strong>À compléter / valider :</strong> numéro d'identification de l'entreprise (IDE/CHE), responsable de publication, et toute mention légale spécifique. Fournis-moi le texte définitif - je ne rédige pas de contenu juridique à ta place.
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .legal-body { max-width: 720px; }
+  .legal-body h2 { margin-top: 1.8em; font-size: 1.3rem; }
+  .legal-body h2:first-child { margin-top: 0; }
+  .legal-body p { line-height: 1.8; }
+  .editor-note { margin-top: 32px; padding: 16px 18px; border: 1.5px dashed var(--gold); border-radius: var(--radius); background: rgba(201,162,75,0.07); font-size: 14px; color: var(--text-muted); }
+  .editor-note strong { color: var(--gold-strong); }
+</style>

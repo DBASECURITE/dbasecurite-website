@@ -1,0 +1,20 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  center?: boolean;
+}
+const { eyebrow, title, lead, center = false } = Astro.props;
+---
+<div class:list={['section-head', { 'text-center': center }]}>
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <h2>{title}</h2>
+  {lead && <p class:list={['lead', { 'measure mx-auto': center }]}>{lead}</p>}
+</div>
+
+<style>
+  .section-head { margin-bottom: 44px; }
+  .section-head h2 { margin-bottom: 14px; }
+  .section-head.text-center .eyebrow::before { display: none; }
+</style>

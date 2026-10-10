@@ -1,0 +1,132 @@
+---
+import { site } from '../data/site';
+const subjects = [
+  'Audit / concept de sûreté',
+  'Sécurité événementielle',
+  'Exercices & tests',
+  'Coaching / formation',
+  'Autre',
+];
+---
+<div class="contact-form-wrap">
+  <form class="contact-form" novalidate id="contact-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="cf-nom">Nom complet</label>
+        <input type="text" id="cf-nom" name="nom" placeholder="Prénom Nom" autocomplete="name" required>
+      </div>
+      <div class="form-group">
+        <label for="cf-email">Email</label>
+        <input type="email" id="cf-email" name="email" placeholder="vous@exemple.ch" autocomplete="email" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="cf-org">Société / organisation</label>
+        <input type="text" id="cf-org" name="organisation" placeholder="Votre structure" autocomplete="organization">
+      </div>
+      <div class="form-group">
+        <label for="cf-sujet">Sujet</label>
+        <select id="cf-sujet" name="sujet" required>
+          <option value="" disabled selected>Choisissez un sujet</option>
+          {subjects.map((s) => <option value={s}>{s}</option>)}
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="cf-message">Message</label>
+      <textarea id="cf-message" name="message" rows="5" placeholder="Décrivez votre besoin…" required></textarea>
+    </div>
+    <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" class="cf-hp">
+    <button type="submit" class="btn btn--primary btn-submit">Envoyer le message</button>
+    <p class="form-privacy">En envoyant ce message, vous acceptez notre <a href="/confidentialite">politique de confidentialité</a>.</p>
+  </form>
+  <div class="contact-success" id="contact-success" hidden>
+    <h3>Message envoyé&nbsp;!</h3>
+    <p>Merci, votre demande a bien été transmise. Nous vous répondons dans les meilleurs délais.</p>
+  </div>
+</div>
+
+<script define:vars={{ email: site.email }}>
+  const form = document.getElementById('contact-form');
+  const successBox = document.getElementById('contact-success');
+  // À remplacer par l'URL du formulaire Brevo une fois créé (comme sur Edgward).
+  const BREVO_CONTACT_ACTION = '';
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (form.querySelector('[name=email_address_check]').value) return;
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    const d = new FormData(form);
+    const nom = (d.get('nom') || '').toString().trim();
+    const mail = (d.get('email') || '').toString().trim();
+    const org = (d.get('organisation') || '').toString().trim();
+    const sujet = (d.get('sujet') || '').toString();
+    const msg = (d.get('message') || '').toString().trim();
+
+    if (BREVO_CONTACT_ACTION) {
+      const params = new URLSearchParams();
+      params.append('NOM', nom);
+      params.append('EMAIL', mail);
+      params.append('SUJET', sujet);
+      params.append('MESSAGE', (org ? 'Société : ' + org + ' - ' : '') + msg);
+      params.append('email_address_check', '');
+      params.append('locale', 'fr');
+      fetch(BREVO_CONTACT_ACTION, {
+        method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params, keepalive: true,
+      }).catch(() => {});
+    } else {
+      // Repli : ouverture du logiciel de messagerie tant que Brevo n'est pas branché
+      const body = `Nom : ${nom}%0D%0AEmail : ${mail}%0D%0ASociété : ${org}%0D%0A%0D%0A${encodeURIComponent(msg)}`;
+      window.location.href = `mailto:${email}?subject=${encodeURIComponent('[Site] ' + sujet)}&body=${body}`;
+    }
+
+    if (successBox) {
+      form.hidden = true;
+      successBox.hidden = false;
+      successBox.setAttribute('tabindex', '-1');
+      successBox.focus();
+    }
+  });
+</script>
+
+<style>
+  .contact-form-wrap { width: 100%; }
+  .contact-form { display: flex; flex-direction: column; gap: 18px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  label { font-size: 13px; font-weight: 600; color: var(--navy); }
+  input, select, textarea {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--text);
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-soft); }
+  textarea { resize: vertical; min-height: 120px; }
+  .btn-submit { align-self: flex-start; }
+  .form-privacy { font-size: 12px; color: var(--text-muted); }
+  .cf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .contact-form[hidden] { display: none; }
+  .contact-success {
+    text-align: center;
+    padding: 44px 28px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--soft);
+  }
+  .contact-success[hidden] { display: none; }
+  .contact-success h3 { color: var(--navy); margin-bottom: 8px; }
+  .contact-success p { color: var(--text-muted); max-width: 420px; margin: 0 auto; }
+  @media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; }
+    .btn-submit { width: 100%; }
+  }
+</style>

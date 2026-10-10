@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+---
+<Base title="Page introuvable - DBA Sécurité">
+  <section class="section--dark notfound">
+    <div class="container text-center">
+      <p class="eyebrow">Erreur 404</p>
+      <h1>Cette page est introuvable</h1>
+      <p class="lead measure mx-auto">La page que vous cherchez a peut-être été déplacée ou n'existe plus.</p>
+      <a href="/" class="btn btn--gold">Retour à l'accueil <Icon name="arrow" size={18} /></a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .notfound { padding: 120px 0; }
+  .notfound .lead { margin-bottom: 28px; }
+</style>

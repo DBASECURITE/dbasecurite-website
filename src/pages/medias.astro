@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import Icon from '../components/Icon.astro';
+import { medias } from '../data/medias';
+import { site } from '../data/site';
+
+const typeIcon: Record<string, string> = { Presse: 'file', TV: 'play', Radio: 'spark' };
+---
+<Base title={`Médias - ${site.name}`} description="DBA Sécurité et Daniel Barouch dans les médias : RTS, Tribune de Genève, 20 minutes, Léman Bleu.">
+  <PageHero
+    eyebrow="Revue de presse"
+    title="DBA Sécurité dans les médias"
+    subtitle="Régulièrement sollicités sur les questions de sûreté, nous partageons notre analyse dans la presse et à la télévision."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="media-list">
+        {medias.map((m) => (
+          <a href={m.url} target="_blank" rel="noopener" class="media-card">
+            <div class="media-top">
+              <span class="media-outlet">{m.outlet}</span>
+              <span class="media-badge"><Icon name={typeIcon[m.type] ?? 'file'} size={13} /> {m.type}</span>
+            </div>
+            <h3>{m.title}</h3>
+            <p class="media-excerpt">{m.excerpt}</p>
+            <div class="media-foot">
+              <span class="media-date">{m.date}</span>
+              <span class="media-link">Lire / voir <Icon name="arrow" size={15} /></span>
+            </div>
+          </a>
+        ))}
+      </div>
+      <p class="media-disclaimer">Les liens renvoient vers les publications d'origine sur les sites des médias concernés.</p>
+    </div>
+  </section>
+
+  <FinalCTA />
+</Base>
+
+<style>
+  .media-list { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .media-card {
+    display: flex; flex-direction: column;
+    background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 26px; color: var(--text);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .media-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: transparent; text-decoration: none; }
+  .media-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .media-outlet { font-weight: 700; color: var(--navy); font-size: 1.05rem; }
+  .media-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--gold-strong); background: rgba(201,162,75,0.1); padding: 4px 10px; border-radius: 20px; }
+  .media-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+  .media-excerpt { color: var(--text-muted); font-size: 0.95rem; flex-grow: 1; }
+  .media-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; }
+  .media-date { font-size: 0.85rem; color: var(--text-muted); }
+  .media-link { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 14px; color: var(--brand); }
+  .media-disclaimer { text-align: center; font-size: 0.82rem; color: var(--text-muted); margin-top: 28px; }
+
+  @media (max-width: 720px) { .media-list { grid-template-columns: 1fr; } }
+</style>

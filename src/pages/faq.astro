@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import { site } from '../data/site';
+
+const faqs = [
+  {
+    q: "Quelle est la différence entre sûreté et sécurité ?",
+    a: "La sécurité concerne les risques accidentels (incendie, accident, mouvement de foule), tandis que la sûreté vise les actes intentionnels et malveillants (intrusion, agression, menace). Un dispositif complet doit traiter les deux. Nous détaillons cette distinction dans notre blog.",
+  },
+  {
+    q: "Qu'est-ce qu'un concept de sûreté ?",
+    a: "C'est un document de référence qui, à partir d'une analyse de risques, définit l'ensemble des mesures organisationnelles, humaines et techniques nécessaires pour protéger un site, un bien ou un événement - ainsi que les procédures de réponse en cas d'incident.",
+  },
+  {
+    q: "Comment se déroule un audit de sécurité ?",
+    a: "Un audit commence par une visite et une analyse du contexte (site, activité, menaces), puis évalue les dispositifs existants et identifie les vulnérabilités. Il débouche sur un rapport assorti de recommandations concrètes et hiérarchisées.",
+  },
+  {
+    q: "Pour quels types d'événements intervenez-vous ?",
+    a: "Événements sportifs, défilés, manifestations culturelles ou institutionnelles, en Suisse comme à l'international. Nous accompagnons l'organisateur du concept de sûreté jusqu'à la coordination opérationnelle des intervenants le jour J.",
+  },
+  {
+    q: "Proposez-vous des formations ?",
+    a: "Oui. Nous concevons des programmes de coaching et de formation adaptés à vos équipes : sensibilisation aux bonnes pratiques, formation des équipes de sécurité, protocoles de réponse aux incidents.",
+  },
+  {
+    q: "Qu'est-ce qu'un exercice grandeur nature ?",
+    a: "C'est une simulation en conditions réalistes qui met à l'épreuve un dispositif de sécurité et la coordination des différents acteurs. Elle permet de révéler les failles et d'améliorer les protocoles avant l'événement réel.",
+  },
+  {
+    q: "Dans quelles régions intervenez-vous ?",
+    a: "En Suisse et à l'international, selon la nature du mandat.",
+  },
+  {
+    q: "Comment obtenir un devis ?",
+    a: "Contactez-nous via le formulaire en décrivant votre besoin. Nous revenons vers vous rapidement pour un premier échange et, si nécessaire, une proposition adaptée.",
+  },
+];
+---
+<Base title={`FAQ - ${site.name}`} description="Questions fréquentes sur nos audits, concepts de sûreté, sécurité événementielle et formations.">
+  <PageHero
+    eyebrow="FAQ"
+    title="Questions fréquentes"
+    subtitle="Les réponses aux questions les plus courantes sur nos prestations en sûreté et sécurité physique."
+  />
+
+  <section class="section">
+    <div class="container faq-wrap">
+      {faqs.map((f) => (
+        <details class="faq-item">
+          <summary>
+            <span>{f.q}</span>
+            <span class="faq-plus" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-answer"><p>{f.a}</p></div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <FinalCTA />
+</Base>
+
+<style>
+  .faq-wrap { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid var(--border); border-radius: var(--radius-lg); background: #fff; overflow: hidden; }
+  .faq-item summary {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 22px 24px; cursor: pointer; font-weight: 600; color: var(--navy); font-size: 1.05rem;
+    list-style: none;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-plus { position: relative; width: 18px; height: 18px; flex-shrink: 0; }
+  .faq-plus::before, .faq-plus::after {
+    content: ''; position: absolute; background: var(--gold-strong); border-radius: 2px;
+    transition: transform 0.2s ease;
+  }
+  .faq-plus::before { top: 8px; left: 0; width: 18px; height: 2px; }
+  .faq-plus::after { top: 0; left: 8px; width: 2px; height: 18px; }
+  .faq-item[open] .faq-plus::after { transform: scaleY(0); }
+  .faq-answer { padding: 0 24px 22px; }
+  .faq-answer p { color: var(--text-muted); margin: 0; line-height: 1.7; }
+</style>

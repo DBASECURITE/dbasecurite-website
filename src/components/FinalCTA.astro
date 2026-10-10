@@ -1,0 +1,23 @@
+---
+import Icon from './Icon.astro';
+interface Props {
+  title?: string;
+  text?: string;
+}
+const {
+  title = 'Discutons de votre sécurité',
+  text = "Un projet, un événement, un besoin d'expertise ? Notre équipe vous répond et vous accompagne sur l'ensemble de vos enjeux de sûreté et de sécurité physique.",
+} = Astro.props;
+---
+<section class="section--dark final-cta">
+  <div class="container text-center">
+    <h2>{title}</h2>
+    <p class="lead measure mx-auto">{text}</p>
+    <a href="/contact" class="btn btn--gold">Contactez-nous <Icon name="arrow" size={18} /></a>
+  </div>
+</section>
+
+<style>
+  .final-cta { padding: 80px 0; }
+  .final-cta .lead { margin-bottom: 28px; }
+</style>

@@ -1,0 +1,97 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+
+const valeurs = [
+  { icon: 'shield', title: 'Intégrité', text: "Une exigence de rigueur, de confidentialité et de transparence sur chacun de nos mandats." },
+  { icon: 'users', title: 'Engagement', text: "Un investissement total à vos côtés, de l'analyse initiale jusqu'au débriefing final." },
+  { icon: 'spark', title: 'Innovation', text: "Une veille permanente sur l'évolution des menaces, des méthodes et des technologies." },
+];
+
+const methode = [
+  { n: '01', title: 'Analyse de risques', text: "Cartographie des risques accidentels et intentionnels propres à votre site ou événement." },
+  { n: '02', title: 'Concept de sûreté', text: "Élaboration d'un dispositif cohérent, dimensionné à la menace et à vos contraintes." },
+  { n: '03', title: 'Coordination & mise en œuvre', text: "Pilotage des intervenants et partenaires, du plan à l'opérationnel." },
+  { n: '04', title: 'Exercices & tests', text: "Mise à l'épreuve du dispositif en conditions réalistes pour révéler les failles avant le jour J." },
+  { n: '05', title: 'Formation & débriefing', text: "Montée en compétence des équipes et retour d'expérience structuré." },
+];
+---
+<Base title={`À propos - ${site.name}`} description="DBA Sécurité : expertise en sûreté et sécurité physique, du concept à l'exercice grandeur nature.">
+  <PageHero
+    eyebrow="L'entreprise"
+    title="Une expertise sécurité, du concept au terrain"
+    subtitle="DBA Sécurité accompagne organisations, institutions et organisateurs d'événements sur l'ensemble de leurs enjeux de sûreté et de sécurité physique."
+  />
+
+  <section class="section">
+    <div class="container about-intro">
+      <div>
+        <p class="eyebrow">Notre mission</p>
+        <h2>Protéger vos infrastructures, vos biens et vos personnes</h2>
+      </div>
+      <div class="about-intro-text">
+        <p>DBA Sécurité propose ses services de consulting, d'audits et d'expertise dans le domaine de la sécurité physique des infrastructures, des biens et des personnes.</p>
+        <p>Fondée sur des valeurs d'intégrité, d'engagement et d'innovation, notre entreprise conçoit des solutions personnalisées et efficaces, adaptées aux besoins uniques de chaque client - en Suisse comme à l'international.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <SectionHeader eyebrow="Nos valeurs" title="Ce qui guide chacun de nos mandats" center />
+      <div class="valeurs-grid">
+        {valeurs.map((v) => (
+          <div class="valeur-card">
+            <span class="valeur-icon"><Icon name={v.icon} size={26} /></span>
+            <h3>{v.title}</h3>
+            <p>{v.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeader eyebrow="Notre méthodologie" title="Une démarche structurée, en cinq temps" center />
+      <div class="method-list">
+        {methode.map((m) => (
+          <div class="method-item">
+            <span class="method-num">{m.n}</span>
+            <div>
+              <h3>{m.title}</h3>
+              <p>{m.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FinalCTA />
+</Base>
+
+<style>
+  .about-intro { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 48px; align-items: start; }
+  .about-intro-text p { font-size: 1.05rem; }
+
+  .valeurs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .valeur-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; text-align: center; }
+  .valeur-icon { display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background: var(--gradient); color: #fff; margin-bottom: 16px; }
+  .valeur-card p { color: var(--text-muted); }
+
+  .method-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
+  .method-item { display: flex; gap: 22px; align-items: flex-start; padding: 22px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: #fff; }
+  .method-num { font-size: 1.3rem; font-weight: 700; color: var(--gold-strong); min-width: 44px; }
+  .method-item h3 { margin-bottom: 4px; }
+  .method-item p { color: var(--text-muted); margin: 0; }
+
+  @media (max-width: 860px) {
+    .about-intro { grid-template-columns: 1fr; gap: 18px; }
+    .valeurs-grid { grid-template-columns: 1fr; }
+  }
+</style>

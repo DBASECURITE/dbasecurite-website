@@ -1,0 +1,80 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import Icon from '../components/Icon.astro';
+import { references } from '../data/references';
+import { site } from '../data/site';
+---
+<Base title={`Références - ${site.name}`} description="Événementiel de prestige, institutions et organisations humanitaires : ils ont fait confiance à DBA Sécurité.">
+  <PageHero
+    eyebrow="Références"
+    title="Ils nous ont fait confiance"
+    subtitle="Des mandats en Suisse et à l'international, de l'événementiel sportif et de prestige aux organisations humanitaires."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="case-study">
+        <div class="case-body">
+          <p class="eyebrow">Cas phare - Stade de Genève</p>
+          <h2>Un exercice de sécurité grandeur nature avant l'Euro féminin 2025</h2>
+          <p>Le 22 mai 2025, un exercice de simulation d'attaque a été mené au Stade de Genève en préparation du Championnat d'Europe féminin de football. Sous la responsabilité sécurité de Daniel Barouch, l'opération a mobilisé <strong>près de 400 intervenants</strong> - police, secours, sécurité privée - afin d'éprouver la coordination des acteurs et les protocoles d'intervention avant la compétition.</p>
+          <p class="case-note">Concevoir un dispositif ne suffit pas : DBA Sécurité le met à l'épreuve en conditions réelles pour révéler les failles avant le jour J.</p>
+          <a href="/medias" class="btn btn--outline">Couverture presse <Icon name="arrow" size={16} /></a>
+        </div>
+        <div class="case-stats">
+          <div class="stat"><span class="stat-num">~400</span><span class="stat-label">intervenants mobilisés</span></div>
+          <div class="stat"><span class="stat-num">30 000</span><span class="stat-label">spectateurs (capacité)</span></div>
+          <div class="stat"><span class="stat-num">5</span><span class="stat-label">matchs de l'Euro à Genève</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <SectionHeader eyebrow="Nos mandats" title="Une sélection de références" center />
+      <div class="refs-grid">
+        {references.map((r) => (
+          <article class="ref-card">
+            <h3>{r.name}</h3>
+            <p class="ref-tag">{r.tag}</p>
+            <p class="ref-desc">{r.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FinalCTA />
+</Base>
+
+<style>
+  .case-study {
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 0;
+    border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden;
+  }
+  .case-body { padding: 44px; }
+  .case-body h2 { margin-bottom: 16px; }
+  .case-note { color: var(--text-muted); font-style: italic; border-left: 3px solid var(--gold); padding-left: 14px; margin: 18px 0 22px; }
+  .case-stats { background: var(--gradient); color: #fff; padding: 44px; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
+  .stat { display: flex; flex-direction: column; }
+  .stat-num { font-size: 2.4rem; font-weight: 700; color: #fff; line-height: 1; }
+  .stat-label { font-size: 0.9rem; color: var(--gold); margin-top: 6px; }
+
+  .refs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .ref-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 26px; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .ref-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .ref-card h3 { color: var(--navy); margin-bottom: 4px; }
+  .ref-tag { font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold-strong); margin-bottom: 12px; }
+  .ref-desc { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
+
+  @media (max-width: 860px) {
+    .case-study { grid-template-columns: 1fr; }
+    .case-body { padding: 32px; }
+    .case-stats { flex-direction: row; flex-wrap: wrap; padding: 32px; gap: 24px; }
+    .refs-grid { grid-template-columns: 1fr; }
+  }
+</style>

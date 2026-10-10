@@ -1,0 +1,62 @@
+---
+import '@fontsource/montserrat/400.css';
+import '@fontsource/montserrat/500.css';
+import '@fontsource/montserrat/600.css';
+import '@fontsource/montserrat/700.css';
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = `${site.name} - ${site.tagline}`,
+  description = site.description,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, site.url).href;
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/assets/logo-dba-color.png" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL('/assets/logo-dba-color.png', site.url).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Aller au contenu</a>
+    <Nav />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <style is:global>
+      .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: 8px;
+        background: var(--brand);
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 8px;
+        z-index: 100;
+      }
+      .skip-link:focus { left: 12px; }
+    </style>
+  </body>
+</html>

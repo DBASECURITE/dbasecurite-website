@@ -1,0 +1,208 @@
+/* ============================================================
+   DBA Sécurité - style global
+   Couleurs & typo issues de la charte graphique DBA Sécurité
+   ============================================================ */
+
+:root {
+  /* Couleurs de marque DBA - base marine + anthracite acier, accent or */
+  --navy: #0D145A;        /* bleu marine principal (ancre, logo) */
+  --steel: #2C3752;       /* anthracite acier (secondaire) */
+  --steel-soft: #5a6479;  /* gris-bleu adouci */
+  --gold: #C9A24B;        /* or - accent premium (décoratif) */
+  --gold-strong: #a87c24; /* or foncé - pour texte/or lisible sur clair */
+  --lilac: #C9A24B;       /* alias historique → devient l'accent or sur fonds foncés */
+  --indigo: #2C3752;      /* alias historique → devient l'anthracite */
+  --mist: #eef1f7;        /* fond très clair (bleu-gris froid) */
+
+  /* Rôles */
+  --brand: #0D145A;       /* couleur interactive principale */
+  --brand-dark: #080d3e;
+  --brand-soft: rgba(13, 20, 90, 0.10);
+  --ink: #0D145A;         /* titres */
+  --text: #272c3e;        /* texte courant */
+  --text-muted: #5b6377;  /* texte secondaire */
+  --border: #e3e7ef;
+  --soft: #f7f8fb;        /* fond de section alterné */
+  --white: #ffffff;
+
+  --gradient: linear-gradient(135deg, #0D145A 0%, #1b2440 55%, #2C3752 100%);
+
+  /* Rayons & ombres */
+  --radius: 10px;
+  --radius-lg: 18px;
+  --shadow-sm: 0 1px 3px rgba(13, 20, 90, 0.06);
+  --shadow: 0 6px 24px rgba(13, 20, 90, 0.08);
+  --shadow-lg: 0 18px 48px rgba(13, 20, 90, 0.12);
+
+  /* Largeur de contenu */
+  --maxw: 1140px;
+
+  font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--white);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.25rem); }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+h3 { font-size: 1.25rem; }
+
+p { margin: 0 0 1rem; }
+
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* ---------- Mise en page ---------- */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 84px 0;
+}
+.section--soft { background: var(--soft); }
+.section--mist { background: var(--mist); }
+.section--dark {
+  background: var(--gradient);
+  color: rgba(255, 255, 255, 0.9);
+}
+.section--dark h1,
+.section--dark h2,
+.section--dark h3 { color: #fff; }
+
+@media (max-width: 700px) {
+  .section { padding: 56px 0; }
+}
+
+/* ---------- Boutons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 26px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 15px;
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, color 0.18s ease;
+  text-decoration: none;
+}
+.btn svg { width: 18px; height: 18px; }
+.btn:hover { text-decoration: none; transform: translateY(-2px); }
+
+.btn--primary {
+  background: var(--brand);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(50, 41, 154, 0.28);
+}
+.btn--primary:hover { background: var(--brand-dark); }
+
+.btn--light {
+  background: #fff;
+  color: var(--brand-dark);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+.btn--outline {
+  background: transparent;
+  color: var(--brand);
+  border-color: var(--border);
+}
+.btn--outline:hover { border-color: var(--brand); background: var(--brand-soft); }
+
+.btn--ghost-light {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.btn--ghost-light:hover { background: rgba(255, 255, 255, 0.2); }
+
+.btn--gold {
+  background: var(--gold);
+  color: #2a1f04;
+  box-shadow: 0 4px 14px rgba(201, 162, 75, 0.35);
+}
+.btn--gold:hover { background: #b98f34; }
+
+/* Filet doré (séparateur / accent premium) */
+.gold-rule {
+  width: 54px;
+  height: 3px;
+  background: var(--gold);
+  border-radius: 3px;
+  border: none;
+  margin: 0 0 22px;
+}
+.text-center .gold-rule, .gold-rule.center { margin-left: auto; margin-right: auto; }
+
+/* ---------- En-tête de section ---------- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: 12px;
+}
+.eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+.section--dark .eyebrow { color: var(--gold); }
+.section--dark .eyebrow::before { background: var(--gold); }
+
+.lead {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.section--dark .lead { color: rgba(255, 255, 255, 0.85); }
+
+/* ---------- Utilitaires ---------- */
+.text-center { text-align: center; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.measure { max-width: 720px; }
+
+/* Accessibilité : focus visible */
+:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

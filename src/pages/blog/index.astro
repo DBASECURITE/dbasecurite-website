@@ -1,0 +1,63 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Icon from '../../components/Icon.astro';
+import { site } from '../../data/site';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+const fmt = (d: Date) => d.toLocaleDateString('fr-CH', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<Base title={`Blog & analyses - ${site.name}`} description="Analyses d'expert en sûreté et sécurité physique : concepts, gestion de crise, sécurité événementielle.">
+  <PageHero
+    eyebrow="Blog & analyses"
+    title="Regards d'expert sur la sûreté"
+    subtitle="Nos analyses sur les concepts de sécurité, la gestion de crise et la protection des grands événements."
+  />
+
+  <section class="section">
+    <div class="container">
+      {posts.length === 0 ? (
+        <div class="blog-empty">
+          <Icon name="file" size={40} />
+          <h2>Premiers articles à venir</h2>
+          <p>Nos analyses seront publiées ici prochainement.</p>
+        </div>
+      ) : (
+        <div class="blog-grid">
+          {posts.map((p) => (
+            <a href={`/blog/${p.id}`} class="post-card">
+              {p.data.category && <span class="post-cat">{p.data.category}</span>}
+              <h2>{p.data.title}</h2>
+              <p class="post-desc">{p.data.description}</p>
+              <div class="post-foot">
+                <span class="post-date">{fmt(p.data.date)}</span>
+                <span class="post-link">Lire <Icon name="arrow" size={15} /></span>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .post-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; color: var(--text); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .post-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); text-decoration: none; }
+  .post-cat { display: inline-block; align-self: flex-start; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gold-strong); background: rgba(201,162,75,0.1); padding: 4px 10px; border-radius: 20px; margin-bottom: 14px; }
+  .post-card h2 { font-size: 1.25rem; margin-bottom: 10px; }
+  .post-desc { color: var(--text-muted); font-size: 0.95rem; flex-grow: 1; }
+  .post-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; }
+  .post-date { font-size: 0.85rem; color: var(--text-muted); }
+  .post-link { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 14px; color: var(--brand); }
+
+  .blog-empty { text-align: center; padding: 60px 20px; color: var(--text-muted); }
+  .blog-empty svg { color: var(--gold-strong); margin-bottom: 12px; }
+  .blog-empty h2 { margin-bottom: 8px; }
+
+  @media (max-width: 860px) { .blog-grid { grid-template-columns: 1fr; } }
+</style>
