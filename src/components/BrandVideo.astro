@@ -1,0 +1,53 @@
+---
+---
+<section class="section section--dark brand-video-section">
+  <div class="container bv-grid">
+    <div class="bv-text">
+      <p class="eyebrow">DBA Sécurité en vidéo</p>
+      <h2>Vos projets, notre expertise</h2>
+      <p class="lead">
+        De l'analyse de risques à l'intervention, nous accompagnons et faisons
+        grandir votre sûreté. Découvrez notre approche en quelques secondes.
+      </p>
+    </div>
+    <div class="bv-wrap">
+      <video
+        class="bv-video"
+        controls
+        playsinline
+        preload="metadata"
+        poster="/assets/video/dba-presentation-poster.jpg"
+      >
+        <source src="/assets/video/dba-presentation.mp4" type="video/mp4" />
+        Votre navigateur ne peut pas lire cette vidéo.
+      </video>
+    </div>
+  </div>
+</section>
+
+<style>
+  .bv-grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 56px;
+    align-items: center;
+  }
+  .bv-text { max-width: 480px; }
+  .bv-wrap { display: flex; justify-content: center; }
+  .bv-video {
+    width: auto;
+    height: 580px;
+    max-width: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    background: #000;
+    display: block;
+  }
+
+  @media (max-width: 820px) {
+    .bv-grid { grid-template-columns: 1fr; gap: 32px; }
+    .bv-text { max-width: none; text-align: center; }
+    .bv-text .eyebrow { justify-content: center; }
+    .bv-video { height: 70vh; max-height: 560px; }
+  }
+</style>
