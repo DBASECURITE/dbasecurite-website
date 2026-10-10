@@ -1,7 +1,7 @@
 ---
 import { site, nav, footerNav } from '../data/site';
 import Icon from './Icon.astro';
-const year = 2025;
+const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
   <div class="container footer-grid">
@@ -12,6 +12,7 @@ const year = 2025;
         <Icon name="linkedin" size={20} />
         <span>LinkedIn</span>
       </a>
+      <a href="https://edgward.ch" target="_blank" rel="noopener" class="footer-partner">Partenaire&nbsp;: Edgward <Icon name="arrow" size={13} /></a>
     </div>
 
     <div class="footer-col">
@@ -69,6 +70,15 @@ const year = 2025;
     font-size: 14px;
   }
   .footer-linkedin:hover { text-decoration: none; color: var(--lilac); }
+  .footer-partner {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 14px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+  .footer-partner:hover { text-decoration: none; color: var(--gold); }
 
   .footer-col h4 {
     color: #fff;

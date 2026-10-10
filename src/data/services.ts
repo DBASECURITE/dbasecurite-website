@@ -14,10 +14,10 @@ export interface Service {
 export const services: Service[] = [
   {
     slug: 'consulting',
-    title: 'Audit & conseil en sécurité',
-    subtitle: 'Analyse, concepts & recommandations',
+    title: 'Audit & conseil en sûreté',
+    subtitle: 'Concepts de sûreté & analyse de risques',
     description:
-      "Nos consultants évaluent vos besoins en sécurité et conçoivent des stratégies et des plans d'action adaptés à vos spécificités et à vos contraintes. De l'analyse de risques à l'élaboration du concept de sûreté, nous vous apportons une vision claire et des recommandations concrètes et hiérarchisées.",
+      "Notre cœur de métier. Nous évaluons vos besoins et concevons des stratégies et des plans d'action adaptés à vos spécificités et à vos contraintes. De l'analyse de risques à l'élaboration du concept de sûreté, nous vous apportons une vision claire et des recommandations concrètes et hiérarchisées.",
     points: [
       'Analyse de risques',
       'Concepts de sûreté',
@@ -29,7 +29,7 @@ export const services: Service[] = [
   },
   {
     slug: 'evenementiel',
-    title: 'Sécurité événementielle',
+    title: 'Sécurité & coordination événementielle',
     subtitle: 'Suisse & international',
     description:
       "Nous accompagnons les organisateurs à chaque étape de leur événement - du concept de sûreté jusqu'à la coordination opérationnelle des intervenants et partenaires le jour J. Événements sportifs, de mode, culturels ou institutionnels : nous adaptons le dispositif à l'ampleur et aux enjeux de chaque manifestation. Nous sommes notamment intervenus pour le défilé Moncler à St. Moritz, l'UEFA Youth League et le Championnat d'Europe féminin 2025.",
@@ -40,29 +40,6 @@ export const services: Service[] = [
       'Dispositif adapté à l’événement',
     ],
     icon: 'calendar',
-  },
-  {
-    slug: 'tests-intrusion',
-    title: 'Exercices & tests d’intrusion',
-    subtitle: 'Red team & grandeur nature',
-    description:
-      "Concevoir un dispositif ne suffit pas : il faut l'éprouver. Nous réalisons des tests d'intrusion et des exercices en conditions réalistes pour évaluer la robustesse de vos mesures de sécurité et la coordination des intervenants - et révéler les failles avant qu'elles ne soient exploitées. En 2025, nous avons ainsi piloté un exercice grandeur nature au Stade de Genève avant l'Euro féminin, mobilisant près de 400 intervenants.",
-    points: [
-      'Tests d’intrusion (red team)',
-      'Scénarios réalistes et personnalisés',
-      'Exercices grandeur nature',
-      'Rapport & axes d’amélioration',
-    ],
-    icon: 'target',
-  },
-  {
-    slug: 'services-specialises',
-    title: 'Services spécialisés',
-    subtitle: 'Réponses sur mesure',
-    description:
-      "Pour des menaces et des risques spécifiques, nous concevons des prestations de sécurité personnalisées, menées avec rigueur, minutie et discrétion.",
-    points: ['Surveillance', 'Protection', 'Observations'],
-    icon: 'eye',
   },
   {
     slug: 'formations',
@@ -77,5 +54,28 @@ export const services: Service[] = [
       'Coaching des cadres',
     ],
     icon: 'graduation',
+  },
+  {
+    slug: 'services-specialises',
+    title: 'Services spécialisés',
+    subtitle: 'Réponses sur mesure',
+    description:
+      "Pour des menaces et des risques spécifiques, nous concevons des prestations de sécurité personnalisées, menées avec rigueur, minutie et discrétion.",
+    points: ['Surveillance', 'Protection', 'Observations'],
+    icon: 'eye',
+  },
+  {
+    slug: 'tests-intrusion',
+    title: 'Exercices & tests d’intrusion',
+    subtitle: 'Red team & grandeur nature',
+    description:
+      "Concevoir un dispositif ne suffit pas : il faut l'éprouver. Nous réalisons des tests d'intrusion et des exercices en conditions réalistes pour évaluer la robustesse de vos mesures de sécurité et la coordination des intervenants - et révéler les failles avant qu'elles ne soient exploitées. En 2025, nous avons ainsi piloté un exercice grandeur nature au Stade de Genève avant l'Euro féminin, mobilisant près de 400 intervenants.",
+    points: [
+      'Tests d’intrusion (red team)',
+      'Scénarios réalistes et personnalisés',
+      'Exercices grandeur nature',
+      'Rapport & axes d’amélioration',
+    ],
+    icon: 'target',
   },
 ];

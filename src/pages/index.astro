@@ -4,6 +4,8 @@ import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
 import { services } from '../data/services';
 import { references } from '../data/references';
+import { medias } from '../data/medias';
+import PartnerEdgward from '../components/PartnerEdgward.astro';
 
 const pillars = [
   {
@@ -110,6 +112,9 @@ const pillars = [
     </div>
   </section>
 
+  <!-- PARTENAIRE EDGWARD -->
+  <PartnerEdgward />
+
   <!-- RÉFÉRENCES -->
   <section class="section section--mist">
     <div class="container">
@@ -131,6 +136,32 @@ const pillars = [
       </div>
       <div class="text-center">
         <a href="/references" class="btn btn--outline">Voir toutes nos références <Icon name="arrow" size={16} /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DANS LES MÉDIAS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head text-center">
+        <p class="eyebrow">Dans les médias</p>
+        <h2>Ils parlent de nous</h2>
+        <p class="lead measure mx-auto">
+          RTS, Tribune de Genève, 20 minutes, Léman Bleu : notre expertise en
+          sûreté est régulièrement sollicitée par les médias.
+        </p>
+      </div>
+      <div class="press-strip">
+        {medias.map((m) => (
+          <a href={m.url} target="_blank" rel="noopener" class="press-item">
+            <span class="press-outlet">{m.outlet}</span>
+            <span class="press-title">{m.title}</span>
+            <span class="press-go">Lire / voir <Icon name="arrow" size={14} /></span>
+          </a>
+        ))}
+      </div>
+      <div class="text-center">
+        <a href="/medias" class="btn btn--outline">Voir la revue de presse <Icon name="arrow" size={16} /></a>
       </div>
     </div>
   </section>
@@ -273,6 +304,30 @@ const pillars = [
   .ref-name { font-weight: 700; color: var(--navy); font-size: 1.05rem; }
   .ref-tag { font-size: 0.82rem; color: var(--text-muted); }
 
+  /* PRESSE */
+  .press-strip {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  .press-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 22px 24px;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    background: #fff;
+    color: var(--text);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .press-item:hover { transform: translateY(-3px); box-shadow: var(--shadow); text-decoration: none; }
+  .press-outlet { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-strong); }
+  .press-title { font-weight: 600; color: var(--navy); line-height: 1.4; }
+  .press-go { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--brand); margin-top: 2px; }
+
   /* CTA */
   .cta-final { padding: 84px 0; }
   .cta-final .lead { margin-bottom: 28px; }
@@ -284,6 +339,7 @@ const pillars = [
   }
   @media (max-width: 560px) {
     .services-grid { grid-template-columns: 1fr; }
+    .press-strip { grid-template-columns: 1fr; }
     .hero { padding: 88px 0 76px; }
   }
 </style>
