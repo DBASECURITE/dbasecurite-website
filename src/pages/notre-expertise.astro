@@ -49,23 +49,21 @@ const methode = [
     </div>
   </section>
 
-  <!-- SÛRETÉ VS SÉCURITÉ -->
+  <!-- MÉTHODOLOGIE -->
   <section class="section section--soft">
     <div class="container">
-      <SectionHeader eyebrow="Point d'expert" title="Sûreté ou sécurité ?" center />
-      <div class="ss-grid">
-        <div class="ss-card">
-          <span class="ss-tag">Sécurité</span>
-          <h3>Les risques accidentels</h3>
-          <p>Incendie, panne, accident, mouvement de foule non maîtrisé. On réduit la probabilité et on limite les conséquences.</p>
-        </div>
-        <div class="ss-card ss-card--gold">
-          <span class="ss-tag">Sûreté</span>
-          <h3>Les actes intentionnels</h3>
-          <p>Intrusion, agression, malveillance, menace terroriste. Face à un adversaire qui s'adapte.</p>
-        </div>
+      <SectionHeader eyebrow="Notre méthodologie" title="Une démarche structurée, en cinq temps" center />
+      <div class="method-list">
+        {methode.map((m) => (
+          <div class="method-item">
+            <span class="method-num">{m.n}</span>
+            <div>
+              <h3>{m.title}</h3>
+              <p>{m.text}</p>
+            </div>
+          </div>
+        ))}
       </div>
-      <p class="ss-note">Notre métier couvre les deux - et arbitre leurs tensions. <a href="/blog/surete-ou-securite">Lire notre analyse</a></p>
     </div>
   </section>
 
@@ -88,21 +86,23 @@ const methode = [
     </div>
   </section>
 
-  <!-- MÉTHODOLOGIE -->
+  <!-- SÛRETÉ VS SÉCURITÉ -->
   <section class="section section--soft">
     <div class="container">
-      <SectionHeader eyebrow="Notre méthodologie" title="Une démarche structurée, en cinq temps" center />
-      <div class="method-list">
-        {methode.map((m) => (
-          <div class="method-item">
-            <span class="method-num">{m.n}</span>
-            <div>
-              <h3>{m.title}</h3>
-              <p>{m.text}</p>
-            </div>
-          </div>
-        ))}
+      <SectionHeader eyebrow="Point d'expert" title="Sûreté ou sécurité ?" center />
+      <div class="ss-grid">
+        <div class="ss-card">
+          <span class="ss-tag">Sécurité</span>
+          <h3>Les risques accidentels</h3>
+          <p>Incendie, panne, accident, mouvement de foule non maîtrisé. On réduit la probabilité et on limite les conséquences.</p>
+        </div>
+        <div class="ss-card ss-card--gold">
+          <span class="ss-tag">Sûreté</span>
+          <h3>Les actes intentionnels</h3>
+          <p>Intrusion, agression, malveillance, menace terroriste. Face à un adversaire qui s'adapte.</p>
+        </div>
       </div>
+      <p class="ss-note">Notre métier couvre les deux - et arbitre leurs tensions. <a href="/blog/surete-ou-securite">Lire notre analyse</a></p>
     </div>
   </section>
 
