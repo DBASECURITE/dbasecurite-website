@@ -9,6 +9,7 @@ export interface Service {
   description: string;
   points?: string[];
   icon: string;
+  image?: string;
 }
 
 export const services: Service[] = [
@@ -40,6 +41,7 @@ export const services: Service[] = [
       'Dispositif adapté à l’événement',
     ],
     icon: 'calendar',
+    image: '/assets/photos/securite-evenementielle-wef.jpg',
   },
   {
     slug: 'formations',
@@ -54,6 +56,7 @@ export const services: Service[] = [
       'Coaching des cadres',
     ],
     icon: 'graduation',
+    image: '/assets/photos/scrasa-chantier.jpg',
   },
   {
     slug: 'services-specialises',
@@ -77,5 +80,6 @@ export const services: Service[] = [
       'Rapport & axes d’amélioration',
     ],
     icon: 'target',
+    image: '/assets/photos/stade-geneve-briefing.jpg',
   },
 ];

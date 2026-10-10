@@ -23,10 +23,7 @@ const domaines = [
   <section class="section">
     <div class="container expert-grid">
       <div class="expert-photo">
-        <div class="photo-placeholder">
-          <Icon name="users" size={40} />
-          <span>Photo à ajouter</span>
-        </div>
+        <img src="/assets/photos/portrait-daniel-barouch.jpg" alt="Daniel Barouch, fondateur de DBA Sécurité" class="expert-portrait" width="900" height="1072" />
         <a href={site.linkedin} target="_blank" rel="noopener" class="expert-linkedin">
           <Icon name="linkedin" size={18} /> Profil LinkedIn
         </a>
@@ -76,12 +73,13 @@ const domaines = [
 <style>
   .expert-grid { display: grid; grid-template-columns: 320px 1fr; gap: 48px; align-items: start; }
   .expert-photo { position: sticky; top: 96px; }
-  .photo-placeholder {
+  .expert-portrait {
+    width: 100%;
     aspect-ratio: 4 / 5;
-    border: 1.5px dashed var(--border);
+    object-fit: cover;
+    object-position: top center;
     border-radius: var(--radius-lg);
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
-    color: var(--text-muted); background: var(--soft);
+    box-shadow: var(--shadow);
   }
   .expert-linkedin { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; font-weight: 600; font-size: 14px; }
   .expert-bio .lead { color: var(--text); }

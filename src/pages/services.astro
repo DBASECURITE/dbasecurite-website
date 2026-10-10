@@ -17,7 +17,9 @@ import { site } from '../data/site';
     <section id={s.slug} class:list={['section', 'service-block', { 'section--soft': i % 2 === 1 }]}>
       <div class="container service-row">
         <div class="service-visual">
-          <span class="service-big-icon"><Icon name={s.icon} size={40} /></span>
+          {s.image
+            ? <img src={s.image} alt={s.title} class="service-photo" loading="lazy" />
+            : <span class="service-big-icon"><Icon name={s.icon} size={40} /></span>}
         </div>
         <div class="service-content">
           <p class="eyebrow">{s.subtitle}</p>
@@ -38,8 +40,15 @@ import { site } from '../data/site';
 
 <style>
   .service-block { scroll-margin-top: 90px; padding: 72px 0; }
-  .service-row { display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: center; }
-  .service-visual { display: flex; justify-content: center; }
+  .service-row { display: grid; grid-template-columns: 320px 1fr; gap: 48px; align-items: center; }
+  .service-visual { display: flex; align-items: center; justify-content: center; }
+  .service-photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+  }
   .service-big-icon {
     display: inline-flex; align-items: center; justify-content: center;
     width: 132px; height: 132px; border-radius: 28px;

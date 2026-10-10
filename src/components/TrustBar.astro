@@ -38,16 +38,16 @@ const logos = [
     justify-content: center;
     padding: 14px 20px;
   }
+  .trustbar-item {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .trustbar-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
   .trustbar-item img {
-    max-height: 52px;
-    max-width: 118px;
+    max-height: 54px;
+    max-width: 120px;
     width: auto;
     object-fit: contain;
-    filter: grayscale(100%);
-    opacity: 0.72;
-    transition: filter 0.25s ease, opacity 0.25s ease;
   }
-  .trustbar-item:hover img { filter: none; opacity: 1; }
 
   @media (max-width: 560px) {
     .trustbar-item { width: 45%; height: 78px; }
