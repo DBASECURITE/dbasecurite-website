@@ -180,8 +180,8 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .eyebrow::before {
   content: '';
-  width: 17px;
-  height: 19px;
+  width: 12px;
+  height: 20px;
   flex-shrink: 0;
   background: url('/assets/dba-mark.svg') no-repeat center / contain;
 }
