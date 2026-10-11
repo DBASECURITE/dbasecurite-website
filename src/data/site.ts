@@ -8,6 +8,8 @@ export const site = {
   description:
     "DBA Sécurité propose ses services de consulting, d'audits et d'expertise dans le domaine de la sécurité physique des infrastructures, des biens et des personnes.",
   email: 'info@dbasecurite.ch',
+  phone: '+41 22 886 0 117',
+  phoneLink: 'tel:+41228860117',
   address: {
     street: "Ch. de l'Égalité 3",
     city: '1251 Gy',
@@ -21,11 +23,11 @@ export const site = {
 // Navigation principale
 export const nav = [
   { label: 'Accueil', href: '/' },
-  { label: 'À propos', href: '/a-propos' },
-  { label: "L'expert", href: '/expert' },
+  { label: 'Notre expertise', href: '/notre-expertise' },
   { label: 'Services', href: '/services' },
   { label: 'Références', href: '/references' },
   { label: 'Médias', href: '/medias' },
+  { label: 'Fondateur', href: '/fondateur' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ];

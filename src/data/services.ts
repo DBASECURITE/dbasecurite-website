@@ -27,6 +27,7 @@ export const services: Service[] = [
       'Conseil & accompagnement',
     ],
     icon: 'shield',
+    image: '/assets/photos/services-audit.jpg',
   },
   {
     slug: 'evenementiel',

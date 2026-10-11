@@ -26,6 +26,10 @@ import { site } from '../data/site';
             <div><span class="ci-label">Email</span><a href={`mailto:${site.email}`}>{site.email}</a></div>
           </li>
           <li>
+            <span class="ci-icon"><Icon name="phone" size={20} /></span>
+            <div><span class="ci-label">Téléphone</span><a href={site.phoneLink}>{site.phone}</a></div>
+          </li>
+          <li>
             <span class="ci-icon"><Icon name="linkedin" size={20} /></span>
             <div><span class="ci-label">LinkedIn</span><a href={site.linkedin} target="_blank" rel="noopener">DBA Sécurité Sàrl</a></div>
           </li>
