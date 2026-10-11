@@ -15,7 +15,7 @@ export const medias: MediaItem[] = [
   {
     outlet: 'RTS',
     type: 'TV',
-    date: '2024',
+    date: 'Janvier 2026',
     title: "Interview : méthodes d'intervention des secours lors d'un incendie en lieu clos",
     excerpt:
       "Daniel Barouch et Wassim Raf interviewés par la RTS sur les méthodes d'intervention des secours en cas d'incendie dans un lieu clos.",

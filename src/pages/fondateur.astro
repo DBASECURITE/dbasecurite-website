@@ -29,11 +29,19 @@ const domaines = [
         </a>
       </div>
       <div class="expert-bio">
-        <p class="lead">Fondateur de DBA Sécurité, Daniel Barouch met son expertise de la sûreté physique au service d'organisations, d'institutions et d'organisateurs d'événements en Suisse et à l'international.</p>
-        <p>Il est notamment intervenu comme <strong>responsable sécurité du Stade de Genève</strong> dans le cadre du Championnat d'Europe féminin de football 2025, où il a piloté un exercice de sécurité grandeur nature mobilisant près de 400 intervenants avant la compétition. Régulièrement sollicité par les médias, il partage son analyse sur les méthodes d'intervention et l'évolution des menaces.</p>
+        <p class="lead">Fondateur de DBA Sécurité, Daniel Barouch met plus de quinze ans d'expérience de la sûreté physique au service de ses clients - du terrain à la direction de grands dispositifs, en Suisse et à l'international.</p>
+        <p>Pendant plus de six ans, il a dirigé un département opérationnel d'une grande société de sécurité privée en Suisse, conduisant jusqu'à <strong>500 à 600 collaborateurs</strong> et pilotant des mandats sensibles et stratégiques : engagements diplomatiques internationaux, organisations internationales et institutions, en coordination étroite avec les autorités.</p>
+        <p>Auparavant responsable de la sécurité physique d'une <strong>organisation internationale de premier plan</strong>, il a sécurisé des sites sensibles et des visites officielles - chefs d'État, ministres et personnalités sous protection - lors d'événements en Suisse et à l'étranger, et conçu les concepts de gestion de crise et d'évacuation.</p>
+        <p>Entrepreneur, il a fondé et dirigé plusieurs sociétés de sécurité et assuré sur le terrain la sûreté de <strong>plus de 200 événements</strong> festifs, culturels et sportifs. Aujourd'hui à la tête de DBA Sécurité, il est notamment intervenu comme <strong>responsable sécurité du Stade de Genève</strong> pour le Championnat d'Europe féminin 2025, en pilotant un exercice grandeur nature de près de 400 intervenants. Régulièrement sollicité par les médias, il partage son analyse sur les méthodes d'intervention et l'évolution des menaces.</p>
 
-        <div class="editor-note">
-          <strong>À compléter avec toi :</strong> parcours et formation, années d'expérience, certifications / affiliations professionnelles, rôle de Wassim Raf, et tout mandat marquant que tu souhaites mettre en avant.
+        <div class="cred">
+          <h3>Formations &amp; certifications</h3>
+          <ul>
+            <li><Icon name="check" size={18} /><span><strong>Certified Protection Professional® (CPP)</strong> - ASIS International, la plus haute certification internationale en management de la sécurité.</span></li>
+            <li><Icon name="check" size={18} /><span>CAS en communication de crise (ZHAW) · Master en management (HES-SO).</span></li>
+            <li><Icon name="check" size={18} /><span>Officier supérieur de l'armée suisse, spécialiste du renseignement · cours OTAN « Defense against terrorism ».</span></li>
+            <li><Icon name="check" size={18} /><span>Juge militaire nommé par le Conseil fédéral.</span></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -89,6 +97,11 @@ const domaines = [
     background: rgba(201, 162, 75, 0.07); font-size: 14px; color: var(--text-muted);
   }
   .editor-note strong { color: var(--gold-strong); }
+  .cred { margin-top: 26px; padding: 22px 24px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--soft); }
+  .cred h3 { font-size: 1rem; margin-bottom: 14px; }
+  .cred ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; }
+  .cred li { display: flex; gap: 11px; align-items: flex-start; font-size: 0.95rem; color: var(--text); line-height: 1.5; }
+  .cred li svg { color: var(--gold-strong); flex-shrink: 0; margin-top: 3px; }
 
   .domaines-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .domaine-card { display: flex; gap: 16px; align-items: flex-start; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }

@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
-import { site } from '../data/site';
 import { services } from '../data/services';
 import { medias } from '../data/medias';
 import PartnerEdgward from '../components/PartnerEdgward.astro';
@@ -51,30 +50,6 @@ const pillars = [
       </div>
     </div>
     <div class="hero-glow" aria-hidden="true"></div>
-  </section>
-
-  <!-- PRÉSENTATION -->
-  <section class="section">
-    <div class="container intro-grid">
-      <div>
-        <p class="eyebrow">Qui sommes-nous</p>
-        <h2>{site.name}</h2>
-      </div>
-      <div class="intro-text">
-        <p>
-          DBA Sécurité propose ses services de consulting, d’audits et d’expertise
-          dans le domaine de la sécurité physique des infrastructures, des biens et
-          des personnes.
-        </p>
-        <p>
-          Fondée sur des valeurs d’<strong>intégrité</strong>, d’<strong>engagement</strong>
-          et d’<strong>innovation</strong>, notre entreprise s’engage à fournir des
-          solutions de sécurité personnalisées et efficaces, pour répondre aux
-          besoins uniques de chaque client.
-        </p>
-        <a href="/notre-expertise" class="link-arrow">En savoir plus sur DBA Sécurité <Icon name="arrow" size={16} /></a>
-      </div>
-    </div>
   </section>
 
   <!-- SERVICES -->
