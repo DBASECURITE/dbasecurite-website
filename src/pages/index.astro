@@ -72,7 +72,7 @@ const pillars = [
           solutions de sécurité personnalisées et efficaces, pour répondre aux
           besoins uniques de chaque client.
         </p>
-        <a href="/a-propos" class="link-arrow">En savoir plus sur DBA Sécurité <Icon name="arrow" size={16} /></a>
+        <a href="/notre-expertise" class="link-arrow">En savoir plus sur DBA Sécurité <Icon name="arrow" size={16} /></a>
       </div>
     </div>
   </section>
@@ -98,6 +98,18 @@ const pillars = [
           </a>
         ))}
       </div>
+    </div>
+  </section>
+
+  <!-- DIAGNOSTIC (CTA) -->
+  <section class="section--mist diag-band">
+    <div class="container diag-band-inner">
+      <div>
+        <p class="eyebrow">Auto-évaluation</p>
+        <h2>Pas sûr de votre niveau de sûreté ?</h2>
+        <p class="lead">Évaluez votre événement ou votre site en 2 minutes et recevez des recommandations concrètes, gratuitement.</p>
+      </div>
+      <a href="/diagnostic-surete" class="btn btn--gold diag-band-btn">Faire le diagnostic <Icon name="arrow" size={18} /></a>
     </div>
   </section>
 
@@ -343,6 +355,14 @@ const pillars = [
   .press-outlet { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-strong); }
   .press-title { font-weight: 600; color: var(--navy); line-height: 1.4; }
   .press-go { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--brand); margin-top: 2px; }
+
+  /* DIAGNOSTIC BAND */
+  .diag-band { padding: 56px 0; }
+  .diag-band-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  .diag-band-inner > div { max-width: 620px; }
+  .diag-band-inner h2 { margin-bottom: 10px; }
+  .diag-band-inner .lead { margin-bottom: 0; }
+  .diag-band-btn { flex-shrink: 0; }
 
   /* CTA */
   .cta-final { padding: 84px 0; }
