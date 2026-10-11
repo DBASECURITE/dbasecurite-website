@@ -6,29 +6,47 @@ const logos = [
   { src: '/assets/logos/moncler.jpg', alt: 'Moncler' },
   { src: '/assets/logos/scrasa.jpg', alt: 'SCRASA' },
   { src: '/assets/logos/chancy.png', alt: 'Commune de Chancy' },
+  { src: '/assets/logos/edgward.png', alt: 'Edgward' },
   { src: '/assets/logos/fsg.jpg', alt: 'Fondation du Stade de Genève' },
 ];
 ---
-<ul class="trustbar">
-  {logos.map((l) => (
-    <li class="trustbar-item">
-      <img src={l.src} alt={l.alt} loading="lazy" />
-    </li>
-  ))}
-</ul>
+<div class="trustbar-wrap" role="group" aria-label="Nos références">
+  <div class="trustbar">
+    {[0, 1].map((set) => (
+      <ul class="tb-set" aria-hidden={set === 1 ? 'true' : undefined}>
+        {logos.map((l) => (
+          <li class="trustbar-item">
+            <img src={l.src} alt={set === 1 ? '' : l.alt} />
+          </li>
+        ))}
+      </ul>
+    ))}
+  </div>
+</div>
 
 <style>
-  .trustbar {
-    list-style: none;
+  .trustbar-wrap {
+    overflow: hidden;
     margin: 0 auto 40px;
-    padding: 0;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  }
+  .trustbar {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    width: max-content;
+    animation: tb-scroll 42s linear infinite;
+  }
+  .trustbar-wrap:hover .trustbar { animation-play-state: paused; }
+  .tb-set {
+    display: flex;
     align-items: center;
     gap: 16px;
+    padding-right: 16px;
+    margin: 0;
+    list-style: none;
   }
   .trustbar-item {
+    flex-shrink: 0;
     background: #fff;
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -39,10 +57,6 @@ const logos = [
     justify-content: center;
     padding: 14px 20px;
   }
-  .trustbar-item {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .trustbar-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
   .trustbar-item img {
     max-height: 54px;
     max-width: 120px;
@@ -50,7 +64,12 @@ const logos = [
     object-fit: contain;
   }
 
-  @media (max-width: 560px) {
-    .trustbar-item { width: 45%; height: 78px; }
+  @keyframes tb-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .trustbar { animation: none; flex-wrap: wrap; justify-content: center; }
+    .tb-set:last-child { display: none; }
   }
 </style>

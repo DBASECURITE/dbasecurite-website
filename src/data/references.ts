@@ -44,6 +44,12 @@ export const references: Reference[] = [
       "La commune de Chancy, à la pointe ouest du canton de Genève, a fait appel à DBA Sécurité pour l’accompagner sur ses enjeux de sûreté.",
   },
   {
+    name: 'Edgward',
+    tag: 'Partenaire - sécurité à la demande',
+    description:
+      "Edgward est le service de sécurité à la demande en Suisse romande. DBA Sécurité en est le partenaire sûreté, en charge de l’analyse et de l’expertise sécurité de l’application.",
+  },
+  {
     name: 'Sur demande',
     tag: 'Suisse & international',
     description:
