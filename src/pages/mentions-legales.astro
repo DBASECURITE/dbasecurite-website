@@ -10,19 +10,27 @@ import { site } from '../data/site';
       <h2>Éditeur du site</h2>
       <p>
         {site.name}<br />
+        Société à responsabilité limitée de droit suisse, dont le siège est à Gy (canton de Genève).<br />
         {site.address.street}, {site.address.city}, {site.address.country}<br />
-        Email : <a href={`mailto:${site.email}`}>{site.email}</a>
+        Email : <a href={`mailto:${site.email}`}>{site.email}</a><br />
+        Téléphone : <a href={site.phoneLink}>{site.phone}</a>
       </p>
 
+      <h2>Responsable de la publication</h2>
+      <p>Daniel Barouch, fondateur et gérant de {site.name}.</p>
+
       <h2>Hébergement</h2>
-      <p>Ce site est hébergé via GitHub Pages (GitHub, Inc.).</p>
+      <p>Ce site est hébergé par GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis).</p>
 
       <h2>Propriété intellectuelle</h2>
-      <p>L'ensemble des contenus de ce site (textes, logos, visuels) est la propriété de {site.name}, sauf mention contraire. Toute reproduction sans autorisation est interdite.</p>
+      <p>L'ensemble des contenus de ce site (textes, logos, visuels, éléments graphiques) est la propriété de {site.name} ou de leurs titulaires respectifs, sauf mention contraire. Toute reproduction, représentation, modification ou diffusion, totale ou partielle, sans autorisation écrite préalable, est interdite.</p>
+      <p>Les logos et marques des clients et partenaires cités restent la propriété de leurs détenteurs respectifs et sont utilisés à titre de référence.</p>
 
-      <div class="editor-note">
-        <strong>À compléter / valider :</strong> numéro d'identification de l'entreprise (IDE/CHE), responsable de publication, et toute mention légale spécifique. Fournis-moi le texte définitif - je ne rédige pas de contenu juridique à ta place.
-      </div>
+      <h2>Responsabilité</h2>
+      <p>{site.name} s'efforce d'assurer l'exactitude des informations publiées sur ce site, sans toutefois pouvoir le garantir. Les informations sont fournies à titre indicatif et peuvent être modifiées à tout moment. {site.name} ne saurait être tenue responsable de l'usage qui en est fait ni du contenu des sites tiers accessibles par des liens.</p>
+
+      <h2>Droit applicable</h2>
+      <p>Le présent site et ses mentions légales sont soumis au droit suisse. Tout litige relève de la compétence des tribunaux du canton de Genève, sous réserve d'un for impératif.</p>
     </div>
   </section>
 </Base>
@@ -32,6 +40,4 @@ import { site } from '../data/site';
   .legal-body h2 { margin-top: 1.8em; font-size: 1.3rem; }
   .legal-body h2:first-child { margin-top: 0; }
   .legal-body p { line-height: 1.8; }
-  .editor-note { margin-top: 32px; padding: 16px 18px; border: 1.5px dashed var(--gold); border-radius: var(--radius); background: rgba(201,162,75,0.07); font-size: 14px; color: var(--text-muted); }
-  .editor-note strong { color: var(--gold-strong); }
 </style>

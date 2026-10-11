@@ -7,20 +7,35 @@ import { site } from '../data/site';
   <PageHero eyebrow="Vos données" title="Politique de confidentialité" />
   <section class="section">
     <div class="container legal-body">
-      <p class="lead">DBA Sécurité accorde une grande importance à la protection de vos données personnelles.</p>
+      <p class="lead">{site.name} accorde une grande importance à la protection de vos données personnelles et traite celles-ci conformément à la législation suisse sur la protection des données (nLPD).</p>
+
+      <h2>Responsable du traitement</h2>
+      <p>
+        {site.name} · {site.address.street}, {site.address.city}, {site.address.country}<br />
+        Email : <a href={`mailto:${site.email}`}>{site.email}</a> · Téléphone : <a href={site.phoneLink}>{site.phone}</a>
+      </p>
 
       <h2>Données collectées</h2>
-      <p>Les données que vous nous transmettez via le formulaire de contact (nom, email, société, message) sont utilisées uniquement pour traiter votre demande. Elles ne sont ni revendues, ni cédées à des tiers à des fins commerciales.</p>
+      <p>Nous ne collectons que les données que vous nous transmettez volontairement :</p>
+      <ul>
+        <li>via le <strong>formulaire de contact</strong> : nom, adresse e-mail, société et message ;</li>
+        <li>via l'<strong>auto-évaluation de sûreté</strong> : uniquement l'adresse e-mail, si vous choisissez de recevoir votre diagnostic (les réponses au questionnaire restent sur votre appareil).</li>
+      </ul>
 
-      <h2>Conservation</h2>
-      <p>Vos données sont conservées le temps nécessaire au traitement de votre demande, puis archivées ou supprimées conformément à la législation applicable.</p>
+      <h2>Finalités et base légale</h2>
+      <p>Ces données sont utilisées exclusivement pour traiter votre demande et y répondre. Le traitement repose sur votre consentement et sur l'intérêt légitime à donner suite à votre sollicitation. Elles ne sont ni vendues, ni cédées à des tiers à des fins commerciales.</p>
+
+      <h2>Hébergement et prestataires</h2>
+      <p>Vos messages nous parviennent par e-mail, hébergé chez Infomaniak (Suisse). Le cas échéant, l'envoi des formulaires peut transiter par un prestataire de gestion de formulaires. Le site lui-même est hébergé via GitHub Pages.</p>
+
+      <h2>Cookies</h2>
+      <p>Ce site est statique et <strong>n'utilise pas de cookies de suivi ni d'outils de traçage publicitaire</strong>.</p>
+
+      <h2>Durée de conservation</h2>
+      <p>Vos données sont conservées le temps nécessaire au traitement de votre demande et à la relation qui en découle, puis supprimées ou archivées conformément à la législation applicable.</p>
 
       <h2>Vos droits</h2>
-      <p>Vous pouvez demander l'accès, la rectification ou la suppression de vos données en écrivant à <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
-
-      <div class="editor-note">
-        <strong>À compléter / valider :</strong> outils réellement utilisés (formulaire Brevo, statistiques éventuelles, cookies), base légale et durée de conservation exacte. Texte définitif à confirmer avec toi.
-      </div>
+      <p>Vous disposez d'un droit d'accès, de rectification et de suppression de vos données, ainsi que d'un droit d'opposition. Pour l'exercer, écrivez-nous à <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
     </div>
   </section>
 </Base>
@@ -28,7 +43,6 @@ import { site } from '../data/site';
 <style>
   .legal-body { max-width: 720px; }
   .legal-body h2 { margin-top: 1.8em; font-size: 1.3rem; }
-  .legal-body p { line-height: 1.8; }
-  .editor-note { margin-top: 32px; padding: 16px 18px; border: 1.5px dashed var(--gold); border-radius: var(--radius); background: rgba(201,162,75,0.07); font-size: 14px; color: var(--text-muted); }
-  .editor-note strong { color: var(--gold-strong); }
+  .legal-body p, .legal-body li { line-height: 1.8; }
+  .legal-body ul { padding-left: 1.2em; }
 </style>
