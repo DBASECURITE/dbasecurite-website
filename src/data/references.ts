@@ -11,48 +11,48 @@ export const references: Reference[] = [
     name: 'SCRASA SA',
     tag: 'Génie civil · Formation QSE',
     description:
-      "Scrasa est une entreprise reconnue sur la place genevoise, tant sur les activités liées aux métiers du génie civil, des travaux routiers que du bâtiment. Scrasa a choisi DBA Sécurité pour ses services dans le domaine de la formation et du coaching de ses cadres spécialisés en QSE.",
+      "Pour cette entreprise genevoise du génie civil, des travaux routiers et du bâtiment, DBA Sécurité forme et coache les cadres spécialisés en QSE - pour ancrer les bons réflexes de sécurité dans le quotidien des chantiers.",
   },
   {
     name: 'Moncler',
-    tag: 'Défilés - Suisse & France',
+    tag: 'Défilés de luxe - Suisse & France',
     description:
-      "Moncler est une entreprise italienne d’origine française, spécialisée dans la création de doudounes haut de gamme et de vêtements de ski. DBA Sécurité a accompagné Moncler dans l’organisation de ses défilés en Suisse (2024) et en France (2025).",
+      "DBA Sécurité a conçu et coordonné la sûreté des défilés de la maison de luxe, en Suisse (2024) et en France (2025) : analyse des risques, dispositif sur mesure et coordination des intervenants le jour J.",
   },
   {
     name: 'IFRC',
     tag: 'Organisation humanitaire',
     description:
-      "La Fédération internationale des Sociétés de la Croix-Rouge et du Croissant-Rouge est le plus grand réseau humanitaire au monde.",
+      "DBA Sécurité a accompagné la Fédération internationale des Sociétés de la Croix-Rouge et du Croissant-Rouge, le plus grand réseau humanitaire au monde, sur ses enjeux de sûreté.",
   },
   {
-    name: 'UEFA',
-    tag: 'Youth League 2023-24',
+    name: 'UEFA Youth League',
+    tag: 'Football européen - 2023-24',
     description:
-      "La Youth League de l’UEFA est une compétition européenne de football destinée aux équipes de jeunes des clubs participant à la Ligue des Champions et aux champions nationaux des moins de 19 ans.",
+      "Intervention en sûreté et coordination événementielle dans le cadre de la Youth League de l'UEFA, la compétition européenne des équipes de jeunes des clubs de Ligue des Champions.",
   },
   {
     name: 'Women’s Euro 2025',
     tag: 'Stade de Genève - ville hôte',
     description:
-      "Le championnat d’Europe féminin organisé par l’UEFA s’est déroulé en Suisse durant l’été 2025. Le stade de Genève a accueilli 5 matchs, dont un quart et une demi-finale, parmi les 8 villes hôtes.",
+      "Responsabilité sécurité du Stade de Genève, hôte de 5 matchs (dont un quart et une demi-finale) du Championnat d'Europe féminin UEFA 2025, avec le pilotage d'un exercice grandeur nature de près de 400 intervenants.",
   },
   {
     name: 'Commune de Chancy',
-    tag: 'Commune genevoise',
+    tag: 'Collectivité publique genevoise',
     description:
-      "La commune de Chancy, à la pointe ouest du canton de Genève, a fait appel à DBA Sécurité pour l’accompagner sur ses enjeux de sûreté.",
+      "La commune de Chancy, à la pointe ouest du canton de Genève, a fait appel à DBA Sécurité pour l'accompagner sur ses enjeux de sûreté publique.",
   },
   {
     name: 'Edgward',
     tag: 'Partenaire - sécurité à la demande',
     description:
-      "Edgward est le service de sécurité à la demande en Suisse romande. DBA Sécurité en est le partenaire sûreté, en charge de l’analyse et de l’expertise sécurité de l’application.",
+      "DBA Sécurité est le partenaire sûreté d'Edgward, le service de sécurité à la demande en Suisse romande, en charge de l'analyse et de l'expertise sécurité de la plateforme.",
   },
   {
     name: 'Sur demande',
     tag: 'Suisse & international',
     description:
-      "Nous nous tenons à disposition pour des références plus spécifiques selon le type d’activités envisagées. Nous gardons une discrétion sur nos mandats et nos clients spécifiques.",
+      "D'autres références peuvent être partagées selon le type de projet. Par respect pour nos clients, nous gardons la confidentialité sur nos mandats sensibles et les détails opérationnels.",
   },
 ];
