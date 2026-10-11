@@ -38,16 +38,6 @@ import { site } from '../data/site';
               <a href={s.landing} class="service-detail-link">Découvrir ce service en détail <Icon name="arrow" size={15} /></a>
             )}
           </div>
-          {s.related && s.related.length > 0 && (
-            <div class="service-related">
-              <p class="service-related-label">Pour aller plus loin</p>
-              <ul>
-                {s.related.map((r) => (
-                  <li><a href={`/blog/${r.slug}`}><Icon name="arrow" size={14} /> {r.label}</a></li>
-                ))}
-              </ul>
-            </div>
-          )}
         </div>
       </div>
     </section>
@@ -80,12 +70,6 @@ import { site } from '../data/site';
   .service-cta { margin-top: 0; }
   .service-detail-link { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; font-size: 0.95rem; color: var(--brand); }
   .service-detail-link:hover { gap: 11px; transition: gap 0.2s ease; }
-  .service-related { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--border); }
-  .service-related-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-strong); margin: 0 0 12px; }
-  .service-related ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
-  .service-related a { display: inline-flex; align-items: baseline; gap: 8px; color: var(--navy); font-weight: 500; font-size: 0.95rem; line-height: 1.4; }
-  .service-related a:hover { color: var(--brand); }
-  .service-related svg { color: var(--gold-strong); flex-shrink: 0; transform: translateY(1px); }
 
   @media (max-width: 780px) {
     .service-row { grid-template-columns: 1fr; gap: 24px; }
