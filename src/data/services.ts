@@ -11,6 +11,7 @@ export interface Service {
   icon: string;
   image?: string;
   cta?: string;
+  landing?: string; // URL de la page dédiée (landing SEO) si elle existe
   related?: { label: string; slug: string }[];
 }
 
@@ -31,6 +32,7 @@ export const services: Service[] = [
     icon: 'shield',
     image: '/assets/photos/services-audit.jpg',
     cta: 'Faire relire mon concept de sécurité',
+    landing: '/audit-et-conseil-surete',
     related: [
       { label: 'Le concept de sûreté : à quoi il sert et ce qu’il doit contenir', slug: 'concept-de-surete' },
       { label: 'Analyse de risques : menace, vulnérabilité, impact, la méthode', slug: 'analyse-de-risques-surete' },
@@ -52,6 +54,7 @@ export const services: Service[] = [
     icon: 'calendar',
     image: '/assets/photos/services-coordination.jpg',
     cta: 'Préparer mon dossier de manifestation',
+    landing: '/securite-evenementielle',
     related: [
       { label: 'Concept de sécurité d’une manifestation : ce qu’attendent les autorités (GE/VD)', slug: 'concept-securite-manifestation' },
       { label: 'Coordination sécurité le jour J : PC, chaîne de commandement, briefings', slug: 'coordination-securite-evenement' },
@@ -72,6 +75,7 @@ export const services: Service[] = [
     icon: 'graduation',
     image: '/assets/photos/services-formation.jpg',
     cta: 'Organiser une formation',
+    landing: '/formation-securite',
     related: [
       { label: 'Sensibiliser ses collaborateurs à la sûreté : un programme en 4 étapes', slug: 'sensibilisation-surete-collaborateurs' },
       { label: 'Gestion de crise : préparer sa direction avant l’incident', slug: 'gestion-de-crise-direction' },
@@ -106,6 +110,7 @@ export const services: Service[] = [
     icon: 'target',
     image: '/assets/photos/stade-geneve-briefing.jpg',
     cta: 'Organiser un test d’intrusion',
+    landing: '/test-intrusion-physique',
     related: [
       { label: 'Test d’intrusion physique : comment on éprouve un site', slug: 'test-intrusion-physique' },
       { label: 'Exercice grandeur nature : les leçons des 400 intervenants au Stade de Genève', slug: 'exercice-grandeur-nature-stade-de-geneve' },

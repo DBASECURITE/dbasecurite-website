@@ -1,0 +1,8 @@
+---
+import Base from '../layouts/Base.astro';
+import ServiceLanding from '../components/ServiceLanding.astro';
+import { formation } from '../data/landings';
+---
+<Base title={formation.meta.title} description={formation.meta.description}>
+  <ServiceLanding {...formation.landing} />
+</Base>
