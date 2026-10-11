@@ -51,6 +51,9 @@ const jsonLd = {
     <link rel="icon" href="/favicon-512.png" sizes="512x512" type="image/png" />
     <link rel="apple-touch-icon" href="/favicon-180.png" />
     <meta name="theme-color" content="#ffffff" />
+    {site.googleSiteVerification && (
+      <meta name="google-site-verification" content={site.googleSiteVerification} />
+    )}
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -65,6 +68,10 @@ const jsonLd = {
     <meta property="og:locale" content="fr_CH" />
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    {site.plausibleDomain && (
+      <script defer data-domain={site.plausibleDomain} src="https://plausible.io/js/script.js"></script>
+    )}
   </head>
   <body>
     <a href="#main" class="skip-link">Aller au contenu</a>

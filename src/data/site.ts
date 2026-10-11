@@ -18,6 +18,14 @@ export const site = {
   linkedin:
     'https://www.linkedin.com/company/dba-s-curit-sarl?originalSubdomain=ch',
   url: 'https://dbasecurite.ch',
+
+  // Mesure d'audience SANS cookies (Plausible). Renseigner le domaine une fois
+  // le compte créé sur plausible.io, p.ex. 'dbasecurite.ch'. Laisser vide = rien chargé.
+  plausibleDomain: '',
+
+  // Balise de vérification Google Search Console (optionnel : seulement si tu choisis
+  // la vérif par balise HTML plutôt que par DNS). Coller le contenu du meta google-site-verification.
+  googleSiteVerification: '',
 };
 
 // Navigation principale
