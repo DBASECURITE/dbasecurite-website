@@ -38,8 +38,19 @@ const faqs = [
     a: "Contactez-nous via le formulaire en décrivant votre besoin. Nous revenons vers vous rapidement pour un premier échange et, si nécessaire, une proposition adaptée.",
   },
 ];
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
 <Base title={`FAQ - ${site.name}`} description="Questions fréquentes sur nos audits, concepts de sûreté, sécurité événementielle et formations.">
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
   <PageHero
     eyebrow="FAQ"
     title="Questions fréquentes"

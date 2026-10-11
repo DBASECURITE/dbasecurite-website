@@ -1,0 +1,35 @@
+# DBA Sécurité Sàrl
+
+> Société suisse de conseil et d'expertise en sûreté et sécurité physique : audit, concepts de sûreté, analyse de risques, sécurité et coordination événementielle, coaching, formation et tests d'intrusion. Fondée et dirigée par Daniel Barouch.
+
+DBA Sécurité conçoit les dispositifs de sûreté ET les éprouve en conditions réelles (exercices grandeur nature, tests d'intrusion), pour révéler les failles avant qu'elles ne soient exploitées. Conseil indépendant des fabricants et sans obligation d'exécution. Interventions en Suisse et à l'international.
+
+## Fondateur
+Daniel Barouch — fondateur et gérant de DBA Sécurité. Plus de 15 ans d'expérience en sûreté et sécurité physique. Certified Protection Professional (CPP, ASIS International). Responsable sécurité du Stade de Genève et consultant sécurité pour le Canton de Genève lors du Championnat d'Europe féminin de football 2025.
+
+## Services
+- Audit & conseil en sûreté : concepts de sûreté, analyse de risques, audits de sécurité, appels d'offres.
+- Sécurité & coordination événementielle (Suisse & international).
+- Coaching & formation des équipes de sécurité.
+- Services spécialisés : surveillance, protection, observations.
+- Exercices & tests d'intrusion (red team, grandeur nature).
+
+## Références
+IFRC (Croix-Rouge), UEFA Youth League, UEFA Women's Euro 2025, Moncler, SCRASA, Commune de Chancy, Stade de Genève, Edgward (partenaire — sécurité à la demande).
+
+## Contact
+- Email : info@dbasecurite.ch
+- Téléphone : +41 22 886 0 117
+- Adresse : Ch. de l'Égalité 3, 1251 Gy, Suisse
+- Site : https://dbasecurite.ch
+
+## Pages
+- Accueil : https://dbasecurite.ch/
+- Notre expertise : https://dbasecurite.ch/notre-expertise
+- Services : https://dbasecurite.ch/services
+- Fondateur (Daniel Barouch) : https://dbasecurite.ch/fondateur
+- Références : https://dbasecurite.ch/references
+- Médias : https://dbasecurite.ch/medias
+- Blog & analyses : https://dbasecurite.ch/blog
+- Auto-évaluation de sûreté : https://dbasecurite.ch/diagnostic-surete
+- Contact : https://dbasecurite.ch/contact

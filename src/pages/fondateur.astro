@@ -12,8 +12,22 @@ const domaines = [
   { icon: 'shield', title: 'Concepts & audits de sûreté', text: "Analyse de risques et élaboration de concepts de protection sur mesure." },
   { icon: 'graduation', title: 'Formation & exercices', text: "Montée en compétence des équipes et exercices grandeur nature en conditions réelles." },
 ];
+
+const personLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Daniel Barouch',
+  jobTitle: 'Fondateur et gérant, expert en sûreté et sécurité physique',
+  worksFor: { '@type': 'Organization', name: site.name, url: site.url },
+  url: new URL('/fondateur', site.url).href,
+  image: new URL('/assets/photos/portrait-daniel-barouch.jpg', site.url).href,
+  sameAs: [site.linkedin],
+  knowsAbout: ['sûreté physique', 'sécurité événementielle', 'analyse de risques', 'concept de sûreté', 'gestion de crise', "tests d'intrusion"],
+  description: "Fondateur de DBA Sécurité, responsable sécurité du Stade de Genève pour le Championnat d'Europe féminin de football 2025, Certified Protection Professional (CPP, ASIS International).",
+};
 ---
 <Base title={`Daniel Barouch - Expert en sûreté physique`} description="Daniel Barouch, fondateur de DBA Sécurité : expert en sûreté événementielle, gestion de crise et concepts de sécurité physique.">
+  <script type="application/ld+json" set:html={JSON.stringify(personLd)} />
   <PageHero
     eyebrow="Le fondateur"
     title="Daniel Barouch"

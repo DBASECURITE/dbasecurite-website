@@ -10,6 +10,7 @@ export interface Service {
   points?: string[];
   icon: string;
   image?: string;
+  cta?: string;
 }
 
 export const services: Service[] = [
@@ -28,6 +29,7 @@ export const services: Service[] = [
     ],
     icon: 'shield',
     image: '/assets/photos/services-audit.jpg',
+    cta: 'Faire relire mon concept de sécurité',
   },
   {
     slug: 'evenementiel',
@@ -43,6 +45,7 @@ export const services: Service[] = [
     ],
     icon: 'calendar',
     image: '/assets/photos/services-coordination.jpg',
+    cta: 'Préparer mon dossier de manifestation',
   },
   {
     slug: 'formations',
@@ -58,6 +61,7 @@ export const services: Service[] = [
     ],
     icon: 'graduation',
     image: '/assets/photos/services-formation.jpg',
+    cta: 'Organiser une formation',
   },
   {
     slug: 'services-specialises',
@@ -68,6 +72,7 @@ export const services: Service[] = [
     points: ['Surveillance', 'Protection', 'Observations'],
     icon: 'eye',
     image: '/assets/photos/services-specialises-wef.jpg',
+    cta: 'Discuter d’un besoin spécifique',
   },
   {
     slug: 'tests-intrusion',
@@ -83,5 +88,6 @@ export const services: Service[] = [
     ],
     icon: 'target',
     image: '/assets/photos/stade-geneve-briefing.jpg',
+    cta: 'Organiser un test d’intrusion',
   },
 ];

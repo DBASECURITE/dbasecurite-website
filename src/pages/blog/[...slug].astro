@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 import FinalCTA from '../../components/FinalCTA.astro';
 import { getCollection, render } from 'astro:content';
+import { site } from '../../data/site';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -12,8 +13,24 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const fmt = (d: Date) => d.toLocaleDateString('fr-CH', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.date.toISOString(),
+  author: { '@type': 'Organization', name: post.data.author },
+  publisher: {
+    '@type': 'Organization',
+    name: site.name,
+    logo: { '@type': 'ImageObject', url: new URL('/assets/logo-dba-color.png', site.url).href },
+  },
+  mainEntityOfPage: new URL(`/blog/${post.id}`, site.url).href,
+};
 ---
 <Base title={`${post.data.title} - DBA Sécurité`} description={post.data.description}>
+  <script type="application/ld+json" set:html={JSON.stringify(articleLd)} />
   <article>
     <header class="article-hero section--dark">
       <div class="container">

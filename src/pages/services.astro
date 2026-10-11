@@ -30,6 +30,9 @@ import { site } from '../data/site';
               {s.points.map((p) => <li><Icon name="check" size={18} /> {p}</li>)}
             </ul>
           )}
+          {s.cta && (
+            <a href="/contact" class="btn btn--gold service-cta">{s.cta} <Icon name="arrow" size={16} /></a>
+          )}
         </div>
       </div>
     </section>
@@ -58,6 +61,7 @@ import { site } from '../data/site';
   .service-points { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .service-points li { display: flex; align-items: center; gap: 10px; font-weight: 500; color: var(--navy); }
   .service-points svg { color: var(--gold-strong); flex-shrink: 0; }
+  .service-cta { margin-top: 26px; }
 
   @media (max-width: 780px) {
     .service-row { grid-template-columns: 1fr; gap: 24px; }
