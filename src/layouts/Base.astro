@@ -19,13 +19,38 @@ const {
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, site.url).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: site.name,
+  url: site.url,
+  logo: new URL('/assets/logo-dba-color.png', site.url).href,
+  image: new URL('/assets/logo-dba-color.png', site.url).href,
+  description: site.description,
+  email: site.email,
+  telephone: site.phone,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    postalCode: '1251',
+    addressLocality: 'Gy',
+    addressRegion: 'Genève',
+    addressCountry: 'CH',
+  },
+  areaServed: ['Genève', 'Suisse romande', 'Suisse'],
+  sameAs: [site.linkedin],
+};
 ---
 <!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/png" href="/assets/logo-dba-color.png" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="/favicon-512.png" sizes="512x512" type="image/png" />
+    <link rel="apple-touch-icon" href="/favicon-180.png" />
+    <meta name="theme-color" content="#ffffff" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -36,6 +61,10 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={new URL('/assets/logo-dba-color.png', site.url).href} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="fr_CH" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
     <a href="#main" class="skip-link">Aller au contenu</a>
