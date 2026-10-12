@@ -1,9 +1,8 @@
 ---
-import { site } from '../data/site';
 const subjects = [
   'Audit / concept de sûreté',
   'Sécurité événementielle',
-  'Exercices & tests',
+  'Exercices et tests',
   'Coaching / formation',
   'Autre',
 ];
@@ -26,12 +25,16 @@ const subjects = [
         <input type="text" id="cf-org" name="organisation" placeholder="Votre structure" autocomplete="organization">
       </div>
       <div class="form-group">
-        <label for="cf-sujet">Sujet</label>
-        <select id="cf-sujet" name="sujet" required>
-          <option value="" disabled selected>Choisissez un sujet</option>
-          {subjects.map((s) => <option value={s}>{s}</option>)}
-        </select>
+        <label for="cf-tel">Téléphone <span class="opt">(optionnel)</span></label>
+        <input type="tel" id="cf-tel" name="telephone" placeholder="+41 79 123 45 67" autocomplete="tel">
       </div>
+    </div>
+    <div class="form-group">
+      <label for="cf-sujet">Sujet</label>
+      <select id="cf-sujet" name="sujet" required>
+        <option value="" disabled selected>Choisissez un sujet</option>
+        {subjects.map((s) => <option value={s}>{s}</option>)}
+      </select>
     </div>
     <div class="form-group">
       <label for="cf-message">Message</label>
@@ -45,49 +48,77 @@ const subjects = [
     <h3>Message envoyé&nbsp;!</h3>
     <p>Merci, votre demande a bien été transmise. Nous vous répondons dans les meilleurs délais.</p>
   </div>
+  <div class="contact-error" id="contact-error" hidden>
+    <p>Une erreur est survenue. Vous pouvez aussi nous écrire directement à <a href="mailto:info@dbasecurite.ch">info@dbasecurite.ch</a>.</p>
+  </div>
 </div>
 
-<script define:vars={{ email: site.email }}>
+<script>
   const form = document.getElementById('contact-form');
   const successBox = document.getElementById('contact-success');
-  // À remplacer par l'URL du formulaire Brevo une fois créé (comme sur Edgward).
-  const BREVO_CONTACT_ACTION = '';
+  const errorBox = document.getElementById('contact-error');
+  // Formulaire Brevo "Contact DBA" (liste DBA - Contacts site).
+  const BREVO_CONTACT_ACTION = 'https://87714af1.sibforms.com/serve/MUIFAK2kKNIbyys01ibPJXgDZtDlr-0GL1n5QMfeR_hoQk2OFWWj-8V8ND_m4_9nFWTG0mJCQ-v2jl1pSYJS8pvR6PNFjkkhTdko-tSWyd95Gzl_KVI1Y1vcsP142AjV_HKPDM5eTsBcbTvFVHQ-rHG5_xdQzO9vVuQp4qKcckByz0TA0kaPN06zDw9Vm4GQrsvk_n6q8rhd-j3S';
 
-  form?.addEventListener('submit', (e) => {
+  // Normalise un numéro suisse en chiffres internationaux (41XXXXXXXXX), sinon null.
+  function normalizeCH(raw) {
+    if (!raw) return null;
+    const trimmed = raw.trim();
+    let digits = trimmed.replace(/\D/g, '');
+    if (trimmed.startsWith('00')) digits = digits.replace(/^00/, '');
+    else if (digits.startsWith('0')) digits = '41' + digits.slice(1);
+    // Numéro suisse valide = 41 + 9 chiffres (11 au total)
+    return (digits.startsWith('41') && digits.length === 11) ? digits : null;
+  }
+
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (form.querySelector('[name=email_address_check]').value) return;
     if (!form.checkValidity()) { form.reportValidity(); return; }
+
     const d = new FormData(form);
     const nom = (d.get('nom') || '').toString().trim();
     const mail = (d.get('email') || '').toString().trim();
     const org = (d.get('organisation') || '').toString().trim();
+    const tel = (d.get('telephone') || '').toString().trim();
     const sujet = (d.get('sujet') || '').toString();
-    const msg = (d.get('message') || '').toString().trim();
+    let msg = (d.get('message') || '').toString().trim();
 
-    if (BREVO_CONTACT_ACTION) {
-      const params = new URLSearchParams();
-      params.append('NOM', nom);
-      params.append('EMAIL', mail);
-      params.append('SUJET', sujet);
-      params.append('MESSAGE', (org ? 'Société : ' + org + ' - ' : '') + msg);
-      params.append('email_address_check', '');
-      params.append('locale', 'fr');
-      fetch(BREVO_CONTACT_ACTION, {
-        method: 'POST', mode: 'no-cors',
+    const sms = normalizeCH(tel);
+    // Un téléphone non reconnu comme suisse est joint au message (jamais perdu, pas de rejet).
+    if (tel && !sms) msg += `\n\nTéléphone : ${tel}`;
+
+    const btn = form.querySelector('.btn-submit');
+    if (btn) { btn.disabled = true; btn.textContent = 'Envoi…'; }
+
+    const params = new URLSearchParams();
+    params.append('NOM_COMPLET', nom);
+    params.append('EMAIL', mail);
+    if (org) params.append('SOCIETE', org);
+    if (sms) { params.append('SMS__COUNTRY_CODE', '+41'); params.append('SMS', sms); }
+    params.append('SUJET_DBA_WEBSITE[]', sujet);
+    params.append('MESSAGE', msg);
+    params.append('email_address_check', '');
+    params.append('locale', 'fr');
+
+    try {
+      await fetch(BREVO_CONTACT_ACTION, {
+        method: 'POST',
+        mode: 'no-cors',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: params, keepalive: true,
-      }).catch(() => {});
-    } else {
-      // Repli : ouverture du logiciel de messagerie tant que Brevo n'est pas branché
-      const body = `Nom : ${nom}%0D%0AEmail : ${mail}%0D%0ASociété : ${org}%0D%0A%0D%0A${encodeURIComponent(msg)}`;
-      window.location.href = `mailto:${email}?subject=${encodeURIComponent('[Site] ' + sujet)}&body=${body}`;
-    }
-
-    if (successBox) {
+        body: params,
+        keepalive: true,
+      });
       form.hidden = true;
-      successBox.hidden = false;
-      successBox.setAttribute('tabindex', '-1');
-      successBox.focus();
+      if (errorBox) errorBox.hidden = true;
+      if (successBox) {
+        successBox.hidden = false;
+        successBox.setAttribute('tabindex', '-1');
+        successBox.focus();
+      }
+    } catch (err) {
+      if (btn) { btn.disabled = false; btn.textContent = 'Envoyer le message'; }
+      if (errorBox) errorBox.hidden = false;
     }
   });
 </script>
@@ -98,6 +129,7 @@ const subjects = [
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .form-group { display: flex; flex-direction: column; gap: 6px; }
   label { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .opt { font-weight: 400; color: var(--text-muted); }
   input, select, textarea {
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -112,6 +144,7 @@ const subjects = [
   input:focus, select:focus, textarea:focus { border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-soft); }
   textarea { resize: vertical; min-height: 120px; }
   .btn-submit { align-self: flex-start; }
+  .btn-submit:disabled { opacity: 0.7; cursor: default; }
   .form-privacy { font-size: 12px; color: var(--text-muted); }
   .cf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
   .contact-form[hidden] { display: none; }
@@ -122,9 +155,11 @@ const subjects = [
     border-radius: var(--radius-lg);
     background: var(--soft);
   }
-  .contact-success[hidden] { display: none; }
+  .contact-success[hidden], .contact-error[hidden] { display: none; }
   .contact-success h3 { color: var(--navy); margin-bottom: 8px; }
   .contact-success p { color: var(--text-muted); max-width: 420px; margin: 0 auto; }
+  .contact-error { margin-top: 16px; padding: 16px 18px; border: 1px solid #ffd4d4; background: #fff5f5; border-radius: var(--radius); font-size: 14px; color: #7a1f1f; }
+  .contact-error a { color: #7a1f1f; font-weight: 600; }
   @media (max-width: 600px) {
     .form-row { grid-template-columns: 1fr; }
     .btn-submit { width: 100%; }
