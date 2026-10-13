@@ -281,7 +281,7 @@ export const manifestationGeneve: Landing = {
     enjeuTitle: "À Genève, l'autorisation se gagne sur le dossier",
     enjeuText:
       "Réserver le lieu ne suffit pas : l'autorisation dépend d'un dossier qui démontre que les risques sont maîtrisés, que les secours peuvent intervenir et que le public peut être évacué. À Genève, plusieurs services (commune ou police du commerce, médecin cantonal, police, secours) l'examinent, et un dossier incomplet est bloqué. Anticiper ce que chacun attend, c'est notre métier.",
-    image: '/assets/photos/securite-evenementielle-wef.jpg',
+    image: '/assets/photos/manifestation-geneve.jpg',
     stepsEyebrow: 'Le cadre à Genève',
     stepsTitle: 'Les concepts attendus par les autorités genevoises',
     steps: [
@@ -347,7 +347,7 @@ export const manifestationVaud: Landing = {
     enjeuTitle: 'Dans le canton de Vaud, tout passe par POCAMA et la commune',
     enjeuText:
       "L'État de Vaud présente le questionnaire POCAMA comme indispensable pour les manifestations qui nécessitent des autorisations, des préavis cantonaux ou des permis temporaires de vente d'alcool. C'est ensuite la commune qui délivre l'autorisation, en tenant compte des préavis cantonaux. Un dossier incomplet n'est pas autorisé, et le délai de dépôt n'est pas un délai de préparation.",
-    image: '/assets/photos/services-coordination.jpg',
+    image: '/assets/photos/manifestation-vaud.jpg',
     stepsEyebrow: 'Le cadre vaudois',
     stepsTitle: "Le parcours d'autorisation dans le canton de Vaud",
     steps: [
