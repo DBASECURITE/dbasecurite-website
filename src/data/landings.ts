@@ -189,8 +189,10 @@ export const evenementiel: Landing = {
       { q: 'Fournissez-vous aussi les agents de sécurité ?', a: "Notre métier est la conception et la coordination. Nous coordonnons les prestataires de terrain et pouvons vous aider à les sélectionner via un cahier des charges adapté, sans vous imposer un fournisseur." },
       { q: "Qu'est-ce qu'un exercice grandeur nature et en avons-nous besoin ?", a: "C'est une simulation en conditions réalistes qui éprouve le dispositif et la coordination avant l'événement. Pour les grands rassemblements, c'est le meilleur moyen de révéler les failles pendant qu'il est encore temps de corriger." },
     ],
+    relatedTitle: 'Pour aller plus loin',
     related: [
-      { label: "Concept de sécurité d'une manifestation : ce qu'attendent les autorités (GE/VD)", slug: 'concept-securite-manifestation' },
+      { label: "Manifestation à Genève : concept de sécurité et autorisation", slug: '/concept-securite-manifestation-geneve' },
+      { label: "Manifestation dans le canton de Vaud : POCAMA et concept de sécurité", slug: '/concept-securite-manifestation-vaud' },
       { label: 'Coordination sécurité le jour J : PC, chaîne de commandement, briefings', slug: 'coordination-securite-evenement' },
       { label: "Exercice grandeur nature : les leçons de l'exercice au Stade de Genève", slug: 'exercice-grandeur-nature-stade-de-geneve' },
     ],
@@ -258,5 +260,137 @@ export const formation: Landing = {
       { label: 'Gestion de crise : préparer sa direction avant l’incident', slug: 'gestion-de-crise-direction' },
     ],
     cta: { title: 'Envie de renforcer vos équipes ?', text: 'Parlons de vos enjeux et du format de formation le plus utile.' },
+  },
+};
+
+export const manifestationGeneve: Landing = {
+  meta: {
+    title: "Concept de sécurité d'une manifestation à Genève - DBA Sécurité",
+    description:
+      "Organiser une manifestation à Genève : concept de sécurité, concept médico-sanitaire, autorisation commune ou PCTN. DBA Sécurité prépare votre dossier.",
+  },
+  landing: {
+    path: '/concept-securite-manifestation-geneve',
+    serviceType: "Concept de sécurité et dossier d'autorisation de manifestation, canton de Genève",
+    serviceDescription:
+      "DBA Sécurité élabore le concept de sécurité et prépare le dossier d'autorisation d'une manifestation dans le canton de Genève (commune, PCTN, service du médecin cantonal).",
+    eyebrow: 'Genève',
+    title: "Concept de sécurité d'une manifestation à Genève",
+    subtitle:
+      "Organiser une manifestation à Genève suppose un dossier que plusieurs services examinent. Nous élaborons votre concept de sécurité et préparons l'autorisation - pour un dossier accepté, pas retourné.",
+    enjeuTitle: "À Genève, l'autorisation se gagne sur le dossier",
+    enjeuText:
+      "Réserver le lieu ne suffit pas : l'autorisation dépend d'un dossier qui démontre que les risques sont maîtrisés, que les secours peuvent intervenir et que le public peut être évacué. À Genève, plusieurs services (commune ou police du commerce, médecin cantonal, police, secours) l'examinent, et un dossier incomplet est bloqué. Anticiper ce que chacun attend, c'est notre métier.",
+    image: '/assets/photos/securite-evenementielle-wef.jpg',
+    stepsEyebrow: 'Le cadre à Genève',
+    stepsTitle: 'Les concepts attendus par les autorités genevoises',
+    steps: [
+      { icon: 'calendar', title: 'Autorisation', text: "La demande se dépose auprès de la commune, ou du service de police du commerce (PCTN) pour un événement d'importance cantonale, via e-démarches ou formulaire." },
+      { icon: 'shield', title: 'Concept médico-sanitaire', text: "Requis dès 1'500 personnes attendues (spectateurs et participants), ou à la demande de l'autorité. Un dossier incomplet ou non transmis entraîne un préavis négatif." },
+      { icon: 'eye', title: 'Prévention des risques', text: "Un concept de prévention et de réduction des risques est exigé lorsque plusieurs conditions sont réunies (affluence, public jeune, animation musicale, vente d'alcool), à transmettre au plus tard 60 jours avant." },
+      { icon: 'target', title: 'Concept et budget de sécurité', text: "Pour les manifestations visées par la loi cantonale (risques de violences, but lucratif), un concept et un budget de sécurité préalables sont établis." },
+    ],
+    livrablesTitle: 'Un dossier genevois prêt à déposer',
+    livrablesText:
+      "Nous construisons un dossier complet et lisible, qui anticipe les questions des services genevois - pour éviter le préavis négatif et le dossier retourné.",
+    livrables: [
+      "Concept de sécurité et de sûreté de l'événement",
+      'Appui au concept médico-sanitaire',
+      'Appui au concept de prévention des risques',
+      'Préparation du dossier pour la commune ou le PCTN',
+      'Coordination avec police et secours, pilotage le jour J',
+    ],
+    proof: {
+      eyebrow: 'À Genève',
+      title: 'Responsable sécurité du Stade de Genève (Euro féminin 2025)',
+      text: "DBA Sécurité a assuré la responsabilité sécurité du Stade de Genève, hôte de 5 matchs du Championnat d'Europe féminin 2025, et piloté un exercice grandeur nature de près de 400 intervenants. Une connaissance de terrain des enjeux et des interlocuteurs genevois.",
+      actions: [
+        { href: '/references', label: 'Voir nos références' },
+        { href: '/medias', label: 'Couverture presse', variant: 'ghost' },
+      ],
+      stats: [
+        { num: '5 matchs', label: 'Euro féminin 2025 à Genève' },
+        { num: '~400', label: 'intervenants coordonnés' },
+      ],
+    },
+    faqs: [
+      { q: "Qui délivre l'autorisation à Genève ?", a: "La commune du lieu, ou le service de police du commerce (PCTN) pour un événement d'importance cantonale. Selon les volets, le médecin cantonal, la police, les secours ou la police du feu peuvent préaviser." },
+      { q: 'À partir de quand faut-il un concept médico-sanitaire ?', a: "Dès 1'500 personnes attendues (spectateurs et participants), ou lorsque l'autorité le demande. Il est soumis au service du médecin cantonal." },
+      { q: 'Quand déposer le dossier ?', a: "Le plus tôt possible. Certains concepts ont leur propre délai (par exemple 60 jours avant pour la prévention des risques), et un dossier incomplet n'est pas autorisé." },
+      { q: 'Ces exigences sont-elles les mêmes pour tous les événements ?', a: "Non. Elles dépendent de la taille, du type d'événement et de la commune, et les règles évoluent. Nous vérifions les exigences applicables à votre cas auprès des autorités compétentes." },
+    ],
+    relatedTitle: 'Pour aller plus loin',
+    related: [
+      { label: "Concept de sécurité d'une manifestation : la vue d'ensemble (GE/VD)", slug: 'concept-securite-manifestation' },
+      { label: 'Notre offre de sécurité et coordination événementielle', slug: '/securite-evenementielle' },
+      { label: 'Et dans le canton de Vaud ?', slug: '/concept-securite-manifestation-vaud' },
+    ],
+    cta: { title: 'Une manifestation à Genève ?', text: "Parlons de votre événement, de sa jauge et de vos échéances d'autorisation." },
+  },
+};
+
+export const manifestationVaud: Landing = {
+  meta: {
+    title: "Concept de sécurité d'une manifestation dans le canton de Vaud - DBA Sécurité",
+    description:
+      "Organiser une manifestation dans le canton de Vaud : questionnaire POCAMA, concept de sécurité, dispositif médico-sanitaire (BUSAMA). DBA Sécurité prépare votre dossier.",
+  },
+  landing: {
+    path: '/concept-securite-manifestation-vaud',
+    serviceType: "Concept de sécurité et dossier d'autorisation de manifestation, canton de Vaud",
+    serviceDescription:
+      "DBA Sécurité élabore le concept de sécurité et prépare le dossier d'autorisation d'une manifestation dans le canton de Vaud (POCAMA, commune, BUSAMA).",
+    eyebrow: 'Canton de Vaud',
+    title: "Concept de sécurité d'une manifestation dans le canton de Vaud",
+    subtitle:
+      "Dans le canton de Vaud, l'autorisation passe par le questionnaire POCAMA et la commune. Nous élaborons votre concept de sécurité et préparons le dossier - complet, dans les délais, accepté.",
+    enjeuTitle: 'Dans le canton de Vaud, tout passe par POCAMA et la commune',
+    enjeuText:
+      "L'État de Vaud présente le questionnaire POCAMA comme indispensable pour les manifestations qui nécessitent des autorisations, des préavis cantonaux ou des permis temporaires de vente d'alcool. C'est ensuite la commune qui délivre l'autorisation, en tenant compte des préavis cantonaux. Un dossier incomplet n'est pas autorisé, et le délai de dépôt n'est pas un délai de préparation.",
+    image: '/assets/photos/services-coordination.jpg',
+    stepsEyebrow: 'Le cadre vaudois',
+    stepsTitle: "Le parcours d'autorisation dans le canton de Vaud",
+    steps: [
+      { icon: 'calendar', title: 'Questionnaire POCAMA', text: "Point de passage pour les manifestations nécessitant des autorisations, des préavis cantonaux ou des permis temporaires de vente d'alcool." },
+      { icon: 'shield', title: 'Autorisation communale', text: "La commune du lieu délivre l'autorisation, en tenant compte des décisions et préavis cantonaux. La demande se dépose au minimum trois mois avant la manifestation." },
+      { icon: 'eye', title: 'Dispositif médico-sanitaire', text: "Lorsque les critères sont remplis, un formulaire d'annonce est joint au dossier POCAMA, et le Bureau sanitaire des manifestations (BUSAMA) valide le dispositif." },
+      { icon: 'target', title: 'Pièces du dossier', text: "Plans, programme, assurance responsabilité civile et pièces complémentaires peuvent être exigés. Aucune autorisation n'est délivrée si le dossier est incomplet." },
+    ],
+    livrablesTitle: 'Un dossier vaudois complet et dans les délais',
+    livrablesText:
+      "Nous préparons un dossier POCAMA complet et un concept de sécurité lisible, qui anticipe les préavis cantonaux - pour tenir le délai des trois mois sans mauvaise surprise.",
+    livrables: [
+      "Concept de sécurité et de sûreté de l'événement",
+      'Appui au questionnaire POCAMA',
+      'Appui au dispositif médico-sanitaire (BUSAMA)',
+      'Préparation des pièces pour la commune',
+      'Coordination avec police et secours, pilotage le jour J',
+    ],
+    proof: {
+      eyebrow: 'Notre expérience',
+      title: 'Des dispositifs éprouvés en conditions réelles',
+      text: "Du défilé Moncler à l'UEFA Youth League et au Championnat d'Europe féminin 2025, DBA Sécurité conçoit, coordonne et éprouve les dispositifs des grands événements - en Suisse romande et au-delà.",
+      actions: [
+        { href: '/references', label: 'Voir nos références' },
+        { href: '/medias', label: 'Couverture presse', variant: 'ghost' },
+      ],
+      stats: [
+        { num: '~400', label: 'intervenants coordonnés (Euro 2025)' },
+        { num: 'Suisse romande', label: "et à l'international" },
+      ],
+    },
+    faqs: [
+      { q: "Qu'est-ce que POCAMA ?", a: "C'est le questionnaire en ligne de l'État de Vaud, présenté comme indispensable pour les manifestations nécessitant des autorisations, des préavis cantonaux ou des permis temporaires de vente d'alcool." },
+      { q: "Qui délivre l'autorisation ?", a: "La commune du lieu de la manifestation, en tenant compte des décisions et préavis cantonaux." },
+      { q: 'Quel est le délai ?', a: "La demande doit être déposée au minimum trois mois avant la manifestation, et le délai de traitement n'est pas garanti. Un dossier incomplet n'est pas autorisé." },
+      { q: 'Ces exigences sont-elles les mêmes pour tous les événements ?', a: "Non. Elles dépendent de la taille, du type d'événement et de la commune, et les règles évoluent. Nous vérifions les exigences applicables à votre cas." },
+    ],
+    relatedTitle: 'Pour aller plus loin',
+    related: [
+      { label: "Concept de sécurité d'une manifestation : la vue d'ensemble (GE/VD)", slug: 'concept-securite-manifestation' },
+      { label: 'Notre offre de sécurité et coordination événementielle', slug: '/securite-evenementielle' },
+      { label: 'Et à Genève ?', slug: '/concept-securite-manifestation-geneve' },
+    ],
+    cta: { title: 'Une manifestation dans le canton de Vaud ?', text: "Parlons de votre événement et du calendrier d'autorisation." },
   },
 };

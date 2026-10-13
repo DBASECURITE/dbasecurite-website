@@ -24,6 +24,7 @@ export interface Props {
   enjeuText: string;
   image?: string; // illustration affichée dans la section "L'enjeu"
   // Méthode
+  stepsEyebrow?: string;
   stepsTitle: string;
   steps: Step[];
   // Livrables
@@ -45,7 +46,7 @@ const {
   path, serviceType, serviceDescription,
   eyebrow, title, subtitle,
   enjeuTitle, enjeuText, image,
-  stepsTitle, steps,
+  stepsEyebrow = 'Notre approche', stepsTitle, steps,
   livrablesTitle, livrablesText, livrables,
   proof,
   faqs,
@@ -99,7 +100,7 @@ const faqLd = {
 <!-- METHODE -->
 <section class="section section--soft">
   <div class="container">
-    <SectionHeader eyebrow="Notre approche" title={stepsTitle} center />
+    <SectionHeader eyebrow={stepsEyebrow} title={stepsTitle} center />
     <div class="steps-grid">
       {steps.map((e, i) => (
         <div class="step-card">
@@ -179,7 +180,7 @@ const faqLd = {
       <h2>{relatedTitle}</h2>
       <ul class="related-list">
         {related.map((r) => (
-          <li><a href={`/blog/${r.slug}`}><Icon name="arrow" size={16} /> {r.label}</a></li>
+          <li><a href={r.slug.startsWith('/') ? r.slug : `/blog/${r.slug}`}><Icon name="arrow" size={16} /> {r.label}</a></li>
         ))}
       </ul>
     </div>

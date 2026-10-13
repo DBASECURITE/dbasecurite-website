@@ -34,6 +34,14 @@ IFRC (Croix-Rouge), UEFA Youth League, UEFA Women's Euro 2025, Moncler, SCRASA, 
 - Auto-évaluation de sûreté : https://dbasecurite.ch/diagnostic-surete
 - Contact : https://dbasecurite.ch/contact
 
+## Pages par service
+- Audit & conseil en sûreté : https://dbasecurite.ch/audit-et-conseil-surete
+- Sécurité & coordination d'événements : https://dbasecurite.ch/securite-evenementielle
+- Test d'intrusion physique & exercices : https://dbasecurite.ch/test-intrusion-physique
+- Formation & sensibilisation à la sûreté : https://dbasecurite.ch/formation-securite
+- Concept de sécurité d'une manifestation à Genève : https://dbasecurite.ch/concept-securite-manifestation-geneve
+- Concept de sécurité d'une manifestation dans le canton de Vaud : https://dbasecurite.ch/concept-securite-manifestation-vaud
+
 ## Articles de blog (analyses)
 - Sûreté ou sécurité : deux notions à ne pas confondre : https://dbasecurite.ch/blog/surete-ou-securite
 - Concept de sûreté : à quoi il sert et ce qu'il doit contenir : https://dbasecurite.ch/blog/concept-de-surete

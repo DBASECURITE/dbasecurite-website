@@ -1,0 +1,8 @@
+---
+import Base from '../layouts/Base.astro';
+import ServiceLanding from '../components/ServiceLanding.astro';
+import { manifestationGeneve } from '../data/landings';
+---
+<Base title={manifestationGeneve.meta.title} description={manifestationGeneve.meta.description}>
+  <ServiceLanding {...manifestationGeneve.landing} />
+</Base>
