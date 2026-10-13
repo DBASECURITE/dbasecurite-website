@@ -3,6 +3,8 @@ import { nav, site } from '../data/site';
 const path = Astro.url.pathname;
 const isActive = (href: string) =>
   href === '/' ? path === '/' : path.startsWith(href);
+const parentActive = (item: (typeof nav)[number]) =>
+  isActive(item.href) || (item.children?.some((c) => isActive(c.href)) ?? false);
 ---
 <header class="site-header">
   <div class="container header-inner">
@@ -12,13 +14,40 @@ const isActive = (href: string) =>
 
     <nav class="main-nav" aria-label="Navigation principale">
       {nav.map((item) => (
-        <a
-          href={item.href}
-          class:list={['nav-link', { active: isActive(item.href) }]}
-          aria-current={isActive(item.href) ? 'page' : undefined}
-        >
-          {item.label}
-        </a>
+        item.children ? (
+          <div class="nav-item">
+            <a
+              href={item.href}
+              class:list={['nav-link', { active: parentActive(item) }]}
+              aria-haspopup="true"
+            >
+              {item.label}
+              <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+            <div class="nav-dropdown" role="menu">
+              {item.children.map((c) => (
+                <a
+                  href={c.href}
+                  role="menuitem"
+                  class:list={['dropdown-link', { active: isActive(c.href) }]}
+                  aria-current={isActive(c.href) ? 'page' : undefined}
+                >
+                  {c.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <a
+            href={item.href}
+            class:list={['nav-link', { active: isActive(item.href) }]}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        )
       ))}
     </nav>
 
@@ -31,7 +60,12 @@ const isActive = (href: string) =>
 
   <div class="mobile-menu" id="mobile-menu" hidden>
     {nav.map((item) => (
-      <a href={item.href} class:list={['mobile-link', { active: isActive(item.href) }]}>{item.label}</a>
+      <Fragment>
+        <a href={item.href} class:list={['mobile-link', { active: isActive(item.href) }]}>{item.label}</a>
+        {item.children && item.children.map((c) => (
+          <a href={c.href} class:list={['mobile-sublink', { active: isActive(c.href) }]}>{c.label}</a>
+        ))}
+      </Fragment>
     ))}
     <a href="/contact" class="btn btn--primary mobile-cta">Contactez-nous</a>
   </div>
@@ -60,7 +94,11 @@ const isActive = (href: string) =>
     gap: 6px;
     margin-left: auto;
   }
+  .nav-item { position: relative; display: flex; align-items: center; }
   .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     color: var(--text);
     font-weight: 600;
     font-size: 15px;
@@ -71,6 +109,46 @@ const isActive = (href: string) =>
   }
   .nav-link:hover { color: var(--brand); background: var(--mist); text-decoration: none; }
   .nav-link.active { color: var(--brand); }
+  .nav-caret { opacity: 0.65; transition: transform 0.2s ease; }
+  .nav-item:hover .nav-caret,
+  .nav-item:focus-within .nav-caret { transform: rotate(180deg); }
+
+  .nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 268px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+    z-index: 60;
+  }
+  .nav-item:hover .nav-dropdown,
+  .nav-item:focus-within .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .dropdown-link {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .dropdown-link:hover { background: var(--mist); color: var(--brand); text-decoration: none; }
+  .dropdown-link.active { color: var(--brand); }
 
   .header-cta { padding: 10px 20px; font-size: 14px; }
 
@@ -111,6 +189,15 @@ const isActive = (href: string) =>
     text-decoration: none;
   }
   .mobile-link:hover, .mobile-link.active { color: var(--brand); background: var(--mist); }
+  .mobile-sublink {
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 14px;
+    padding: 10px 8px 10px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  .mobile-sublink:hover, .mobile-sublink.active { color: var(--brand); background: var(--mist); }
   .mobile-cta { margin-top: 10px; justify-content: center; }
 
   @media (max-width: 900px) {

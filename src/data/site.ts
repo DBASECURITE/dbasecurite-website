@@ -29,10 +29,26 @@ export const site = {
 };
 
 // Navigation principale
-export const nav = [
+export interface NavItem {
+  label: string;
+  href: string;
+  children?: { label: string; href: string }[];
+}
+
+export const nav: NavItem[] = [
   { label: 'Accueil', href: '/' },
   { label: 'Notre expertise', href: '/notre-expertise' },
-  { label: 'Services', href: '/services' },
+  {
+    label: 'Services',
+    href: '/services',
+    children: [
+      { label: 'Vue d’ensemble des services', href: '/services' },
+      { label: 'Audit & conseil en sûreté', href: '/audit-et-conseil-surete' },
+      { label: 'Sécurité & coordination d’événements', href: '/securite-evenementielle' },
+      { label: 'Tests d’intrusion & exercices', href: '/test-intrusion-physique' },
+      { label: 'Formation & sensibilisation', href: '/formation-securite' },
+    ],
+  },
   { label: 'Références', href: '/references' },
   { label: 'Médias', href: '/medias' },
   { label: 'Fondateur', href: '/fondateur' },
