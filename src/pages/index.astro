@@ -8,17 +8,14 @@ import TrustBar from '../components/TrustBar.astro';
 
 const pillars = [
   {
-    icon: 'target',
     title: 'Nous concevons et nous éprouvons',
     text: "Nous ne livrons pas qu'un document : nous testons votre dispositif en conditions réelles - exercices grandeur nature, tests d'intrusion - pour révéler les failles avant le jour J.",
   },
   {
-    icon: 'shield',
     title: 'Un conseil indépendant',
-    text: "Un conseil indépendant des fabricants et sans obligation d'exécution : nos recommandations servent votre sécurité, pas la vente d'équipements ou d'agents.",
+    text: "Indépendant des fabricants et sans obligation d'exécution : nos recommandations servent votre sécurité, pas la vente d'équipements ou d'agents.",
   },
   {
-    icon: 'spark',
     title: 'Une expertise reconnue',
     text: "Plus de 15 ans d'expérience, la certification CPP (ASIS International) et des mandats de haut niveau : Stade de Genève, organisations internationales.",
   },
@@ -29,53 +26,60 @@ const pillars = [
   description="DBA Sécurité : audit et conseil en sûreté, concepts de sécurité et analyse de risques, sécurité et coordination événementielle, coaching et tests d'intrusion. Du concept à l'exercice grandeur nature."
 >
   <!-- HERO -->
-  <section class="hero section--dark">
-    <div class="container hero-grid">
-      <div class="hero-inner">
-        <p class="eyebrow">DBA Sécurité Sàrl</p>
-        <h1>Concevoir votre sûreté,<br />l'éprouver en conditions réelles</h1>
-        <p class="lead hero-lead">
-          Audit, concepts de sûreté et analyse de risques - puis exercices grandeur
-          nature et tests d'intrusion pour révéler les failles avant qu'elles ne
-          soient exploitées. En Suisse et à l'international.
-        </p>
-        <div class="hero-actions">
-          <a href="/contact" class="btn btn--light">
-            Contactez-nous <Icon name="arrow" size={18} />
-          </a>
-          <a href="/services" class="btn btn--ghost-light">Découvrir nos services</a>
-        </div>
+  <section class="hero" id="top">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="/assets/video/dba-presentation-poster.jpg">
+      <source src="/assets/video/dba-presentation.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="container hero-inner">
+      <p class="eyebrow">Conseil &amp; expertise en sûreté</p>
+      <h1>La sécurité physique, conçue et éprouvée en conditions réelles.</h1>
+      <p class="hero-lead">
+        Audit, concepts de sûreté, sécurité événementielle, tests d'intrusion et formation.
+        Nous concevons vos dispositifs, puis nous les mettons à l'épreuve, pour révéler les
+        failles avant qu'elles ne soient exploitées.
+      </p>
+      <div class="hero-actions">
+        <a href="/services" class="btn btn--gold">Découvrir nos services <Icon name="arrow" size={18} /></a>
+        <a href="/contact" class="btn btn--ghost-light">Parler à un expert</a>
       </div>
-      <div class="hero-media" aria-hidden="true">
-        <video class="hero-video" autoplay muted loop playsinline preload="auto"
-          poster="/assets/video/dba-presentation-poster.jpg">
-          <source src="/assets/video/dba-presentation.mp4" type="video/mp4" />
-        </video>
+      <div class="hero-trust">
+        <div><b>15+</b> ans d'expérience</div>
+        <div><b>CPP</b> ASIS International</div>
+        <div><b>~400</b> intervenants coordonnés</div>
       </div>
     </div>
-    <div class="hero-glow" aria-hidden="true"></div>
   </section>
 
   <!-- SERVICES -->
-  <section class="section section--soft">
+  <section class="section section--soft" id="services">
     <div class="container">
       <div class="section-head text-center">
         <p class="eyebrow">Nos services</p>
-        <h2>Une gamme complète d’expertises</h2>
+        <h2>Une gamme complète d'expertises</h2>
         <p class="lead measure mx-auto">
-          De l’analyse de risques à la sécurisation de vos événements, nous vous
-          accompagnons à chaque étape.
+          De l'analyse de risques à la sécurisation de vos événements, nous couvrons l'ensemble
+          de la chaîne de la sûreté physique.
         </p>
       </div>
-      <div class="services-grid">
+      <div class="svc-grid">
         {services.map((s) => (
-          <a href={`/services#${s.slug}`} class="service-card">
-            <span class="service-icon"><Icon name={s.icon} size={26} /></span>
-            <h3>{s.title}</h3>
-            <p class="service-sub">{s.subtitle}</p>
-            <span class="service-more">En savoir plus <Icon name="arrow" size={15} /></span>
+          <a href={s.landing || `/services#${s.slug}`} class="svc-card">
+            <span class="svc-img" style={`background-image:url('${s.image}')`}><span class="svc-tag">{s.subtitle}</span></span>
+            <span class="svc-body">
+              <h3>{s.title}</h3>
+              <p>{s.description}</p>
+              <span class="svc-more">En savoir plus <Icon name="arrow" size={15} /></span>
+            </span>
           </a>
         ))}
+        <a href="/contact" class="svc-card svc-card--cta">
+          <span class="svc-body">
+            <h3>Un besoin précis&nbsp;?</h3>
+            <p>Parlons de votre contexte et des priorités à sécuriser.</p>
+            <span class="btn btn--gold">Nous contacter <Icon name="arrow" size={16} /></span>
+          </span>
+        </a>
       </div>
     </div>
   </section>
@@ -83,15 +87,15 @@ const pillars = [
   <!-- PARTENAIRE EDGWARD -->
   <PartnerEdgward />
 
-  <!-- DIAGNOSTIC (CTA) -->
-  <section class="section--mist diag-band">
-    <div class="container diag-band-inner">
+  <!-- DIAGNOSTIC -->
+  <section class="diag-band">
+    <div class="container diag-inner">
       <div>
         <p class="eyebrow">Auto-évaluation</p>
-        <h2>Pas sûr de votre niveau de sûreté ?</h2>
+        <h2>Pas sûr de votre niveau de sûreté&nbsp;?</h2>
         <p class="lead">Évaluez votre événement ou votre site en 2 minutes et recevez des recommandations concrètes, gratuitement.</p>
       </div>
-      <a href="/diagnostic-surete" class="btn btn--gold diag-band-btn">Faire le diagnostic <Icon name="arrow" size={18} /></a>
+      <a href="/diagnostic-surete" class="btn btn--gold diag-btn">Faire le diagnostic <Icon name="arrow" size={18} /></a>
     </div>
   </section>
 
@@ -103,9 +107,9 @@ const pillars = [
         <h2>Vos atouts avec DBA Sécurité</h2>
       </div>
       <div class="pillars-grid">
-        {pillars.map((p) => (
+        {pillars.map((p, i) => (
           <div class="pillar">
-            <span class="pillar-icon"><Icon name={p.icon} size={28} /></span>
+            <span class="pillar-no">0{i + 1}</span>
             <h3>{p.title}</h3>
             <p>{p.text}</p>
           </div>
@@ -115,14 +119,14 @@ const pillars = [
   </section>
 
   <!-- RÉFÉRENCES -->
-  <section class="section section--mist">
+  <section class="section section--soft">
     <div class="container">
       <div class="section-head text-center">
         <p class="eyebrow">Références</p>
         <h2>Ils nous ont fait confiance</h2>
         <p class="lead measure mx-auto">
-          Des mandats en Suisse et à l’international, de l’événementiel de prestige
-          aux organisations humanitaires.
+          Des mandats en Suisse et à l'international, de l'événementiel de prestige aux
+          organisations humanitaires.
         </p>
       </div>
       <TrustBar />
@@ -132,21 +136,21 @@ const pillars = [
     </div>
   </section>
 
-  <!-- DANS LES MÉDIAS -->
+  <!-- MÉDIAS -->
   <section class="section">
     <div class="container">
       <div class="section-head text-center">
         <p class="eyebrow">Dans les médias</p>
         <h2>Ils parlent de nous</h2>
         <p class="lead measure mx-auto">
-          RTS, Tribune de Genève, 20 minutes, Léman Bleu : notre expertise en
-          sûreté est régulièrement sollicitée par les médias.
+          RTS, Tribune de Genève, 20 minutes, Léman Bleu : notre expertise en sûreté est
+          régulièrement sollicitée par les médias.
         </p>
       </div>
-      <div class="press-strip">
+      <div class="press-grid">
         {medias.map((m) => (
-          <a href={m.url} target="_blank" rel="noopener" class="press-item">
-            <span class="press-outlet">{m.outlet}</span>
+          <a href={m.url} target="_blank" rel="noopener" class="press">
+            <span class="press-out">{m.outlet}</span>
             <span class="press-title">{m.title}</span>
             <span class="press-go">Lire / voir <Icon name="arrow" size={14} /></span>
           </a>
@@ -159,205 +163,93 @@ const pillars = [
   </section>
 
   <!-- CTA FINAL -->
-  <section class="section--dark cta-final">
-    <div class="container text-center">
-      <h2>Discutons de votre sécurité</h2>
-      <p class="lead measure mx-auto">
-        Un projet, un événement, un besoin d’expertise ? Notre équipe vous répond
-        et vous accompagne sur l’ensemble de vos enjeux de sécurité physique.
-      </p>
-      <a href="/contact" class="btn btn--gold">Contactez-nous <Icon name="arrow" size={18} /></a>
+  <section class="cta-final">
+    <div class="container cta-inner">
+      <div>
+        <h2>Discutons de votre sécurité</h2>
+        <p class="lead">Un projet, un événement, un besoin d'expertise ? Notre équipe vous répond et vous accompagne sur l'ensemble de vos enjeux de sécurité physique.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn--gold">Écrire à DBA Sécurité <Icon name="arrow" size={18} /></a>
+        <a href="tel:+41228860117" class="btn btn--ghost-light">+41 22 886 0 117</a>
+      </div>
     </div>
   </section>
 </Base>
 
 <style>
   /* HERO */
-  .hero { position: relative; overflow: hidden; padding: 104px 0 96px; }
-  .hero-grid {
-    position: relative; z-index: 2;
-    display: grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: center;
-  }
-  .hero-inner { max-width: 640px; }
-  .hero h1 { margin-bottom: 20px; }
-  .hero-lead { max-width: 620px; margin-bottom: 32px; }
-  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
-  .hero-media { display: flex; justify-content: center; }
-  .hero-video {
-    width: 380px;
-    height: 480px;
-    object-fit: cover;
-    object-position: center;
-    opacity: 0.95;
-    pointer-events: none;
-    -webkit-mask-image: radial-gradient(ellipse 74% 68% at 50% 50%, #000 50%, transparent 100%);
-    mask-image: radial-gradient(ellipse 74% 68% at 50% 50%, #000 50%, transparent 100%);
-  }
-  .hero-glow {
-    position: absolute;
-    top: -30%;
-    right: -10%;
-    width: 620px;
-    height: 620px;
-    background: radial-gradient(circle, rgba(214, 218, 255, 0.22), transparent 65%);
-    z-index: 1;
-  }
+  .hero { position: relative; min-height: 94vh; display: flex; align-items: center; color: #fff; overflow: hidden; background: var(--navy); }
+  .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(8,13,59,.93) 0%, rgba(13,20,90,.74) 42%, rgba(13,20,90,.34) 100%); }
+  .hero-inner { position: relative; padding-top: 120px; padding-bottom: 40px; max-width: 760px; }
+  .hero .eyebrow { color: var(--gold); }
+  .hero h1 { color: #fff; font-size: clamp(2.3rem, 5.4vw, 4rem); margin-bottom: 20px; }
+  .hero-lead { font-size: 1.2rem; color: rgba(255,255,255,.9); max-width: 56ch; margin-bottom: 0; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+  .hero-trust { display: flex; flex-wrap: wrap; gap: 30px; margin-top: 46px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.2); }
+  .hero-trust div { font-size: 14px; color: rgba(255,255,255,.82); }
+  .hero-trust b { display: block; font-size: 26px; font-weight: 700; color: #fff; }
 
-  /* INTRO */
-  .intro-grid {
-    display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: 48px;
-    align-items: start;
-  }
-  .intro-text p { font-size: 1.05rem; }
-  .link-arrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    font-weight: 600;
-    margin-top: 8px;
-  }
-  .link-arrow:hover { text-decoration: none; gap: 11px; transition: gap 0.2s ease; }
-
-  .section-head { margin-bottom: 48px; }
+  .section-head { margin-bottom: 52px; }
   .section-head h2 { margin-bottom: 14px; }
 
   /* SERVICES */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-  }
-  .service-card {
-    display: flex;
-    flex-direction: column;
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 28px;
-    text-decoration: none;
-    color: var(--text);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-  }
-  .service-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-    border-color: transparent;
-    text-decoration: none;
-  }
-  .service-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 54px;
-    height: 54px;
-    border-radius: 14px;
-    background: var(--mist);
-    color: var(--brand);
-    margin-bottom: 18px;
-  }
-  .service-card h3 { margin-bottom: 4px; }
-  .service-sub { color: var(--text-muted); font-size: 0.95rem; flex-grow: 1; }
-  .service-more {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--brand);
-    font-weight: 600;
-    font-size: 14px;
-    margin-top: 16px;
-  }
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .svc-card { display: flex; flex-direction: column; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 14px rgba(13,20,90,.06); color: var(--text); transition: transform .2s ease, box-shadow .2s ease; }
+  .svc-card:hover { transform: translateY(-6px); box-shadow: 0 24px 44px rgba(13,20,90,.14); text-decoration: none; }
+  .svc-img { display: block; height: 190px; background-size: cover; background-position: center; position: relative; }
+  .svc-tag { position: absolute; left: 16px; top: 16px; background: rgba(13,20,90,.92); color: #fff; font-size: 12px; font-weight: 600; letter-spacing: .04em; padding: 6px 12px; border-radius: 30px; }
+  .svc-body { display: flex; flex-direction: column; flex: 1; padding: 26px; }
+  .svc-body h3 { color: var(--navy); margin-bottom: 9px; }
+  .svc-body p { color: var(--text-muted); font-size: 15px; flex: 1; margin-bottom: 18px; }
+  .svc-more { display: inline-flex; align-items: center; gap: 7px; color: var(--gold-strong); font-weight: 600; font-size: 15px; }
+  .svc-card:hover .svc-more { gap: 11px; transition: gap .2s ease; }
+  .svc-card--cta { background: var(--navy); color: #fff; justify-content: center; }
+  .svc-card--cta .svc-body { padding: 34px; }
+  .svc-card--cta h3 { color: #fff; }
+  .svc-card--cta p { color: rgba(255,255,255,.82); }
 
-  /* PILIERS */
-  .pillars-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-  }
-  .pillar { text-align: center; padding: 0 12px; }
-  .pillar-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 66px;
-    height: 66px;
-    border-radius: 50%;
-    background: var(--gradient);
-    color: #fff;
-    margin-bottom: 20px;
-  }
-  .pillar p { color: var(--text-muted); }
+  /* DIAGNOSTIC */
+  .diag-band { background: var(--gradient); color: #fff; }
+  .diag-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap; padding: 56px 0; }
+  .diag-inner > div { max-width: 600px; }
+  .diag-band .eyebrow { color: var(--gold); }
+  .diag-band h2 { color: #fff; margin-bottom: 8px; }
+  .diag-band .lead { color: rgba(255,255,255,.85); margin: 0; }
+  .diag-btn { flex-shrink: 0; }
 
-  /* RÉFÉRENCES */
-  .refs-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
-    margin-bottom: 40px;
-  }
-  .ref-chip {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 16px 24px;
-    min-width: 180px;
-    box-shadow: var(--shadow-sm);
-  }
-  .ref-name { font-weight: 700; color: var(--navy); font-size: 1.05rem; }
-  .ref-tag { font-size: 0.82rem; color: var(--text-muted); }
+  /* POURQUOI */
+  .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .pillar { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 34px 30px; transition: border-color .2s ease, box-shadow .2s ease; }
+  .pillar:hover { border-color: transparent; box-shadow: 0 20px 44px rgba(13,20,90,.1); }
+  .pillar-no { font-size: 15px; font-weight: 700; color: var(--gold-strong); }
+  .pillar h3 { color: var(--navy); margin: 14px 0 10px; }
+  .pillar p { color: var(--text-muted); font-size: 15px; margin: 0; }
 
-  /* PRESSE */
-  .press-strip {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-bottom: 36px;
-  }
-  .press-item {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding: 22px 24px;
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--gold);
-    border-radius: 0 var(--radius) var(--radius) 0;
-    background: #fff;
-    color: var(--text);
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
-  }
-  .press-item:hover { transform: translateY(-3px); box-shadow: var(--shadow); text-decoration: none; }
-  .press-outlet { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-strong); }
+  /* MÉDIAS */
+  .press-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-bottom: 38px; }
+  .press { display: flex; flex-direction: column; gap: 6px; background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 0 14px 14px 0; padding: 24px 26px; color: var(--text); transition: transform .18s ease, box-shadow .18s ease; }
+  .press:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(13,20,90,.1); text-decoration: none; }
+  .press-out { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--gold-strong); }
   .press-title { font-weight: 600; color: var(--navy); line-height: 1.4; }
-  .press-go { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--brand); margin-top: 2px; }
+  .press-go { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--text-muted); margin-top: 2px; }
 
-  /* DIAGNOSTIC BAND */
-  .diag-band { padding: 56px 0; }
-  .diag-band-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
-  .diag-band-inner > div { max-width: 620px; }
-  .diag-band-inner h2 { margin-bottom: 10px; }
-  .diag-band-inner .lead { margin-bottom: 0; }
-  .diag-band-btn { flex-shrink: 0; }
+  /* CTA FINAL */
+  .cta-final { background: var(--gradient); color: #fff; padding: 88px 0; }
+  .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  .cta-inner > div { max-width: 620px; }
+  .cta-final h2 { color: #fff; margin-bottom: 12px; }
+  .cta-final .lead { color: rgba(255,255,255,.85); margin: 0; }
+  .cta-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
-  /* CTA */
-  .cta-final { padding: 84px 0; }
-  .cta-final .lead { margin-bottom: 28px; }
-
-  @media (max-width: 860px) {
-    .hero-grid { grid-template-columns: 1fr; gap: 24px; }
-    .hero-media { justify-content: flex-start; }
-    .hero-video { width: 300px; height: 380px; }
-    .intro-grid { grid-template-columns: 1fr; gap: 20px; }
-    .services-grid { grid-template-columns: 1fr 1fr; }
-    .pillars-grid { grid-template-columns: 1fr; gap: 36px; }
+  @media (max-width: 980px) {
+    .svc-grid, .pillars-grid { grid-template-columns: 1fr 1fr; }
   }
-  @media (max-width: 560px) {
-    .services-grid { grid-template-columns: 1fr; }
-    .press-strip { grid-template-columns: 1fr; }
-    .hero { padding: 88px 0 76px; }
+  @media (max-width: 760px) {
+    .hero { align-items: flex-start; }
+    .hero-inner { padding-top: 110px; }
+    .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
+    .svc-grid, .pillars-grid, .press-grid { grid-template-columns: 1fr; }
   }
 </style>
