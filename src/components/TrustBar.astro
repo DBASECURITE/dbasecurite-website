@@ -1,12 +1,12 @@
 ---
-const logos = [
+const logos: { src: string; alt: string; dark?: boolean }[] = [
   { src: '/assets/logos/ifrc.png', alt: 'IFRC - Fédération internationale de la Croix-Rouge' },
   { src: '/assets/logos/uefa-youth-league.jpg', alt: 'UEFA Youth League' },
   { src: '/assets/logos/weuro-2025.jpg', alt: "UEFA Women's Euro 2025" },
   { src: '/assets/logos/moncler.jpg', alt: 'Moncler' },
   { src: '/assets/logos/scrasa.png', alt: 'SCRASA' },
   { src: '/assets/logos/chancy.png', alt: 'Commune de Chancy' },
-  { src: '/assets/logos/edgward.png', alt: 'Edgward' },
+  { src: '/assets/logos/edgward-full.png', alt: 'Edgward', dark: true },
   { src: '/assets/logos/fsg.jpg', alt: 'Fondation du Stade de Genève' },
 ];
 ---
@@ -15,7 +15,7 @@ const logos = [
     {[0, 1].map((set) => (
       <ul class="tb-set" aria-hidden={set === 1 ? 'true' : undefined}>
         {logos.map((l) => (
-          <li class="trustbar-item">
+          <li class:list={['trustbar-item', { 'trustbar-item--dark': l.dark }]}>
             <img src={l.src} alt={set === 1 ? '' : l.alt} />
           </li>
         ))}
@@ -63,6 +63,11 @@ const logos = [
     width: auto;
     object-fit: contain;
   }
+  .trustbar-item--dark {
+    background: var(--gradient);
+    border-color: transparent;
+  }
+  .trustbar-item--dark img { max-width: 128px; }
 
   @keyframes tb-scroll {
     from { transform: translateX(0); }
