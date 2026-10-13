@@ -1,31 +1,22 @@
 ---
 import Icon from './Icon.astro';
 ---
-<section class="section section--soft partner">
+<section class="section partner">
   <div class="container">
-    <div class="section-head text-center">
-      <p class="eyebrow">Notre partenaire</p>
-      <h2>De la stratégie à l'intervention</h2>
-      <p class="lead measure mx-auto">
-        DBA Sécurité conçoit et audite votre sûreté. Pour l'intervention
-        opérationnelle, nous travaillons en partenariat avec Edgward, service de
-        sécurité à la demande en Suisse romande.
-      </p>
-    </div>
-
-    <div class="partner-flow">
-      <div class="partner-card">
-        <span class="partner-tag">DBA Sécurité</span>
-        <h3>La stratégie</h3>
-        <p>Audit, concept de sûreté, analyse de risques, coordination et formation.</p>
+    <div class="partner-band">
+      <div class="partner-text">
+        <p class="eyebrow">Partenaire opérationnel</p>
+        <h2>De la stratégie à l'intervention</h2>
+        <p>
+          DBA Sécurité conçoit, audite et coordonne votre sûreté. Pour l'intervention
+          opérationnelle sur le terrain, nous nous appuyons sur Edgward, le service de
+          sécurité à la demande en Suisse romande.
+        </p>
       </div>
-
-      <span class="partner-arrow" aria-hidden="true"><Icon name="arrow" size={26} /></span>
-
-      <div class="partner-card partner-card--edgward">
-        <span class="partner-tag">Edgward</span>
-        <h3>L'intervention</h3>
-        <p>Sécurité à la demande en Suisse romande, pour la mise en œuvre sur le terrain.</p>
+      <div class="partner-brand">
+        <span class="partner-logo-plate">
+          <img src="/assets/logos/edgward-full.png" alt="Edgward" class="partner-logo" width="210" height="48" loading="lazy" />
+        </span>
         <a href="https://edgward.ch" target="_blank" rel="noopener" class="btn btn--outline partner-btn">
           Découvrir Edgward <Icon name="arrow" size={15} />
         </a>
@@ -35,45 +26,47 @@ import Icon from './Icon.astro';
 </section>
 
 <style>
-  .partner-flow {
+  .partner-band {
     display: flex;
-    align-items: stretch;
-    justify-content: center;
-    gap: 20px;
-    max-width: 900px;
+    align-items: center;
+    gap: 44px;
+    max-width: 960px;
     margin: 0 auto;
-  }
-  .partner-card {
-    flex: 1;
-    background: #fff;
+    background: var(--soft);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 30px;
-    text-align: center;
+    padding: 38px 46px;
+  }
+  .partner-text { flex: 1.5; }
+  .partner-text h2 { font-size: 1.5rem; margin: 6px 0 12px; }
+  .partner-text p { color: var(--text-muted); margin: 0; }
+  .partner-brand {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
+    border-left: 1px solid var(--border);
+    padding-left: 44px;
   }
-  .partner-card--edgward { border-top: 3px solid var(--gold); }
-  .partner-tag {
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--gold-strong);
-    margin-bottom: 10px;
-  }
-  .partner-card h3 { margin-bottom: 8px; }
-  .partner-card p { color: var(--text-muted); margin-bottom: 18px; }
-  .partner-btn { margin-top: auto; }
-  .partner-arrow {
-    display: flex;
+  .partner-logo-plate {
+    display: inline-flex;
     align-items: center;
-    color: var(--steel-soft);
+    justify-content: center;
+    background: var(--gradient);
+    border-radius: 12px;
+    padding: 20px 30px;
   }
+  .partner-logo { width: 200px; height: auto; display: block; }
 
-  @media (max-width: 700px) {
-    .partner-flow { flex-direction: column; align-items: stretch; }
-    .partner-arrow { justify-content: center; transform: rotate(90deg); }
+  @media (max-width: 760px) {
+    .partner-band { flex-direction: column; gap: 26px; padding: 32px 26px; text-align: center; }
+    .partner-brand {
+      border-left: none;
+      border-top: 1px solid var(--border);
+      padding-left: 0;
+      padding-top: 26px;
+      width: 100%;
+    }
   }
 </style>
