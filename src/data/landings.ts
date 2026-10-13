@@ -25,6 +25,7 @@ export const testIntrusion: Landing = {
     enjeuTitle: "Un dispositif ne vaut que ce qu'il donne le jour où il est attaqué",
     enjeuText:
       "Caméras, badges, procédures, agents : sur le papier, tout semble en place. La vraie question est ailleurs - que se passe-t-il quand quelqu'un tente réellement d'entrer ? Un test d'intrusion physique répond à cette question avec des faits, pas des suppositions. Il révèle l'écart entre le dispositif prévu et sa robustesse réelle.",
+    image: '/assets/photos/stade-geneve-briefing.jpg',
     stepsTitle: 'Comment nous éprouvons votre sécurité',
     steps: [
       { icon: 'target', title: 'Cadrage & objectifs', text: "Nous définissons avec vous le périmètre, les scénarios de menace réalistes et les règles d'engagement : ce qui est testé, ce qui ne l'est pas, et les garde-fous de sécurité." },
@@ -87,6 +88,7 @@ export const auditConseil: Landing = {
     enjeuTitle: 'Sécuriser au hasard coûte cher et protège mal',
     enjeuText:
       "Trop de dispositifs s'empilent par habitude ou au gré des offres commerciales : une caméra ici, un agent là, sans vision d'ensemble. Résultat : des budgets dépensés sans réduire les risques qui comptent vraiment. Un audit de sûreté remet de la logique - il part des menaces plausibles pour votre site, pas d'un catalogue de produits.",
+    image: '/assets/photos/services-audit.jpg',
     stepsTitle: 'Du risque réel à des mesures proportionnées',
     steps: [
       { icon: 'shield', title: 'Analyse de risques', text: "Nous identifions les menaces plausibles, les vulnérabilités de votre site ou de votre organisation, et nous évaluons chaque scénario selon sa probabilité et son impact." },
@@ -150,6 +152,7 @@ export const evenementiel: Landing = {
     enjeuTitle: 'Le jour J, tout se joue sur la préparation',
     enjeuText:
       "Un événement maîtrisé côté sécurité, c'est d'abord un concept solide accepté par les autorités, puis une coordination sans faille entre organisateur, agents, secours et police. Les failles se logent dans les détails et dans les phases souvent oubliées - montage, ouverture des portes, sortie. Les anticiper, c'est notre métier.",
+    image: '/assets/photos/services-coordination.jpg',
     stepsTitle: "De l'autorisation à la coordination le jour J",
     steps: [
       { icon: 'shield', title: 'Concept de sécurité', text: "Nous élaborons le concept de sûreté et de sécurité attendu par les autorités : analyse des risques, jauge et flux, accès, secours, évacuation, sûreté." },
@@ -213,6 +216,7 @@ export const formation: Landing = {
     enjeuTitle: "La meilleure procédure ne vaut rien si personne ne l'applique",
     enjeuText:
       "Un badge prêté, une porte tenue par courtoisie, un visiteur non accompagné : la plupart des failles de sûreté ne sont pas techniques, elles sont humaines. Et le jour d'un incident, c'est la préparation des équipes et de la direction qui fait la différence. La sensibilisation et l'entraînement transforment des consignes en réflexes.",
+    image: '/assets/photos/services-formation.jpg',
     stepsTitle: "De la sensibilisation à l'entraînement",
     steps: [
       { icon: 'eye', title: 'Diagnostic des besoins', text: "Nous identifions vos risques et le niveau réel de vos équipes, pour cibler ce qui compte plutôt que de dérouler un programme générique." },

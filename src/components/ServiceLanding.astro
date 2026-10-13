@@ -22,6 +22,7 @@ export interface Props {
   // Enjeu
   enjeuTitle: string;
   enjeuText: string;
+  image?: string; // illustration affichée dans la section "L'enjeu"
   // Méthode
   stepsTitle: string;
   steps: Step[];
@@ -43,7 +44,7 @@ export interface Props {
 const {
   path, serviceType, serviceDescription,
   eyebrow, title, subtitle,
-  enjeuTitle, enjeuText,
+  enjeuTitle, enjeuText, image,
   stepsTitle, steps,
   livrablesTitle, livrablesText, livrables,
   proof,
@@ -81,10 +82,17 @@ const faqLd = {
 
 <!-- ENJEU -->
 <section class="section">
-  <div class="container enjeu">
-    <p class="eyebrow">L'enjeu</p>
-    <h2>{enjeuTitle}</h2>
-    <p class="lead">{enjeuText}</p>
+  <div class:list={['container', 'enjeu', { 'enjeu--split': image }]}>
+    <div class="enjeu-text">
+      <p class="eyebrow">L'enjeu</p>
+      <h2>{enjeuTitle}</h2>
+      <p class="lead">{enjeuText}</p>
+    </div>
+    {image && (
+      <div class="enjeu-media">
+        <img src={image} alt={title} class="enjeu-img" loading="lazy" />
+      </div>
+    )}
   </div>
 </section>
 
@@ -183,6 +191,13 @@ const faqLd = {
 <style>
   .enjeu { max-width: 820px; }
   .enjeu h2 { margin-bottom: 16px; }
+  .enjeu--split { max-width: none; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 50px; align-items: center; }
+  .enjeu--split .enjeu-text { max-width: 560px; }
+  .enjeu-img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow); display: block; }
+  @media (max-width: 820px) {
+    .enjeu--split { grid-template-columns: 1fr; gap: 28px; }
+    .enjeu--split .enjeu-media { order: -1; }
+  }
 
   .steps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
   .step-card {
