@@ -115,7 +115,7 @@ export const auditConseil: Landing = {
         { href: '/fondateur', label: 'Le fondateur', variant: 'ghost' },
       ],
       stats: [
-        { num: '15+ ans', label: "d'expérience en sûreté" },
+        { num: '20+ ans', label: "d'expérience en sûreté" },
         { num: 'CPP', label: 'ASIS International' },
       ],
     },

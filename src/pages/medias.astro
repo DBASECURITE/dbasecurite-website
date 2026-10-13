@@ -20,15 +20,13 @@ const typeIcon: Record<string, string> = { Presse: 'file', TV: 'play', Radio: 's
       <div class="media-list">
         {medias.map((m) => (
           <a href={m.url} target="_blank" rel="noopener" class="media-card">
-            {m.image && <img src={m.image} alt="" class="media-thumb" loading="lazy" />}
-            <div class="media-top">
-              <span class="media-outlet">{m.outlet}</span>
-              <span class="media-badge"><Icon name={typeIcon[m.type] ?? 'file'} size={13} /> {m.type}</span>
-            </div>
-            <h3>{m.title}</h3>
-            <p class="media-excerpt">{m.excerpt}</p>
-            <div class="media-foot">
-              <span class="media-date">{m.date}</span>
+            <span class="media-img" style={`background-image:url('${m.image}')`}>
+              <span class="media-type"><Icon name={typeIcon[m.type] ?? 'file'} size={13} /> {m.type}</span>
+            </span>
+            <div class="media-body">
+              <div class="media-meta"><span class="media-outlet">{m.outlet}</span><span class="media-date">{m.date}</span></div>
+              <h3>{m.title}</h3>
+              <p class="media-excerpt">{m.excerpt}</p>
               <span class="media-link">Lire / voir <Icon name="arrow" size={15} /></span>
             </div>
           </a>
@@ -42,23 +40,24 @@ const typeIcon: Record<string, string> = { Presse: 'file', TV: 'play', Radio: 's
 </Base>
 
 <style>
-  .media-list { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .media-list { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   .media-card {
-    display: flex; flex-direction: column;
+    display: flex; flex-direction: column; overflow: hidden;
     background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg);
-    padding: 26px; color: var(--text);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    color: var(--text);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .media-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: transparent; text-decoration: none; }
-  .media-thumb { width: 100%; height: 170px; object-fit: cover; border-radius: var(--radius); margin-bottom: 18px; }
-  .media-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-  .media-outlet { font-weight: 700; color: var(--navy); font-size: 1.05rem; }
-  .media-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--gold-strong); background: rgba(201,162,75,0.1); padding: 4px 10px; border-radius: 20px; }
-  .media-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
-  .media-excerpt { color: var(--text-muted); font-size: 0.95rem; flex-grow: 1; }
-  .media-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; }
-  .media-date { font-size: 0.85rem; color: var(--text-muted); }
+  .media-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); text-decoration: none; }
+  .media-img { display: block; height: 210px; background-size: cover; background-position: center; position: relative; }
+  .media-type { position: absolute; left: 14px; top: 14px; display: inline-flex; align-items: center; gap: 5px; background: rgba(13,20,90,.92); color: #fff; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; padding: 6px 12px; border-radius: 30px; }
+  .media-body { display: flex; flex-direction: column; flex: 1; padding: 24px 26px 26px; }
+  .media-meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+  .media-outlet { font-weight: 700; color: var(--gold-strong); font-size: 13px; text-transform: uppercase; letter-spacing: .05em; }
+  .media-date { font-size: 13px; color: var(--text-muted); }
+  .media-card h3 { font-size: 1.15rem; margin-bottom: 8px; color: var(--navy); }
+  .media-excerpt { color: var(--text-muted); font-size: 0.95rem; flex-grow: 1; margin-bottom: 16px; }
   .media-link { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 14px; color: var(--brand); }
+  .media-card:hover .media-link { gap: 10px; transition: gap .2s ease; }
   .media-disclaimer { text-align: center; font-size: 0.82rem; color: var(--text-muted); margin-top: 28px; }
 
   @media (max-width: 720px) { .media-list { grid-template-columns: 1fr; } }
