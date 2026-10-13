@@ -218,7 +218,7 @@ export const formation: Landing = {
     enjeuTitle: "La meilleure procédure ne vaut rien si personne ne l'applique",
     enjeuText:
       "Un badge prêté, une porte tenue par courtoisie, un visiteur non accompagné : la plupart des failles de sûreté ne sont pas techniques, elles sont humaines. Et le jour d'un incident, c'est la préparation des équipes et de la direction qui fait la différence. La sensibilisation et l'entraînement transforment des consignes en réflexes.",
-    image: '/assets/photos/services-formation.jpg',
+    image: '/assets/photos/formation-page.jpg',
     stepsTitle: "De la sensibilisation à l'entraînement",
     steps: [
       { icon: 'eye', title: 'Diagnostic des besoins', text: "Nous identifions vos risques et le niveau réel de vos équipes, pour cibler ce qui compte plutôt que de dérouler un programme générique." },
