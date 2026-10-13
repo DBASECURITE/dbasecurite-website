@@ -25,7 +25,7 @@ export const testIntrusion: Landing = {
     enjeuTitle: "Un dispositif ne vaut que ce qu'il donne le jour où il est attaqué",
     enjeuText:
       "Caméras, badges, procédures, agents : sur le papier, tout semble en place. La vraie question est ailleurs - que se passe-t-il quand quelqu'un tente réellement d'entrer ? Un test d'intrusion physique répond à cette question avec des faits, pas des suppositions. Il révèle l'écart entre le dispositif prévu et sa robustesse réelle.",
-    image: '/assets/photos/test-intrusion.jpg',
+    image: '/assets/photos/stade-geneve-briefing.jpg',
     stepsTitle: 'Comment nous éprouvons votre sécurité',
     steps: [
       { icon: 'target', title: 'Cadrage & objectifs', text: "Nous définissons avec vous le périmètre, les scénarios de menace réalistes et les règles d'engagement : ce qui est testé, ce qui ne l'est pas, et les garde-fous de sécurité." },
