@@ -1,24 +1,35 @@
 ---
 import Icon from './Icon.astro';
+import { localeFromPath } from '../data/i18n';
+const locale = localeFromPath(Astro.url.pathname);
+const t = locale === 'en'
+  ? {
+      eyebrow: 'Operational partner',
+      title: 'From strategy to intervention',
+      text: 'DBA Sécurité designs, audits and coordinates your security. For operational deployment on the ground, we rely on Edgward, the on-demand security service in French-speaking Switzerland.',
+      cta: 'Discover Edgward',
+    }
+  : {
+      eyebrow: 'Partenaire opérationnel',
+      title: "De la stratégie à l'intervention",
+      text: "DBA Sécurité conçoit, audite et coordonne votre sûreté. Pour l'intervention opérationnelle sur le terrain, nous nous appuyons sur Edgward, le service de sécurité à la demande en Suisse romande.",
+      cta: 'Découvrir Edgward',
+    };
 ---
 <section class="section partner">
   <div class="container">
     <div class="partner-band">
       <div class="partner-text">
-        <p class="eyebrow">Partenaire opérationnel</p>
-        <h2>De la stratégie à l'intervention</h2>
-        <p>
-          DBA Sécurité conçoit, audite et coordonne votre sûreté. Pour l'intervention
-          opérationnelle sur le terrain, nous nous appuyons sur Edgward, le service de
-          sécurité à la demande en Suisse romande.
-        </p>
+        <p class="eyebrow">{t.eyebrow}</p>
+        <h2>{t.title}</h2>
+        <p>{t.text}</p>
       </div>
       <div class="partner-brand">
         <span class="partner-logo-plate">
           <img src="/assets/logos/edgward-full.png" alt="Edgward" class="partner-logo" width="210" height="48" loading="lazy" />
         </span>
         <a href="https://edgward.ch" target="_blank" rel="noopener" class="btn btn--outline partner-btn">
-          Découvrir Edgward <Icon name="arrow" size={15} />
+          {t.cta} <Icon name="arrow" size={15} />
         </a>
       </div>
     </div>

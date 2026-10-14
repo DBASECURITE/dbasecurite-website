@@ -1,0 +1,233 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import PartnerEdgward from '../../components/PartnerEdgward.astro';
+import TrustBar from '../../components/TrustBar.astro';
+
+const services = [
+  { title: 'Security audit & consulting', tag: 'Core business', desc: 'Risk analysis, security concept, site audit. An independent perspective that starts from real threats.', img: '/assets/photos/services-audit.jpg', href: '/en/security-audit-consulting' },
+  { title: 'Event security & coordination', tag: 'Switzerland & international', desc: 'From the security concept to day-of coordination. Fashion shows, sport, institutional events.', img: '/assets/photos/services-coordination.jpg', href: '/en/event-security' },
+  { title: 'Penetration testing & exercises', tag: 'Red team', desc: 'Full-scale exercises to test the real robustness of your security measures.', img: '/assets/photos/stade-geneve-briefing.jpg', href: '/en/physical-penetration-testing' },
+  { title: 'Training & awareness', tag: 'Coaching', desc: 'Your teams are the first line of defence. Awareness, training, crisis management.', img: '/assets/photos/formation-page.jpg', href: '/en/security-training' },
+  { title: 'Specialised services', tag: 'Tailor-made', desc: 'For specific threats: surveillance, protection and observation, carried out with discretion.', img: '/assets/photos/securite-evenementielle-wef.jpg', href: '/en/services' },
+];
+
+const pillars = [
+  { title: 'We design and we test', text: "We don't just deliver a document: we test your system under real conditions - full-scale exercises, penetration tests - to reveal weaknesses before the big day." },
+  { title: 'Independent advice', text: 'Independent of manufacturers and with no obligation to execute: our recommendations serve your security, not the sale of equipment or guards.' },
+  { title: 'Recognised expertise', text: 'Over 20 years of experience, the CPP certification (ASIS International) and high-level assignments: Stade de Genève, international organisations.' },
+];
+
+const press = [
+  { outlet: 'RTS', type: 'TV', date: 'January 2026', title: 'Interview: emergency response methods for fires in confined spaces', img: '/assets/medias/presse-rts.jpg', url: 'https://www.rts.ch/play/tv/emission-speciale/video/les-methodes-dintervention-des-secours-lors-dun-incendie-dans-un-lieu-clos-interview-de-daniel-barouch-et-wassim-raf?urn=urn:rts:video:96eef6c4-d1a3-36c3-b2aa-cce32d7c92b9' },
+  { outlet: 'Tribune de Genève', type: 'Press', date: 'May 2025', title: 'Why the Stade de Genève simulated a mass-casualty attack', img: '/assets/medias/presse-tdg.jpg', url: 'https://www.tdg.ch/pourquoi-le-stade-de-geneve-a-simule-une-tuerie-de-masse-873833408354' },
+  { outlet: '20 minutes', type: 'Press', date: '22 May 2025', title: 'A large-scale security exercise at the Stade de Genève', img: '/assets/medias/presse-20min.jpg', url: 'https://www.20min.ch/fr/story/geneve-coups-de-feu-au-stade-pour-un-exercice-de-securite-geant-103350118' },
+  { outlet: 'Léman Bleu', type: 'TV', date: '22 May 2025', title: 'Simulating an attack at the Stade de Genève', img: '/assets/medias/presse-lemanbleu.jpg', url: 'https://www.lemanbleu.ch/fr/Actualite/Sport/Simulation-d-une-tuerie-de-masse-au-Stade-de-Geneve.html' },
+];
+---
+<Base
+  title="DBA Sécurité - Physical security audit, concepts & event security"
+  description="DBA Sécurité: security audit and consulting, security concepts and risk analysis, event security and coordination, penetration testing and training. From concept to full-scale exercise."
+>
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="/assets/video/dba-presentation-poster.jpg">
+      <source src="/assets/video/dba-presentation.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="container hero-inner">
+      <p class="eyebrow">Security consulting &amp; expertise</p>
+      <h1>Physical security, designed and tested under real conditions.</h1>
+      <p class="hero-lead">
+        Security audits, protection concepts, event security, penetration testing and training.
+        We design your security measures, then we put them to the test, to reveal weaknesses
+        before they can be exploited.
+      </p>
+      <div class="hero-actions">
+        <a href="/en/services" class="btn btn--gold">Discover our services <Icon name="arrow" size={18} /></a>
+        <a href="/en/contact" class="btn btn--ghost-light">Talk to an expert</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section section--soft" id="services">
+    <div class="container">
+      <div class="section-head text-center">
+        <p class="eyebrow">Our services</p>
+        <h2>A full range of expertise</h2>
+        <p class="lead measure mx-auto">
+          From risk analysis to securing your events, we cover the entire physical security chain.
+        </p>
+      </div>
+      <div class="svc-grid">
+        {services.map((s) => (
+          <a href={s.href} class="svc-card">
+            <span class="svc-img" style={`background-image:url('${s.img}')`}><span class="svc-tag">{s.tag}</span></span>
+            <span class="svc-body">
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+              <span class="svc-more">Learn more <Icon name="arrow" size={15} /></span>
+            </span>
+          </a>
+        ))}
+        <a href="/en/contact" class="svc-card svc-card--cta">
+          <span class="svc-body">
+            <h3>A specific need?</h3>
+            <p>Let's discuss your context and the priorities to secure.</p>
+            <span class="btn btn--gold">Contact us <Icon name="arrow" size={16} /></span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNER -->
+  <PartnerEdgward />
+
+  <!-- WHY US -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head text-center">
+        <p class="eyebrow">Why choose us</p>
+        <h2>Your advantages with DBA Sécurité</h2>
+      </div>
+      <div class="pillars-grid">
+        {pillars.map((p, i) => (
+          <div class="pillar">
+            <span class="pillar-no">0{i + 1}</span>
+            <h3>{p.title}</h3>
+            <p>{p.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENCES -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head text-center">
+        <p class="eyebrow">References</p>
+        <h2>They trust us</h2>
+        <p class="lead measure mx-auto">
+          Assignments in Switzerland and internationally, from prestige events to humanitarian organisations.
+        </p>
+      </div>
+      <TrustBar />
+      <div class="text-center">
+        <a href="/en/references" class="btn btn--outline">See all our references <Icon name="arrow" size={16} /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIA -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head text-center">
+        <p class="eyebrow">In the media</p>
+        <h2>They talk about us</h2>
+        <p class="lead measure mx-auto">
+          RTS, Tribune de Genève, 20 minutes, Léman Bleu: our security expertise is regularly sought by the media.
+        </p>
+      </div>
+      <div class="press-grid">
+        {press.map((m) => (
+          <a href={m.url} target="_blank" rel="noopener" class="press-card">
+            <span class="press-img" style={`background-image:url('${m.img}')`}>
+              <span class="press-type">{m.type}</span>
+            </span>
+            <span class="press-body">
+              <span class="press-meta"><span class="press-out">{m.outlet}</span><span class="press-date">{m.date}</span></span>
+              <span class="press-title">{m.title}</span>
+              <span class="press-go">Read / watch <Icon name="arrow" size={14} /></span>
+            </span>
+          </a>
+        ))}
+      </div>
+      <div class="text-center">
+        <a href="/en/media" class="btn btn--outline">See press coverage <Icon name="arrow" size={16} /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-final">
+    <div class="container cta-inner">
+      <div>
+        <h2>Let's discuss your security</h2>
+        <p class="lead">A project, an event, a need for expertise? Our team responds and supports you across all your physical security challenges.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="/en/contact" class="btn btn--gold">Write to DBA Sécurité <Icon name="arrow" size={18} /></a>
+        <a href="tel:+41228860117" class="btn btn--ghost-light">+41 22 886 0 117</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { position: relative; min-height: 94vh; display: flex; align-items: center; color: #fff; overflow: hidden; background: var(--navy); }
+  .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(8,13,59,.93) 0%, rgba(13,20,90,.74) 42%, rgba(13,20,90,.34) 100%); }
+  .hero-inner { position: relative; padding-top: 120px; padding-bottom: 40px; max-width: 760px; }
+  .hero .eyebrow { color: var(--gold); }
+  .hero h1 { color: #fff; font-size: clamp(2.3rem, 5.4vw, 4rem); margin-bottom: 20px; }
+  .hero-lead { font-size: 1.2rem; color: rgba(255,255,255,.9); max-width: 56ch; margin-bottom: 0; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+
+  .section-head { margin-bottom: 52px; }
+  .section-head h2 { margin-bottom: 14px; }
+
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .svc-card { display: flex; flex-direction: column; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 14px rgba(13,20,90,.06); color: var(--text); transition: transform .2s ease, box-shadow .2s ease; }
+  .svc-card:hover { transform: translateY(-6px); box-shadow: 0 24px 44px rgba(13,20,90,.14); text-decoration: none; }
+  .svc-img { display: block; height: 190px; background-size: cover; background-position: center; position: relative; }
+  .svc-tag { position: absolute; left: 16px; top: 16px; background: rgba(13,20,90,.92); color: #fff; font-size: 12px; font-weight: 600; letter-spacing: .04em; padding: 6px 12px; border-radius: 30px; }
+  .svc-body { display: flex; flex-direction: column; flex: 1; padding: 26px; }
+  .svc-body h3 { color: var(--navy); margin-bottom: 9px; }
+  .svc-body p { color: var(--text-muted); font-size: 15px; flex: 1; margin-bottom: 18px; }
+  .svc-more { display: inline-flex; align-items: center; gap: 7px; color: var(--gold-strong); font-weight: 600; font-size: 15px; }
+  .svc-card:hover .svc-more { gap: 11px; transition: gap .2s ease; }
+  .svc-card--cta { background: var(--navy); color: #fff; justify-content: center; }
+  .svc-card--cta .svc-body { padding: 34px; }
+  .svc-card--cta h3 { color: #fff; }
+  .svc-card--cta p { color: rgba(255,255,255,.82); }
+
+  .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .pillar { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 34px 30px; transition: border-color .2s ease, box-shadow .2s ease; }
+  .pillar:hover { border-color: transparent; box-shadow: 0 20px 44px rgba(13,20,90,.1); }
+  .pillar-no { font-size: 15px; font-weight: 700; color: var(--gold-strong); }
+  .pillar h3 { color: var(--navy); margin: 14px 0 10px; }
+  .pillar p { color: var(--text-muted); font-size: 15px; margin: 0; }
+
+  .press-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-bottom: 38px; }
+  .press-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; color: var(--text); transition: transform .2s ease, box-shadow .2s ease; }
+  .press-card:hover { transform: translateY(-5px); box-shadow: 0 22px 40px rgba(13,20,90,.14); text-decoration: none; }
+  .press-img { display: block; height: 150px; background-size: cover; background-position: center; position: relative; }
+  .press-type { position: absolute; left: 12px; top: 12px; background: rgba(13,20,90,.92); color: #fff; font-size: 11px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; padding: 5px 11px; border-radius: 30px; }
+  .press-body { display: flex; flex-direction: column; flex: 1; padding: 18px 20px 20px; }
+  .press-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 9px; }
+  .press-out { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--gold-strong); }
+  .press-date { font-size: 12px; color: var(--text-muted); }
+  .press-title { font-weight: 600; color: var(--navy); line-height: 1.4; font-size: 15px; flex: 1; }
+  .press-go { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--text-muted); margin-top: 14px; }
+  .press-card:hover .press-go { color: var(--gold-strong); }
+
+  .cta-final { background: var(--gradient); color: #fff; padding: 88px 0; }
+  .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  .cta-inner > div { max-width: 620px; }
+  .cta-final h2 { color: #fff; margin-bottom: 12px; }
+  .cta-final .lead { color: rgba(255,255,255,.85); margin: 0; }
+  .cta-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  @media (max-width: 980px) {
+    .svc-grid, .pillars-grid, .press-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 760px) {
+    .hero { align-items: flex-start; }
+    .hero-inner { padding-top: 110px; }
+    .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
+    .svc-grid, .pillars-grid, .press-grid { grid-template-columns: 1fr; }
+  }
+</style>

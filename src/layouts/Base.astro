@@ -8,6 +8,7 @@ import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import { site } from '../data/site';
+import { localeFromPath, pageMap } from '../data/i18n';
 
 interface Props {
   title?: string;
@@ -19,7 +20,15 @@ const {
   description = site.description,
 } = Astro.props;
 
+const locale = localeFromPath(Astro.url.pathname);
+const htmlLang = locale === 'en' ? 'en' : 'fr';
+const ogLocale = locale === 'en' ? 'en_GB' : 'fr_CH';
+
 const canonical = new URL(Astro.url.pathname, site.url).href;
+
+const normPath = (p: string) => (p !== '/' && p.endsWith('/') ? p.slice(0, -1) : p);
+const curPath = normPath(Astro.url.pathname);
+const altPair = pageMap.find((m) => normPath(m.fr) === curPath || normPath(m.en) === curPath);
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -44,7 +53,7 @@ const jsonLd = {
 };
 ---
 <!doctype html>
-<html lang="fr">
+<html lang={htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -58,6 +67,13 @@ const jsonLd = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {altPair && (
+      <>
+        <link rel="alternate" hreflang="fr" href={new URL(altPair.fr, site.url).href} />
+        <link rel="alternate" hreflang="en" href={new URL(altPair.en, site.url).href} />
+        <link rel="alternate" hreflang="x-default" href={new URL(altPair.fr, site.url).href} />
+      </>
+    )}
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -66,7 +82,7 @@ const jsonLd = {
     <meta property="og:image" content={new URL('/assets/logo-dba-color.png', site.url).href} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="og:site_name" content={site.name} />
-    <meta property="og:locale" content="fr_CH" />
+    <meta property="og:locale" content={ogLocale} />
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
@@ -75,7 +91,7 @@ const jsonLd = {
     )}
   </head>
   <body>
-    <a href="#main" class="skip-link">Aller au contenu</a>
+    <a href="#main" class="skip-link">{locale === 'en' ? 'Skip to content' : 'Aller au contenu'}</a>
     <Nav />
     <main id="main">
       <slot />

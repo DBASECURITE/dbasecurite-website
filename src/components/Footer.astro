@@ -1,19 +1,23 @@
 ---
-import { site, nav, footerNav } from '../data/site';
+import { site, nav as navFr } from '../data/site';
+import { navEn, ui, localeFromPath } from '../data/i18n';
 import Icon from './Icon.astro';
 const year = new Date().getFullYear();
+const locale = localeFromPath(Astro.url.pathname);
+const nav = locale === 'en' ? navEn : navFr;
+const t = ui[locale];
 ---
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
       <img src="/assets/logo-dba-white.png" alt={site.name} width="170" height="132" />
-      <p class="footer-tagline">{site.tagline}</p>
+      <p class="footer-tagline">{t.footerTagline}</p>
       <a href={site.linkedin} target="_blank" rel="noopener" class="footer-linkedin" aria-label="LinkedIn">
         <Icon name="linkedin" size={20} />
         <span>LinkedIn</span>
       </a>
       <div class="footer-partner">
-        <span class="footer-partner-label">Partenaire opérationnel</span>
+        <span class="footer-partner-label">{t.footerPartner}</span>
         <a href="https://edgward.ch" target="_blank" rel="noopener" class="footer-partner-link" aria-label="Découvrir Edgward">
           <img src="/assets/logos/edgward-full.png" alt="Edgward" width="140" height="32" loading="lazy" />
         </a>
@@ -21,14 +25,14 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="footer-col">
-      <h4>Navigation</h4>
+      <h4>{t.footerNavTitle}</h4>
       <ul>
         {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
       </ul>
     </div>
 
     <div class="footer-col">
-      <h4>Contact</h4>
+      <h4>{t.footerContactTitle}</h4>
       <ul class="footer-contact">
         <li>
           <Icon name="pin" size={18} />
@@ -48,9 +52,9 @@ const year = new Date().getFullYear();
 
   <div class="footer-bottom">
     <div class="container footer-bottom-inner">
-      <span>© {year} {site.name}. Tous droits réservés.</span>
+      <span>© {year} {site.name}. {t.footerRights}</span>
       <span class="footer-legal">
-        {footerNav.map((item) => <a href={item.href}>{item.label}</a>)}
+        {t.footerLegal.map((item) => <a href={item.href}>{item.label}</a>)}
       </span>
     </div>
   </div>

@@ -1,14 +1,25 @@
 ---
-import { nav, site } from '../data/site';
+import { nav as navFr, site } from '../data/site';
+import { navEn, ui, altUrl, localeFromPath } from '../data/i18n';
 const path = Astro.url.pathname;
-const isActive = (href: string) =>
-  href === '/' ? path === '/' : path.startsWith(href);
+const locale = localeFromPath(path);
+const nav = locale === 'en' ? navEn : navFr;
+const t = ui[locale];
+const home = locale === 'en' ? '/en/' : '/';
+const contactHref = locale === 'en' ? '/en/contact' : '/contact';
+const switchUrl = altUrl(path, locale === 'en' ? 'fr' : 'en');
+const isActive = (href: string) => {
+  const h = (href.replace(/\/$/, '') || '/');
+  const p = (path.replace(/\/$/, '') || '/');
+  if (h === '/' || h === '/en') return p === h;
+  return p === h || p.startsWith(h + '/');
+};
 const parentActive = (item: (typeof nav)[number]) =>
   isActive(item.href) || (item.children?.some((c) => isActive(c.href)) ?? false);
 ---
 <header class="site-header" id="site-header">
   <div class="container hdr">
-    <a href="/" class="brand" aria-label={site.name}>
+    <a href={home} class="brand" aria-label={site.name}>
       <img class="logo-white" src="/assets/logo-dba-white.png" alt={site.name} width="146" height="115" />
       <img class="logo-color" src="/assets/logo-dba-color.png" alt={site.name} width="146" height="115" />
     </a>
@@ -33,9 +44,10 @@ const parentActive = (item: (typeof nav)[number]) =>
       ))}
     </nav>
 
-    <a href="/contact" class="btn btn--gold header-cta">Contactez-nous</a>
+    <a href={switchUrl} class="lang-switch" aria-label={t.switchLabel} hreflang={locale === 'en' ? 'fr' : 'en'}>{t.switchTo}</a>
+    <a href={contactHref} class="btn btn--gold header-cta">{t.contactCta}</a>
 
-    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -49,7 +61,8 @@ const parentActive = (item: (typeof nav)[number]) =>
         ))}
       </Fragment>
     ))}
-    <a href="/contact" class="btn btn--gold mobile-cta">Contactez-nous</a>
+    <a href={contactHref} class="btn btn--gold mobile-cta">{t.contactCta}</a>
+    <a href={switchUrl} class="mobile-lang" hreflang={locale === 'en' ? 'fr' : 'en'}>{t.switchLabel}</a>
   </div>
 </header>
 
@@ -99,6 +112,12 @@ const parentActive = (item: (typeof nav)[number]) =>
   .dropdown-link.active { color: var(--gold-strong); }
 
   .header-cta { padding: 11px 22px; font-size: 14px; }
+  .lang-switch { display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; letter-spacing: .04em; color: rgba(255,255,255,.9); border: 1px solid rgba(255,255,255,.4); border-radius: 7px; padding: 8px 11px; transition: color .2s, border-color .2s; }
+  .site-header.solid .lang-switch { color: var(--ink); border-color: var(--border); }
+  .lang-switch:hover { color: var(--gold); border-color: var(--gold); text-decoration: none; }
+  .site-header.solid .lang-switch:hover { color: var(--gold-strong); border-color: var(--gold); }
+  .mobile-lang { margin-top: 8px; text-align: center; font-weight: 600; font-size: 14px; color: var(--text-muted); padding: 10px; }
+  .mobile-lang:hover { color: var(--gold-strong); }
 
   .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; margin-left: auto; }
   .nav-toggle span { width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: transform 0.2s ease, opacity 0.2s ease; }
@@ -116,7 +135,7 @@ const parentActive = (item: (typeof nav)[number]) =>
   .mobile-cta { margin-top: 10px; justify-content: center; }
 
   @media (max-width: 960px) {
-    .main-nav, .header-cta { display: none; }
+    .main-nav, .header-cta, .lang-switch { display: none; }
     .nav-toggle { display: flex; }
     .mobile-menu:not([hidden]) { display: flex; }
     .site-header:not(.solid) .mobile-menu { box-shadow: none; }
