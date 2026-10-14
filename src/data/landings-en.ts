@@ -52,7 +52,7 @@ export const auditConseilEn: Landing = {
       ],
       stats: [
         { num: '20+ yrs', label: 'of security experience' },
-        { num: 'Methodology', label: 'tested under real conditions' },
+        { num: 'Methodology', label: 'from risk to decision' },
       ],
     },
     faqs: [

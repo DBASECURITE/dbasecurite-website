@@ -127,7 +127,7 @@ export const auditConseil: Landing = {
       ],
       stats: [
         { num: '20+ ans', label: "d'expérience en sûreté" },
-        { num: 'Méthodologie', label: 'éprouvée en conditions réelles' },
+        { num: 'Méthodologie', label: 'du risque à la décision' },
       ],
     },
     faqs: [
