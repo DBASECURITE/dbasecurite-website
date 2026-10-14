@@ -1,19 +1,25 @@
 ---
 import Icon from './Icon.astro';
+import { localeFromPath } from '../data/i18n';
 interface Props {
   title?: string;
   text?: string;
 }
+const en = localeFromPath(Astro.url.pathname) === 'en';
 const {
-  title = 'Discutons de votre sécurité',
-  text = "Un projet, un événement, un besoin d'expertise ? Notre équipe vous répond et vous accompagne sur l'ensemble de vos enjeux de sûreté et de sécurité physique.",
+  title = en ? "Let's discuss your security" : 'Discutons de votre sécurité',
+  text = en
+    ? 'A project, an event, a need for expertise? Our team responds and supports you across all your physical security challenges.'
+    : "Un projet, un événement, un besoin d'expertise ? Notre équipe vous répond et vous accompagne sur l'ensemble de vos enjeux de sûreté et de sécurité physique.",
 } = Astro.props;
+const contactHref = en ? '/en/contact' : '/contact';
+const ctaLabel = en ? 'Contact us' : 'Contactez-nous';
 ---
 <section class="section--dark final-cta">
   <div class="container text-center">
     <h2>{title}</h2>
     <p class="lead measure mx-auto">{text}</p>
-    <a href="/contact" class="btn btn--gold">Contactez-nous <Icon name="arrow" size={18} /></a>
+    <a href={contactHref} class="btn btn--gold">{ctaLabel} <Icon name="arrow" size={18} /></a>
   </div>
 </section>
 

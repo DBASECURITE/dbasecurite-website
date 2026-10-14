@@ -1,0 +1,63 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FinalCTA from '../../components/FinalCTA.astro';
+import Icon from '../../components/Icon.astro';
+
+const typeIcon: Record<string, string> = { Press: 'file', TV: 'play', Radio: 'spark' };
+
+const medias = [
+  { outlet: 'RTS', type: 'TV', date: 'January 2026', title: 'Interview: emergency response methods for fires in confined spaces', excerpt: 'Daniel Barouch and Wassim Raf interviewed by RTS on emergency response methods in the event of a fire in a confined space.', img: '/assets/medias/presse-rts.jpg', url: 'https://www.rts.ch/play/tv/emission-speciale/video/les-methodes-dintervention-des-secours-lors-dun-incendie-dans-un-lieu-clos-interview-de-daniel-barouch-et-wassim-raf?urn=urn:rts:video:96eef6c4-d1a3-36c3-b2aa-cce32d7c92b9' },
+  { outlet: 'Tribune de Genève', type: 'Press', date: 'May 2025', title: 'Why the Stade de Genève simulated a mass-casualty attack', excerpt: "A look back at the full-scale security exercise organised at the Stade de Genève in preparation for the 2025 Women's Euro.", img: '/assets/medias/presse-tdg.jpg', url: 'https://www.tdg.ch/pourquoi-le-stade-de-geneve-a-simule-une-tuerie-de-masse-873833408354' },
+  { outlet: '20 minutes', type: 'Press', date: '22 May 2025', title: 'A large-scale security exercise at the Stade de Genève', excerpt: "Attack simulation involving around 400 responders (police, emergency services, private security) before the Women's Euro football tournament.", img: '/assets/medias/presse-20min.jpg', url: 'https://www.20min.ch/fr/story/geneve-coups-de-feu-au-stade-pour-un-exercice-de-securite-geant-103350118' },
+  { outlet: 'Léman Bleu', type: 'TV', date: '22 May 2025', title: 'Simulating an attack at the Stade de Genève', excerpt: "Report on the exercise run at the Stade de Genève, under the security responsibility of Daniel Barouch, before the Women's Euro.", img: '/assets/medias/presse-lemanbleu.jpg', url: 'https://www.lemanbleu.ch/fr/Actualite/Sport/Simulation-d-une-tuerie-de-masse-au-Stade-de-Geneve.html' },
+];
+---
+<Base title="Media - DBA Sécurité" description="DBA Sécurité and Daniel Barouch in the media: RTS, Tribune de Genève, 20 minutes, Léman Bleu.">
+  <PageHero
+    eyebrow="Press coverage"
+    title="DBA Sécurité in the media"
+    subtitle="Regularly sought on security matters, we share our analysis in the press and on television."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="media-list">
+        {medias.map((m) => (
+          <a href={m.url} target="_blank" rel="noopener" class="media-card">
+            <span class="media-img" style={`background-image:url('${m.img}')`}>
+              <span class="media-type"><Icon name={typeIcon[m.type] ?? 'file'} size={13} /> {m.type}</span>
+            </span>
+            <div class="media-body">
+              <div class="media-meta"><span class="media-outlet">{m.outlet}</span><span class="media-date">{m.date}</span></div>
+              <h3>{m.title}</h3>
+              <p class="media-excerpt">{m.excerpt}</p>
+              <span class="media-link">Read / watch <Icon name="arrow" size={15} /></span>
+            </div>
+          </a>
+        ))}
+      </div>
+      <p class="media-disclaimer">Links lead to the original publications on the respective media websites.</p>
+    </div>
+  </section>
+
+  <FinalCTA />
+</Base>
+
+<style>
+  .media-list { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .media-card { display: flex; flex-direction: column; overflow: hidden; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); color: var(--text); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .media-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); text-decoration: none; }
+  .media-img { display: block; height: 210px; background-size: cover; background-position: center; position: relative; }
+  .media-type { position: absolute; left: 14px; top: 14px; display: inline-flex; align-items: center; gap: 5px; background: rgba(13,20,90,.92); color: #fff; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; padding: 6px 12px; border-radius: 30px; }
+  .media-body { display: flex; flex-direction: column; flex: 1; padding: 24px 26px 26px; }
+  .media-meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+  .media-outlet { font-weight: 700; color: var(--gold-strong); font-size: 13px; text-transform: uppercase; letter-spacing: .05em; }
+  .media-date { font-size: 13px; color: var(--text-muted); }
+  .media-card h3 { font-size: 1.15rem; margin-bottom: 8px; color: var(--navy); }
+  .media-excerpt { color: var(--text-muted); font-size: 0.95rem; flex-grow: 1; margin-bottom: 16px; }
+  .media-link { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 14px; color: var(--brand); }
+  .media-card:hover .media-link { gap: 10px; transition: gap .2s ease; }
+  .media-disclaimer { text-align: center; font-size: 0.82rem; color: var(--text-muted); margin-top: 28px; }
+  @media (max-width: 720px) { .media-list { grid-template-columns: 1fr; } }
+</style>

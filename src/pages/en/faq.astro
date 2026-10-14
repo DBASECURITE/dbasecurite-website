@@ -1,0 +1,65 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FinalCTA from '../../components/FinalCTA.astro';
+import { site } from '../../data/site';
+
+const faqs = [
+  { q: 'What is the difference between security and safety?', a: 'Safety deals with accidental risks (fire, accident, crowd movement), while security addresses intentional, malicious acts (intrusion, aggression, threat). A complete set-up must handle both.' },
+  { q: 'What is a security concept?', a: 'It is a reference document that, based on a risk analysis, defines all the organisational, human and technical measures needed to protect a site, an asset or an event - along with the response procedures in case of an incident.' },
+  { q: 'How does a security audit work?', a: 'An audit begins with a visit and an analysis of the context (site, activity, threats), then assesses the existing measures and identifies vulnerabilities. It leads to a report with concrete, prioritised recommendations.' },
+  { q: 'What types of event do you work on?', a: 'Sporting events, fashion shows, cultural or institutional events, in Switzerland and internationally. We support the organiser from the security concept through to the operational coordination of responders on the day.' },
+  { q: 'Do you offer training?', a: 'Yes. We design coaching and training programmes tailored to your teams: awareness of good practice, security team training, incident response protocols.' },
+  { q: 'What is a full-scale exercise?', a: 'It is a simulation under realistic conditions that tests a security set-up and the coordination of the various actors. It reveals weaknesses and improves protocols before the real event.' },
+  { q: 'Which regions do you work in?', a: 'In Switzerland and internationally, depending on the nature of the assignment.' },
+  { q: 'How can I get a quote?', a: 'Contact us via the form, describing your need. We will get back to you quickly for an initial discussion and, if needed, a tailored proposal.' },
+];
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+<Base title={`FAQ - ${site.name}`} description="Frequently asked questions about our security audits, security concepts, event security and training.">
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+  <PageHero
+    eyebrow="FAQ"
+    title="Frequently asked questions"
+    subtitle="Answers to the most common questions about our physical security services."
+  />
+
+  <section class="section">
+    <div class="container faq-wrap">
+      {faqs.map((f) => (
+        <details class="faq-item">
+          <summary>
+            <span>{f.q}</span>
+            <span class="faq-plus" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-answer"><p>{f.a}</p></div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <FinalCTA />
+</Base>
+
+<style>
+  .faq-wrap { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1px solid var(--border); border-radius: var(--radius-lg); background: #fff; overflow: hidden; }
+  .faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 24px; cursor: pointer; font-weight: 600; color: var(--navy); font-size: 1.05rem; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-plus { position: relative; width: 18px; height: 18px; flex-shrink: 0; }
+  .faq-plus::before, .faq-plus::after { content: ''; position: absolute; background: var(--gold-strong); border-radius: 2px; transition: transform 0.2s ease; }
+  .faq-plus::before { top: 8px; left: 0; width: 18px; height: 2px; }
+  .faq-plus::after { top: 0; left: 8px; width: 2px; height: 18px; }
+  .faq-item[open] .faq-plus::after { transform: scaleY(0); }
+  .faq-answer { padding: 0 24px 22px; }
+  .faq-answer p { color: var(--text-muted); margin: 0; line-height: 1.7; }
+</style>

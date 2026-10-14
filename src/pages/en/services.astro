@@ -1,0 +1,55 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FinalCTA from '../../components/FinalCTA.astro';
+import Icon from '../../components/Icon.astro';
+
+const services = [
+  { title: 'Security audit & consulting', subtitle: 'Security concepts & risk analysis', desc: 'Our core business. From risk analysis to the security concept, we give you a clear view and concrete, prioritised recommendations.', img: '/assets/photos/services-audit.jpg', href: '/en/security-audit-consulting' },
+  { title: 'Event security & coordination', subtitle: 'Switzerland & international', desc: 'We support organisers at every stage - from the security concept to the operational coordination of responders on the day. Sport, fashion, cultural and institutional events.', img: '/assets/photos/services-coordination.jpg', href: '/en/event-security' },
+  { title: 'Penetration testing & exercises', subtitle: 'Red team & full-scale', desc: "Designing a system is not enough: it must be tested. We run penetration tests and realistic exercises to reveal weaknesses before they are exploited.", img: '/assets/photos/stade-geneve-briefing.jpg', href: '/en/physical-penetration-testing' },
+  { title: 'Training & awareness', subtitle: 'Tailored to your needs', desc: 'We design training and coaching programmes for your teams: awareness, security team training and incident response protocols.', img: '/assets/photos/formation-page.jpg', href: '/en/security-training' },
+  { title: 'Specialised services', subtitle: 'Tailor-made responses', desc: 'For specific threats and risks, we design bespoke security services, carried out with rigour and discretion: surveillance, protection, observation.', img: '/assets/photos/securite-evenementielle-wef.jpg', href: '/en/contact' },
+];
+---
+<Base title="Security audit, event security & training - DBA Sécurité" description="Our services: security audit and consulting, security concepts and risk analysis, event security and coordination, coaching, training and penetration testing.">
+  <PageHero
+    eyebrow="Our services"
+    title="A full range of security expertise"
+    subtitle="From risk analysis to securing your events, we cover the entire physical security chain."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="svc-grid">
+        {services.map((s) => (
+          <a href={s.href} class="svc-card">
+            <span class="svc-img" style={`background-image:url('${s.img}')`}><span class="svc-tag">{s.subtitle}</span></span>
+            <span class="svc-body">
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+              <span class="svc-more">Learn more <Icon name="arrow" size={15} /></span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FinalCTA title="A specific need?" text="Let's talk about your context and the priorities to secure." />
+</Base>
+
+<style>
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .svc-card { display: flex; flex-direction: column; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 14px rgba(13,20,90,.06); color: var(--text); transition: transform .2s ease, box-shadow .2s ease; }
+  .svc-card:hover { transform: translateY(-6px); box-shadow: 0 24px 44px rgba(13,20,90,.14); text-decoration: none; }
+  .svc-img { display: block; height: 190px; background-size: cover; background-position: center; position: relative; }
+  .svc-tag { position: absolute; left: 16px; top: 16px; background: rgba(13,20,90,.92); color: #fff; font-size: 12px; font-weight: 600; letter-spacing: .04em; padding: 6px 12px; border-radius: 30px; }
+  .svc-body { display: flex; flex-direction: column; flex: 1; padding: 26px; }
+  .svc-body h3 { color: var(--navy); margin-bottom: 9px; }
+  .svc-body p { color: var(--text-muted); font-size: 15px; flex: 1; margin-bottom: 18px; }
+  .svc-more { display: inline-flex; align-items: center; gap: 7px; color: var(--gold-strong); font-weight: 600; font-size: 15px; }
+  .svc-card:hover .svc-more { gap: 11px; transition: gap .2s ease; }
+  @media (max-width: 980px) { .svc-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 680px) { .svc-grid { grid-template-columns: 1fr; } }
+</style>

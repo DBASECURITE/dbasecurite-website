@@ -1,0 +1,90 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import FinalCTA from '../../components/FinalCTA.astro';
+import Icon from '../../components/Icon.astro';
+
+const references = [
+  { name: 'SCRASA SA', tag: 'Civil engineering · QSE training', description: 'For this Geneva-based civil engineering, road works and construction company, DBA Sécurité trains and coaches QSE managers - to embed the right safety reflexes into daily site operations.' },
+  { name: 'Moncler', tag: 'Luxury fashion shows - Switzerland & France', description: 'DBA Sécurité designed and coordinated the security of the luxury house\'s fashion shows, in Switzerland (2024) and France (2025): risk analysis, bespoke set-up and coordination of responders on the day.' },
+  { name: 'IFRC', tag: 'Humanitarian organisation', description: 'DBA Sécurité supported the International Federation of Red Cross and Red Crescent Societies, the world\'s largest humanitarian network, on its security challenges.' },
+  { name: 'UEFA Youth League', tag: 'European football - 2023-24', description: 'Security and event coordination for the UEFA Youth League, the European competition for the youth teams of Champions League clubs.' },
+  { name: 'Women’s Euro 2025', tag: 'Stade de Genève - host city', description: "Security responsibility for the Stade de Genève, host of 5 matches (including a quarter and a semi-final) of the 2025 UEFA Women's Euro, with the running of a full-scale exercise of close to 400 responders." },
+  { name: 'Commune de Chancy', tag: 'Geneva public authority', description: 'The municipality of Chancy, at the western tip of the canton of Geneva, called on DBA Sécurité to support it on its public security challenges.' },
+  { name: 'Edgward', tag: 'Partner - on-demand security', description: 'DBA Sécurité is the security partner of Edgward, the on-demand security service in French-speaking Switzerland, in charge of the platform\'s security analysis and expertise.' },
+  { name: 'On request', tag: 'Switzerland & international', description: 'Further references can be shared depending on the type of project. Out of respect for our clients, we keep confidentiality on sensitive assignments and operational details.' },
+];
+---
+<Base title="References - DBA Sécurité" description="Prestige events, institutions and humanitarian organisations: they trust DBA Sécurité.">
+  <PageHero
+    eyebrow="References"
+    title="They trust us"
+    subtitle="Assignments in Switzerland and internationally, from sporting and prestige events to humanitarian organisations."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="case-study">
+        <div class="case-body">
+          <p class="eyebrow">Flagship case - Stade de Genève</p>
+          <h2>A full-scale security exercise before the 2025 Women's Euro</h2>
+          <p>On 22 May 2025, an attack-simulation exercise was conducted at the Stade de Genève in preparation for the UEFA Women's Euro. Under the security responsibility of Daniel Barouch, the operation mobilised <strong>close to 400 responders</strong> - police, emergency services, private security - to test the coordination of actors and the response protocols before the competition.</p>
+          <p class="case-note">Designing a set-up is not enough: DBA Sécurité tests it under real conditions to reveal weaknesses before the big day.</p>
+          <a href="/en/media" class="btn btn--outline">Press coverage <Icon name="arrow" size={16} /></a>
+        </div>
+        <div class="case-stats">
+          <div class="stat"><span class="stat-num">~400</span><span class="stat-label">responders mobilised</span></div>
+          <div class="stat"><span class="stat-num">30,000</span><span class="stat-label">spectators (capacity)</span></div>
+          <div class="stat"><span class="stat-num">5</span><span class="stat-label">Euro matches in Geneva</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <SectionHeader eyebrow="Our assignments" title="A selection of references" center />
+      <div class="refs-grid">
+        {references.map((r) => (
+          <article class="ref-card">
+            <h3>{r.name}</h3>
+            <p class="ref-tag">{r.tag}</p>
+            <p class="ref-desc">{r.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FinalCTA />
+</Base>
+
+<style>
+  .case-study { display: grid; grid-template-columns: 1.4fr 1fr; gap: 0; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+  .case-body { padding: 44px; }
+  .case-body h2 { margin-bottom: 16px; }
+  .case-note { color: var(--text-muted); font-style: italic; border-left: 3px solid var(--gold); padding-left: 14px; margin: 18px 0 22px; }
+  .case-stats {
+    background: linear-gradient(150deg, rgba(13, 20, 90, 0.86), rgba(44, 55, 82, 0.9)), url('/assets/photos/stade-geneve-briefing.jpg');
+    background-size: cover; background-position: center;
+    color: #fff; padding: 44px; display: flex; flex-direction: column; justify-content: center; gap: 28px;
+  }
+  .stat { display: flex; flex-direction: column; }
+  .stat-num { font-size: 2.4rem; font-weight: 700; color: #fff; line-height: 1; }
+  .stat-label { font-size: 0.9rem; color: var(--gold); margin-top: 6px; }
+
+  .refs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .ref-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 26px; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .ref-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .ref-card h3 { color: var(--navy); margin-bottom: 4px; }
+  .ref-tag { font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold-strong); margin-bottom: 12px; }
+  .ref-desc { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
+
+  @media (max-width: 860px) {
+    .case-study { grid-template-columns: 1fr; }
+    .case-body { padding: 32px; }
+    .case-stats { flex-direction: row; flex-wrap: wrap; padding: 32px; gap: 24px; }
+    .refs-grid { grid-template-columns: 1fr; }
+  }
+</style>

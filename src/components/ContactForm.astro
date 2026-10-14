@@ -1,55 +1,61 @@
 ---
+import { localeFromPath } from '../data/i18n';
+const en = localeFromPath(Astro.url.pathname) === 'en';
+// La "value" de chaque sujet reste la chaîne attendue par Brevo (FR).
 const subjects = [
-  'Audit / concept de sûreté',
-  'Sécurité événementielle',
-  'Exercices et tests',
-  'Coaching / formation',
-  'Autre',
+  { v: 'Audit / concept de sûreté', en: 'Audit / security concept' },
+  { v: 'Sécurité événementielle', en: 'Event security' },
+  { v: 'Exercices et tests', en: 'Exercises & testing' },
+  { v: 'Coaching / formation', en: 'Coaching / training' },
+  { v: 'Autre', en: 'Other' },
 ];
+const t = en
+  ? { name: 'Full name', namePh: 'First name Last name', email: 'Email', org: 'Company / organisation', orgPh: 'Your organisation', phone: 'Phone', opt: '(optional)', subject: 'Subject', subjectPh: 'Choose a subject', message: 'Message', messagePh: 'Describe your need…', send: 'Send message', privacy1: 'By sending this message, you accept our ', privacy2: 'privacy policy', privacyHref: '/confidentialite', okTitle: 'Message sent!', okText: 'Thank you, your request has been sent. We will get back to you shortly.', errText: 'Something went wrong. You can also email us directly at ' }
+  : { name: 'Nom complet', namePh: 'Prénom Nom', email: 'Email', org: 'Société / organisation', orgPh: 'Votre structure', phone: 'Téléphone', opt: '(optionnel)', subject: 'Sujet', subjectPh: 'Choisissez un sujet', message: 'Message', messagePh: 'Décrivez votre besoin…', send: 'Envoyer le message', privacy1: 'En envoyant ce message, vous acceptez notre ', privacy2: 'politique de confidentialité', privacyHref: '/confidentialite', okTitle: 'Message envoyé !', okText: 'Merci, votre demande a bien été transmise. Nous vous répondons dans les meilleurs délais.', errText: 'Une erreur est survenue. Vous pouvez aussi nous écrire directement à ' };
 ---
 <div class="contact-form-wrap">
   <form class="contact-form" novalidate id="contact-form">
     <div class="form-row">
       <div class="form-group">
-        <label for="cf-nom">Nom complet</label>
-        <input type="text" id="cf-nom" name="nom" placeholder="Prénom Nom" autocomplete="name" required>
+        <label for="cf-nom">{t.name}</label>
+        <input type="text" id="cf-nom" name="nom" placeholder={t.namePh} autocomplete="name" required>
       </div>
       <div class="form-group">
-        <label for="cf-email">Email</label>
-        <input type="email" id="cf-email" name="email" placeholder="vous@exemple.ch" autocomplete="email" required>
+        <label for="cf-email">{t.email}</label>
+        <input type="email" id="cf-email" name="email" placeholder="you@example.com" autocomplete="email" required>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group">
-        <label for="cf-org">Société / organisation</label>
-        <input type="text" id="cf-org" name="organisation" placeholder="Votre structure" autocomplete="organization">
+        <label for="cf-org">{t.org}</label>
+        <input type="text" id="cf-org" name="organisation" placeholder={t.orgPh} autocomplete="organization">
       </div>
       <div class="form-group">
-        <label for="cf-tel">Téléphone <span class="opt">(optionnel)</span></label>
+        <label for="cf-tel">{t.phone} <span class="opt">{t.opt}</span></label>
         <input type="tel" id="cf-tel" name="telephone" placeholder="+41 79 123 45 67" autocomplete="tel">
       </div>
     </div>
     <div class="form-group">
-      <label for="cf-sujet">Sujet</label>
+      <label for="cf-sujet">{t.subject}</label>
       <select id="cf-sujet" name="sujet" required>
-        <option value="" disabled selected>Choisissez un sujet</option>
-        {subjects.map((s) => <option value={s}>{s}</option>)}
+        <option value="" disabled selected>{t.subjectPh}</option>
+        {subjects.map((s) => <option value={s.v}>{en ? s.en : s.v}</option>)}
       </select>
     </div>
     <div class="form-group">
-      <label for="cf-message">Message</label>
-      <textarea id="cf-message" name="message" rows="5" placeholder="Décrivez votre besoin…" required></textarea>
+      <label for="cf-message">{t.message}</label>
+      <textarea id="cf-message" name="message" rows="5" placeholder={t.messagePh} required></textarea>
     </div>
     <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" class="cf-hp">
-    <button type="submit" class="btn btn--primary btn-submit">Envoyer le message</button>
-    <p class="form-privacy">En envoyant ce message, vous acceptez notre <a href="/confidentialite">politique de confidentialité</a>.</p>
+    <button type="submit" class="btn btn--primary btn-submit">{t.send}</button>
+    <p class="form-privacy">{t.privacy1}<a href={t.privacyHref}>{t.privacy2}</a>.</p>
   </form>
   <div class="contact-success" id="contact-success" hidden>
-    <h3>Message envoyé&nbsp;!</h3>
-    <p>Merci, votre demande a bien été transmise. Nous vous répondons dans les meilleurs délais.</p>
+    <h3>{t.okTitle}</h3>
+    <p>{t.okText}</p>
   </div>
   <div class="contact-error" id="contact-error" hidden>
-    <p>Une erreur est survenue. Vous pouvez aussi nous écrire directement à <a href="mailto:info@dbasecurite.ch">info@dbasecurite.ch</a>.</p>
+    <p>{t.errText}<a href="mailto:info@dbasecurite.ch">info@dbasecurite.ch</a>.</p>
   </div>
 </div>
 

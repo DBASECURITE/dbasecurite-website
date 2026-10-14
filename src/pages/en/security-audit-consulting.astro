@@ -1,0 +1,8 @@
+---
+import Base from '../../layouts/Base.astro';
+import ServiceLanding from '../../components/ServiceLanding.astro';
+import { auditConseilEn } from '../../data/landings-en';
+---
+<Base title={auditConseilEn.meta.title} description={auditConseilEn.meta.description}>
+  <ServiceLanding {...auditConseilEn.landing} />
+</Base>

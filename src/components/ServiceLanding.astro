@@ -4,6 +4,7 @@ import SectionHeader from './SectionHeader.astro';
 import FinalCTA from './FinalCTA.astro';
 import Icon from './Icon.astro';
 import { site } from '../data/site';
+import { localeFromPath } from '../data/i18n';
 
 export interface Step { icon: string; title: string; text: string; }
 export interface ProofAction { href: string; label: string; variant?: 'light' | 'ghost'; }
@@ -47,14 +48,27 @@ const {
   path, serviceType, serviceDescription,
   eyebrow, title, subtitle,
   enjeuTitle, enjeuText, image, reperes,
-  stepsEyebrow = 'Notre approche', stepsTitle, steps,
+  stepsEyebrow, stepsTitle, steps,
   livrablesTitle, livrablesText, livrables,
   proof,
   faqs,
-  relatedTitle = 'Nos analyses sur le sujet',
+  relatedTitle,
   related,
   cta,
 } = Astro.props;
+
+const en = localeFromPath(Astro.url.pathname) === 'en';
+const L = {
+  enjeu: en ? 'The challenge' : "L'enjeu",
+  approach: en ? 'Our approach' : 'Notre approche',
+  deliver: en ? 'What you get' : 'Ce que vous recevez',
+  faqEyebrow: en ? 'FAQ' : 'Questions fréquentes',
+  faqTitle: en ? 'The questions we are asked' : "Les questions que l'on nous pose",
+  related: en ? 'Further reading' : 'Pour aller plus loin',
+  relatedTitle: en ? 'Further reading' : 'Nos analyses sur le sujet',
+};
+const stepsEyebrowLabel = stepsEyebrow ?? L.approach;
+const relatedTitleLabel = relatedTitle ?? L.relatedTitle;
 
 const reperesList = reperes ?? [
   { b: '20+ ans', span: "d'expérience en sûreté" },
@@ -101,7 +115,7 @@ const faqLd = {
 <section class="section">
   <div class:list={['container', 'enjeu', { 'enjeu--split': image }]}>
     <div class="enjeu-text">
-      <p class="eyebrow">L'enjeu</p>
+      <p class="eyebrow">{L.enjeu}</p>
       <h2>{enjeuTitle}</h2>
       <p class="lead">{enjeuText}</p>
     </div>
@@ -116,7 +130,7 @@ const faqLd = {
 <!-- METHODE -->
 <section class="section section--soft">
   <div class="container">
-    <SectionHeader eyebrow={stepsEyebrow} title={stepsTitle} center />
+    <SectionHeader eyebrow={stepsEyebrowLabel} title={stepsTitle} center />
     <div class="steps-grid">
       {steps.map((e, i) => (
         <div class="step-card">
@@ -134,7 +148,7 @@ const faqLd = {
 <section class="section">
   <div class="container livrables-grid">
     <div>
-      <p class="eyebrow">Ce que vous recevez</p>
+      <p class="eyebrow">{L.deliver}</p>
       <h2>{livrablesTitle}</h2>
       <p class="lead">{livrablesText}</p>
     </div>
@@ -178,7 +192,7 @@ const faqLd = {
 <!-- FAQ -->
 <section class="section">
   <div class="container faq-wrap">
-    <SectionHeader eyebrow="Questions fréquentes" title="Les questions que l'on nous pose" center />
+    <SectionHeader eyebrow={L.faqEyebrow} title={L.faqTitle} center />
     {faqs.map((f) => (
       <details class="faq-item">
         <summary><span>{f.q}</span><span class="faq-plus" aria-hidden="true"></span></summary>
@@ -192,8 +206,8 @@ const faqLd = {
 {related && related.length > 0 && (
   <section class="section section--soft">
     <div class="container related-wrap">
-      <p class="eyebrow">Pour aller plus loin</p>
-      <h2>{relatedTitle}</h2>
+      <p class="eyebrow">{L.related}</p>
+      <h2>{relatedTitleLabel}</h2>
       <ul class="related-list">
         {related.map((r) => (
           <li><a href={r.slug.startsWith('/') ? r.slug : `/blog/${r.slug}`}><Icon name="arrow" size={16} /> {r.label}</a></li>
