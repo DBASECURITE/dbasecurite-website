@@ -101,7 +101,9 @@ const t = en
     params.append('NOM_COMPLET', nom);
     params.append('EMAIL', mail);
     if (org) params.append('SOCIETE', org);
-    if (sms) { params.append('SMS__COUNTRY_CODE', '+41'); params.append('SMS', sms); }
+    // Brevo attend le numéro NATIONAL (sans l'indicatif) quand SMS__COUNTRY_CODE est fourni.
+    // sms = '41' + 9 chiffres -> on retire le '41' pour envoyer les 9 chiffres nationaux.
+    if (sms) { params.append('SMS__COUNTRY_CODE', '+41'); params.append('SMS', sms.slice(2)); }
     params.append('SUJET_DBA_WEBSITE[]', sujet);
     params.append('MESSAGE', msg);
     params.append('email_address_check', '');
