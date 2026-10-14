@@ -23,6 +23,7 @@ export interface Props {
   enjeuTitle: string;
   enjeuText: string;
   image?: string; // illustration affichée dans la section "L'enjeu"
+  reperes?: { b: string; span: string }[]; // bande de repères sous le hero
   // Méthode
   stepsEyebrow?: string;
   stepsTitle: string;
@@ -45,7 +46,7 @@ export interface Props {
 const {
   path, serviceType, serviceDescription,
   eyebrow, title, subtitle,
-  enjeuTitle, enjeuText, image,
+  enjeuTitle, enjeuText, image, reperes,
   stepsEyebrow = 'Notre approche', stepsTitle, steps,
   livrablesTitle, livrablesText, livrables,
   proof,
@@ -54,6 +55,12 @@ const {
   related,
   cta,
 } = Astro.props;
+
+const reperesList = reperes ?? [
+  { b: '20+ ans', span: "d'expérience en sûreté" },
+  { b: '500+ événements', span: 'sportifs, culturels, diplomatiques, festifs' },
+  { b: 'Suisse & international', span: "zone d'intervention" },
+];
 
 const serviceLd = {
   '@context': 'https://schema.org',
@@ -83,10 +90,10 @@ const faqLd = {
 
 <!-- REPÈRES -->
 <section class="reperes">
-  <div class="container reperes-grid">
-    <div><b>20+ ans</b><span>d'expérience en sûreté</span></div>
-    <div><b>500+ événements</b><span>sportifs, culturels, diplomatiques, festifs</span></div>
-    <div><b>Suisse &amp; international</b><span>zone d'intervention</span></div>
+  <div class="container reperes-grid" style={`--n:${reperesList.length}`}>
+    {reperesList.map((r) => (
+      <div><b>{r.b}</b><span>{r.span}</span></div>
+    ))}
   </div>
 </section>
 
@@ -200,7 +207,7 @@ const faqLd = {
 
 <style>
   .reperes { background: #fff; border-bottom: 1px solid var(--border); padding: 30px 0; }
-  .reperes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: center; }
+  .reperes-grid { display: grid; grid-template-columns: repeat(var(--n, 3), 1fr); gap: 24px; align-items: center; }
   .reperes-grid > div { text-align: center; position: relative; }
   .reperes-grid > div + div::before { content: ''; position: absolute; left: -12px; top: 50%; transform: translateY(-50%); width: 1px; height: 46px; background: var(--border); }
   .reperes-grid b { display: block; font-size: 1.65rem; font-weight: 700; color: var(--navy); line-height: 1.1; letter-spacing: -.02em; }

@@ -26,6 +26,12 @@ export const testIntrusion: Landing = {
     enjeuText:
       "Caméras, badges, procédures, agents : sur le papier, tout semble en place. La vraie question est ailleurs - que se passe-t-il quand quelqu'un tente réellement d'entrer ? Un test d'intrusion physique répond à cette question avec des faits, pas des suppositions. Il révèle l'écart entre le dispositif prévu et sa robustesse réelle.",
     image: '/assets/photos/stade-geneve-briefing.jpg',
+    reperes: [
+      { b: 'Dissuasion', span: "Décourager le passage à l'acte" },
+      { b: 'Détection', span: 'Repérer la tentative au plus tôt' },
+      { b: 'Retardement', span: 'Ralentir la progression' },
+      { b: 'Intervention', span: 'Répondre et neutraliser la menace' },
+    ],
     stepsTitle: 'Comment nous éprouvons votre sécurité',
     steps: [
       { icon: 'target', title: 'Cadrage & objectifs', text: "Nous définissons avec vous le périmètre, les scénarios de menace réalistes et les règles d'engagement : ce qui est testé, ce qui ne l'est pas, et les garde-fous de sécurité." },
@@ -53,7 +59,7 @@ export const testIntrusion: Landing = {
       ],
       stats: [
         { num: '~400', label: 'intervenants coordonnés' },
-        { num: 'Police · secours · privé', label: 'acteurs mobilisés' },
+        { num: 'Institutionnels & privés', label: 'police et pompiers · médical et sécurité privée' },
       ],
     },
     faqs: [
@@ -89,6 +95,11 @@ export const auditConseil: Landing = {
     enjeuText:
       "Trop de dispositifs s'empilent par habitude ou au gré des offres commerciales : une caméra ici, un agent là, sans vision d'ensemble. Résultat : des budgets dépensés sans réduire les risques qui comptent vraiment. Un audit de sûreté remet de la logique - il part des menaces plausibles pour votre site, pas d'un catalogue de produits.",
     image: '/assets/photos/services-audit.jpg',
+    reperes: [
+      { b: 'Concept de sûreté', span: 'Le document qui organise votre protection' },
+      { b: 'Analyse et gestion des risques', span: 'Menace, vulnérabilité, impact' },
+      { b: 'Évacuation', span: 'Plans et mise en sécurité des personnes' },
+    ],
     stepsTitle: 'Du risque réel à des mesures proportionnées',
     steps: [
       { icon: 'shield', title: 'Analyse de risques', text: "Nous identifions les menaces plausibles, les vulnérabilités de votre site ou de votre organisation, et nous évaluons chaque scénario selon sa probabilité et son impact." },
@@ -116,7 +127,7 @@ export const auditConseil: Landing = {
       ],
       stats: [
         { num: '20+ ans', label: "d'expérience en sûreté" },
-        { num: 'CPP', label: 'ASIS International' },
+        { num: 'Méthodologie', label: 'éprouvée en conditions réelles' },
       ],
     },
     faqs: [
@@ -173,7 +184,7 @@ export const evenementiel: Landing = {
     proof: {
       eyebrow: 'Nos références',
       title: 'Des défilés de luxe aux stades européens',
-      text: "Nous sommes intervenus pour le défilé Moncler, l'UEFA Youth League et le Championnat d'Europe féminin 2025, où DBA Sécurité a assuré la responsabilité sécurité du Stade de Genève et piloté un exercice grandeur nature de près de 400 intervenants.",
+      text: "Nous sommes intervenus pour différents défilés de modes, des événements culturels et festifs ou encore pour des compétitions européennes de football, notamment en assurant la responsabilité de la sécurité et en pilotant des exercices grandeur nature impliquant près de 400 intervenants.",
       actions: [
         { href: '/references', label: 'Voir nos références' },
         { href: '/medias', label: 'Couverture presse', variant: 'ghost' },
@@ -186,7 +197,7 @@ export const evenementiel: Landing = {
     faqs: [
       { q: 'Pour quels types d’événements intervenez-vous ?', a: "Événements sportifs, défilés et événements de mode, manifestations culturelles ou institutionnelles, en Suisse comme à l'international." },
       { q: "Pouvez-vous nous aider à obtenir l'autorisation ?", a: "Oui. Nous élaborons le concept de sécurité attendu et préparons le dossier pour les autorités compétentes. Les exigences varient selon le canton et la commune - nous adaptons le dossier en conséquence." },
-      { q: 'Fournissez-vous aussi les agents de sécurité ?', a: "Notre métier est la conception et la coordination. Nous coordonnons les prestataires de terrain et pouvons vous aider à les sélectionner via un cahier des charges adapté, sans vous imposer un fournisseur." },
+      { q: 'Fournissez-vous aussi les agents de sécurité ?', a: "Notre métier est la conception et la coordination. Nous coordonnons les prestataires de terrain et pouvons vous aider à les sélectionner via un cahier des charges adapté, sans vous imposer un fournisseur. Par notre expérience, nous pouvons vous recommander les prestataires qualifiés selon le type de service souhaité." },
       { q: "Qu'est-ce qu'un exercice grandeur nature et en avons-nous besoin ?", a: "C'est une simulation en conditions réalistes qui éprouve le dispositif et la coordination avant l'événement. Pour les grands rassemblements, c'est le meilleur moyen de révéler les failles pendant qu'il est encore temps de corriger." },
     ],
     relatedTitle: 'Pour aller plus loin',
@@ -239,7 +250,7 @@ export const formation: Landing = {
     proof: {
       eyebrow: 'Sur le terrain',
       title: 'Former les cadres qui portent la sécurité au quotidien',
-      text: "Nous formons et coachons aussi bien des équipes de sécurité que des cadres opérationnels - par exemple les cadres QSE de SCRASA, entreprise genevoise du génie civil et du bâtiment - pour ancrer les bons réflexes dans le quotidien de l'organisation.",
+      text: "Nous formons et coachons aussi bien des équipes de sécurité que des cadres opérationnels - du domaine des institutions, organisations internationales, sécurité privée ou construction - pour ancrer les bons réflexes dans le quotidien de l'organisation.",
       actions: [
         { href: '/references', label: 'Voir nos références' },
         { href: '/fondateur', label: 'Le fondateur', variant: 'ghost' },
@@ -252,7 +263,7 @@ export const formation: Landing = {
     faqs: [
       { q: 'Vos formations sont-elles standardisées ?', a: "Non. Nous partons de vos risques réels et du niveau de vos équipes. Le contenu, les exemples et les mises en situation sont adaptés à votre activité." },
       { q: 'Qui peut être formé ?', a: "Aussi bien vos collaborateurs (sensibilisation) que vos équipes de sécurité (formation métier) et votre direction (coaching de gestion de crise)." },
-      { q: "Qu'est-ce qu'un exercice sur table ?", a: "Une simulation autour d'un scénario plausible, qui révèle en peu de temps les rôles manquants, les informations qui ne circulent pas et les décisions retardées. C'est un point de départ concret pour renforcer le plan." },
+      { q: "Qu'est-ce qu'un exercice de simulation sur table (ou table-top exercise) ?", a: "Une simulation autour d'un scénario plausible, qui révèle en peu de temps les rôles manquants, les informations qui ne circulent pas et les décisions retardées. C'est un point de départ concret pour renforcer le plan." },
       { q: 'Intervenez-vous sur site ?', a: "Oui, nous intervenons sur votre site, en français, en adaptant le format à vos contraintes d'organisation." },
     ],
     related: [
