@@ -34,7 +34,9 @@ const parentActive = (item: (typeof nav)[number]) =>
             </a>
             <div class="nav-dropdown" role="menu">
               {item.children.map((c) => (
-                <a href={c.href} role="menuitem" class:list={['dropdown-link', { active: isActive(c.href) }]}>{c.label}</a>
+                c.heading
+                  ? <span class="dropdown-heading">{c.label}</span>
+                  : <a href={c.href} role="menuitem" class:list={['dropdown-link', { active: isActive(c.href) }]}>{c.label}</a>
               ))}
             </div>
           </div>
@@ -57,7 +59,9 @@ const parentActive = (item: (typeof nav)[number]) =>
       <Fragment>
         <a href={item.href} class:list={['mobile-link', { active: isActive(item.href) }]}>{item.label}</a>
         {item.children && item.children.map((c) => (
-          <a href={c.href} class:list={['mobile-sublink', { active: isActive(c.href) }]}>{c.label}</a>
+          c.heading
+            ? <span class="mobile-subheading">{c.label}</span>
+            : <a href={c.href} class:list={['mobile-sublink', { active: isActive(c.href) }]}>{c.label}</a>
         ))}
       </Fragment>
     ))}
@@ -110,6 +114,7 @@ const parentActive = (item: (typeof nav)[number]) =>
   .dropdown-link { display: block; padding: 10px 14px; border-radius: 8px; font-size: 14px; font-weight: 500; color: var(--text); text-decoration: none; white-space: nowrap; }
   .dropdown-link:hover { background: var(--soft); color: var(--gold-strong); text-decoration: none; }
   .dropdown-link.active { color: var(--gold-strong); }
+  .dropdown-heading { display: block; margin: 8px 14px 2px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); }
 
   .header-cta { padding: 11px 22px; font-size: 14px; }
   .lang-switch { display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; letter-spacing: .04em; color: rgba(255,255,255,.9); border: 1px solid rgba(255,255,255,.4); border-radius: 7px; padding: 8px 11px; transition: color .2s, border-color .2s; }
@@ -132,6 +137,7 @@ const parentActive = (item: (typeof nav)[number]) =>
   .mobile-link:hover, .mobile-link.active { color: var(--gold-strong); background: var(--soft); }
   .mobile-sublink { color: var(--text-muted); font-weight: 500; font-size: 14px; padding: 10px 8px 10px 24px; border-radius: 8px; text-decoration: none; }
   .mobile-sublink:hover, .mobile-sublink.active { color: var(--gold-strong); background: var(--soft); }
+  .mobile-subheading { padding: 12px 8px 4px 24px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); }
   .mobile-cta { margin-top: 10px; justify-content: center; }
 
   @media (max-width: 960px) {

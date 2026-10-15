@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" font-family="Poppins, 'Segoe UI', Arial, sans-serif">
+  <title>Une boutique analysée couche par couche, de la rue jusqu'au coffre</title>
+  <defs>
+    <pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="10" height="10" fill="#E9EBF5"/>
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#0D145A" stroke-width="2.2" opacity=".35"/>
+    </pattern>
+    <pattern id="paving" width="28" height="28" patternUnits="userSpaceOnUse">
+      <rect width="28" height="28" fill="#E3E6EF"/>
+      <path d="M0 0H28M0 0V28" stroke="#D3D7E3" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Fond du plan -->
+  <rect width="560" height="600" fill="#F6F7FB"/>
+
+  <!-- Couche 1 : environnement (rue) -->
+  <rect x="0" y="478" width="560" height="122" fill="url(#paving)"/>
+  <text x="28" y="578" font-size="12" font-weight="600" letter-spacing="2" fill="#8A90AE">ESPACE PUBLIC</text>
+  <g fill="#B9BED3">
+    <circle cx="120" cy="520" r="6"/><circle cx="138" cy="528" r="6"/>
+    <circle cx="330" cy="540" r="6"/><circle cx="430" cy="515" r="6"/>
+    <circle cx="470" cy="556" r="6"/><circle cx="250" cy="566" r="6"/>
+  </g>
+
+  <!-- Couche 2 : enveloppe du bâtiment -->
+  <rect x="60" y="62" width="440" height="410" fill="#FFFFFF" stroke="#0D145A" stroke-width="7"/>
+  <!-- Vitrines sur rue -->
+  <line x1="78" y1="472" x2="214" y2="472" stroke="#8DB8E2" stroke-width="9"/>
+  <line x1="290" y1="472" x2="482" y2="472" stroke="#8DB8E2" stroke-width="9"/>
+  <!-- Entrée clients -->
+  <line x1="216" y1="472" x2="288" y2="472" stroke="#FFFFFF" stroke-width="10"/>
+  <path d="M220 472 A62 62 0 0 1 282 410" fill="none" stroke="#0D145A" stroke-width="1.6" stroke-dasharray="4 4"/>
+  <line x1="220" y1="472" x2="282" y2="410" stroke="#0D145A" stroke-width="3"/>
+  <text x="252" y="498" font-size="11" text-anchor="middle" fill="#5B6185">Entrée clients</text>
+  <!-- Entrée du personnel (côté) -->
+  <line x1="60" y1="130" x2="60" y2="178" stroke="#FFFFFF" stroke-width="10"/>
+  <line x1="60" y1="132" x2="100" y2="168" stroke="#0D145A" stroke-width="3"/>
+  <text x="92" y="226" font-size="11" fill="#5B6185">Accès personnel</text>
+
+  <!-- Cloison vente / zone réservée -->
+  <line x1="60" y1="252" x2="390" y2="252" stroke="#0D145A" stroke-width="4"/>
+  <line x1="440" y1="252" x2="500" y2="252" stroke="#0D145A" stroke-width="4"/>
+  <line x1="392" y1="252" x2="430" y2="226" stroke="#0D145A" stroke-width="2.5"/>
+
+  <!-- Couche 3 : espace de vente -->
+  <rect x="80" y="270" width="400" height="184" rx="6" fill="none" stroke="#C9A24B" stroke-width="2" stroke-dasharray="7 6"/>
+  <g fill="#F3E7C7" stroke="#C9A24B" stroke-width="2">
+    <rect x="98" y="300" width="70" height="26" rx="3"/>
+    <rect x="98" y="392" width="70" height="26" rx="3"/>
+    <rect x="392" y="300" width="70" height="26" rx="3"/>
+    <rect x="392" y="392" width="70" height="26" rx="3"/>
+  </g>
+  <rect x="226" y="330" width="108" height="44" rx="6" fill="#FFFFFF" stroke="#0D145A" stroke-width="2"/>
+  <text x="280" y="357" font-size="11" text-anchor="middle" fill="#5B6185">Présentation</text>
+
+  <!-- Couche 4 : zone réservée -->
+  <rect x="80" y="82" width="270" height="152" rx="6" fill="none" stroke="#C9A24B" stroke-width="2" stroke-dasharray="7 6"/>
+  <g fill="#E9EBF5" stroke="#0D145A" stroke-width="1.6">
+    <rect x="150" y="104" width="86" height="36" rx="3"/>
+    <rect x="252" y="104" width="76" height="36" rx="3"/>
+    <rect x="170" y="170" width="158" height="34" rx="3"/>
+  </g>
+
+  <!-- Couche 5 : coffre -->
+  <rect x="372" y="84" width="108" height="140" fill="url(#hatch)" stroke="#0D145A" stroke-width="6"/>
+  <rect x="408" y="140" width="36" height="36" rx="4" fill="#FFFFFF" stroke="#0D145A" stroke-width="3"/>
+  <circle cx="426" cy="158" r="8" fill="none" stroke="#C9A24B" stroke-width="3"/>
+
+  <!-- Repères numérotés -->
+  <g font-size="15" font-weight="700" text-anchor="middle">
+    <circle cx="510" cy="540" r="17" fill="#C9A24B"/><text x="510" y="545" fill="#0D145A">1</text>
+    <circle cx="500" cy="372" r="17" fill="#C9A24B"/><text x="500" y="377" fill="#0D145A">2</text>
+    <circle cx="280" cy="296" r="17" fill="#C9A24B"/><text x="280" y="301" fill="#0D145A">3</text>
+    <circle cx="112" cy="122" r="17" fill="#C9A24B"/><text x="112" y="127" fill="#0D145A">4</text>
+    <circle cx="426" cy="112" r="17" fill="#C9A24B"/><text x="426" y="117" fill="#0D145A">5</text>
+  </g>
+
+  <!-- Légende -->
+  <rect x="560" width="240" height="600" fill="#0D145A"/>
+  <text x="590" y="64" font-size="12" font-weight="600" letter-spacing="2" fill="#C9A24B">DE LA RUE AU COFFRE</text>
+  <text x="590" y="96" font-size="21" font-weight="700" fill="#FFFFFF">5 couches</text>
+  <text x="590" y="122" font-size="21" font-weight="700" fill="#FFFFFF">de protection</text>
+
+  <g font-size="14" fill="#FFFFFF">
+    <circle cx="604" cy="176" r="14" fill="#C9A24B"/><text x="604" y="181" font-size="13" font-weight="700" text-anchor="middle" fill="#0D145A">1</text>
+    <text x="630" y="173">Environnement</text><text x="630" y="191" fill="#AEB3D6" font-size="12">la rue, le quartier</text>
+
+    <circle cx="604" cy="240" r="14" fill="#C9A24B"/><text x="604" y="245" font-size="13" font-weight="700" text-anchor="middle" fill="#0D145A">2</text>
+    <text x="630" y="237">Enveloppe</text><text x="630" y="255" fill="#AEB3D6" font-size="12">façade, vitrines, accès</text>
+
+    <circle cx="604" cy="304" r="14" fill="#C9A24B"/><text x="604" y="309" font-size="13" font-weight="700" text-anchor="middle" fill="#0D145A">3</text>
+    <text x="630" y="301">Espace de vente</text><text x="630" y="319" fill="#AEB3D6" font-size="12">clients et présentation</text>
+
+    <circle cx="604" cy="368" r="14" fill="#C9A24B"/><text x="604" y="373" font-size="13" font-weight="700" text-anchor="middle" fill="#0D145A">4</text>
+    <text x="630" y="365">Zone réservée</text><text x="630" y="383" fill="#AEB3D6" font-size="12">le personnel seulement</text>
+
+    <circle cx="604" cy="432" r="14" fill="#C9A24B"/><text x="604" y="437" font-size="13" font-weight="700" text-anchor="middle" fill="#0D145A">5</text>
+    <text x="630" y="429">Coffre</text><text x="630" y="447" fill="#AEB3D6" font-size="12">le cœur de la boutique</text>
+  </g>
+
+  <line x1="590" y1="492" x2="770" y2="492" stroke="#2A3278"/>
+  <text x="590" y="522" font-size="12.5" fill="#D6D9EE">Une faiblesse sur une couche</text>
+  <text x="590" y="541" font-size="12.5" fill="#D6D9EE">se paie sur toutes les autres.</text>
+</svg>

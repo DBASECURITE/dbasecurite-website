@@ -32,7 +32,7 @@ export const site = {
 export interface NavItem {
   label: string;
   href: string;
-  children?: { label: string; href: string }[];
+  children?: { label: string; href: string; heading?: boolean }[];
 }
 
 export const nav: NavItem[] = [
@@ -47,6 +47,8 @@ export const nav: NavItem[] = [
       { label: 'Sécurité & coordination d’événements', href: '/securite-evenementielle' },
       { label: 'Tests d’intrusion & exercices', href: '/test-intrusion-physique' },
       { label: 'Formation & sensibilisation', href: '/formation-securite' },
+      { label: 'Audits spécialisés', href: '', heading: true },
+      { label: 'Bijouteries, horlogeries & luxe', href: '/audit-surete-bijouterie-horlogerie' },
     ],
   },
   { label: 'Références', href: '/references' },

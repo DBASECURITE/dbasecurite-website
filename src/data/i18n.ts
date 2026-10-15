@@ -21,6 +21,7 @@ export const pageMap: { fr: string; en: string }[] = [
   { fr: '/medias', en: '/en/media' },
   { fr: '/contact', en: '/en/contact' },
   { fr: '/faq', en: '/en/faq' },
+  { fr: '/audit-surete-bijouterie-horlogerie', en: '/en/jewellery-watch-store-security-audit' },
 ];
 
 const norm = (p: string) => (p !== '/' && p.endsWith('/') ? p.slice(0, -1) : p);
@@ -47,6 +48,8 @@ export const navEn: NavItem[] = [
       { label: 'Event security & coordination', href: '/en/event-security' },
       { label: 'Penetration testing & exercises', href: '/en/physical-penetration-testing' },
       { label: 'Training & awareness', href: '/en/security-training' },
+      { label: 'Specialised audits', href: '', heading: true },
+      { label: 'Jewellery, watches & luxury', href: '/en/jewellery-watch-store-security-audit' },
     ],
   },
   { label: 'References', href: '/en/references' },
