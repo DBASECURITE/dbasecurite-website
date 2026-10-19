@@ -49,6 +49,7 @@ export const nav: NavItem[] = [
       { label: 'Formation & sensibilisation', href: '/formation-securite' },
       { label: 'Audits spécialisés', href: '', heading: true },
       { label: 'Bijouteries, horlogeries & luxe', href: '/audit-surete-bijouterie-horlogerie' },
+      { label: 'Logistique & grandes surfaces', href: '/audit-surete-logistique-grandes-surfaces' },
     ],
   },
   { label: 'Références', href: '/references' },

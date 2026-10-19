@@ -89,3 +89,91 @@ export const bijouterieHorlogerieEn: Sector = {
     cta: { title: "Let's talk about your store", text: 'A first confidential conversation to understand your context and define the scope of the audit.' },
   },
 };
+
+export const logistiqueEn: Sector = {
+  meta: {
+    title: 'Security audit: logistics sites, retail stores and industrial sites - DBA Sécurité',
+    description:
+      'Security audits for warehouses, distribution centres, large retail stores and industrial sites in French-speaking Switzerland: access, flows, theft, antisocial behaviour and the safety of people. Independent advice.',
+  },
+  landing: {
+    path: '/en/logistics-retail-security-audit',
+    serviceType: 'Security audit for logistics sites, distribution centres, large retail stores and industrial sites',
+    serviceDescription:
+      'DBA Sécurité audits the security of logistics sites, large retail stores and industrial sites: perimeter, access control, flows of people and goods, theft and malicious acts.',
+    eyebrow: 'Logistics · Retail · Industry',
+    title: 'Security audits for logistics sites, retail stores and industrial sites',
+    subtitle:
+      'Warehouses, distribution centres, large retail stores: hundreds of people, goods on the move and long opening hours. We help you control what comes in and goes out, without slowing operations down.',
+    heroVisual: { src: '/assets/photos/logistique-entrepot.jpg', alt: '' },
+    reperes: [
+      { b: 'The perimeter', span: 'Knowing who comes in and goes out' },
+      { b: 'The flows', span: 'People, vehicles, goods' },
+      { b: 'Continuity', span: 'Producing, delivering and selling without interruption' },
+    ],
+    enjeuTitle: 'Smooth operations must not come at the expense of security',
+    enjeuText: [
+      'A logistics site or a large store lives on its flows: employees, drivers, customers, contractors and machinery cross paths all the time. This freedom of movement is essential to operations, but it also benefits those who have no business being there.',
+      'Our approach aims for a simple balance: strict control at the entrances, at deliveries and on the perimeter, so that people can move more freely inside, within a clear framework.',
+    ],
+    phasesEyebrow: 'How an incident unfolds',
+    phasesTitle: 'From a discreet gap to a visible incident',
+    phases: [
+      { title: 'Everyday gaps', text: 'A gate left open, an emergency exit used as a shortcut, a borrowed badge, a check skipped for lack of time. Incidents often grow out of small habits.' },
+      { title: 'The incident', text: 'Intrusion, theft of goods from the stockroom or the shelves, an assault on an employee, sabotage or an accident between a pedestrian and a truck: the site must detect and react, day and night.' },
+      { title: 'The consequences', text: "Losses, supply disruption, shaken employees, the company's liability, its image. Being able to trace what happened determines what comes next." },
+    ],
+    phasesFoot: 'Our audit covers all three stages, not just the incident itself.',
+    blocksTitle: 'A site divided into zones, each with its own level of control',
+    blocks: [
+      {
+        eyebrow: 'Perimeter and access',
+        title: 'Controlling who comes in and goes out',
+        text: 'Fences, gates, turnstiles, gatehouse, badges, emergency exits: we check that every access point is genuinely controlled, that detection works and that an abnormal event is reported without relying on someone watching all the time.',
+        points: ['Perimeter delimitation and detection', 'Control of people, vehicles and deliveries', 'Alarm reporting and handling'],
+        visual: { src: '/assets/photos/logistique-acces.jpg', alt: 'Access control turnstiles in a warehouse' },
+      },
+      {
+        eyebrow: 'Zoning and flows',
+        title: 'Segmenting the site without paralysing it',
+        text: 'Stockrooms, loading docks, sales floor, checkouts, technical rooms: we identify sensitive areas, the flows that cross them and the right level of control for each. The goal: smooth circulation where possible, controlled access where necessary.',
+        points: ['Sensitive and technical areas', 'Pedestrian and vehicle circulation', 'Signage and site rules'],
+        visual: { src: '/assets/illustrations/site-logistique-zones-en.svg', alt: 'Schematic plan of a logistics site divided into zones' },
+      },
+      {
+        eyebrow: 'Organisation and presence',
+        title: 'The right people in the right places',
+        text: 'We assess the security presence, its actual tasks, the workload placed on the officers, their training on the site and the tools they have to log events. In stores, we also look at how sales teams are prepared to deal with theft and antisocial behaviour.',
+      },
+    ],
+    mandat: {
+      label: 'Production and distribution',
+      title: 'Audit of a production and distribution site',
+      contexte: 'A multi-building site in French-speaking Switzerland, where several hundred people and heavy truck traffic cross paths every day.',
+      mission: 'An audit scoped together with the client: scope, depth of analysis and deliverables were agreed according to their budget constraints and the results they expected. Two specialists analysed zoning, flows and organisational, technical and human measures.',
+      resultat: 'A summary of vulnerabilities assessed one by one and a set of recommendations grouped by theme, including three key measures for management.',
+      visual: { src: '/assets/photos/logistique-audit.jpg', alt: 'DBA Sécurité consultant auditing a warehouse' },
+    },
+    livrableTitle: 'A roadmap management can decide on',
+    livrableText: 'We set each measure against the risk it reduces, so you can weigh budget, operations and level of security.',
+    livrables: [
+      'Executive summary and key measures',
+      'Zone-by-zone analysis of the site',
+      'Vulnerabilities assessed one by one',
+      'Recommendations grouped by theme and priority',
+      'Support with tenders and implementation',
+    ],
+    faqs: [
+      { q: 'Do you also audit large retail stores and shops?', a: 'Yes. We examine the sales floor, checkouts, stockroom, deliveries and emergency exits, as well as how teams are prepared to deal with theft and antisocial behaviour.' },
+      { q: 'How is the audit scoped?', a: 'It is tailored to each client. Together we define the scope, the depth of analysis and the deliverables, according to your budget constraints and the results you expect.' },
+      { q: 'Does an audit disrupt operations?', a: 'No. The visit takes place during normal activity, with a designated contact person. It is actually the best time to observe real flows.' },
+      { q: 'Do you also cover cybersecurity?', a: 'No. We focus on physical security. We do, however, point out where it overlaps with IT, such as access to technical rooms.' },
+      { q: 'Can you help us write a tender?', a: 'Yes. We can turn the recommendations into specifications for your guarding or security systems providers, then help you compare the offers.' },
+    ],
+    related: [
+      { label: 'Security audit & consulting', slug: '/en/security-audit-consulting' },
+      { label: 'Physical penetration testing & exercises', slug: '/en/physical-penetration-testing' },
+    ],
+    cta: { title: "Let's talk about your site", text: 'Together we define the scope of the audit and the zones to examine first.' },
+  },
+};

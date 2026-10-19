@@ -95,3 +95,92 @@ export const bijouterieHorlogerie: Sector = {
     cta: { title: 'Parlons de votre boutique', text: "Un premier échange confidentiel pour comprendre votre contexte et définir le périmètre de l'audit." },
   },
 };
+
+export const logistique: Sector = {
+  meta: {
+    title: 'Audit de sûreté : sites logistiques, grandes surfaces et sites industriels - DBA Sécurité',
+    description:
+      "Audit de sûreté pour entrepôts, centres de distribution, grandes surfaces et sites industriels en Suisse romande : accès, flux, vol, incivilités et sécurité des personnes. Conseil indépendant.",
+  },
+  landing: {
+    path: '/audit-surete-logistique-grandes-surfaces',
+    serviceType: 'Audit de sûreté pour sites logistiques, centres de distribution, grandes surfaces et sites industriels',
+    serviceDescription:
+      "DBA Sécurité audite la sûreté des sites logistiques, des grandes surfaces et des sites industriels : périmètre, contrôle d'accès, flux de personnes et de marchandises, vol et malveillance.",
+    eyebrow: 'Logistique · Grandes surfaces · Industrie',
+    title: 'Audit de sûreté des sites logistiques, grandes surfaces et sites industriels',
+    subtitle:
+      "Entrepôts, centres de distribution, grandes surfaces : des centaines de personnes, des marchandises en mouvement et des plages d'ouverture étendues. Nous vous aidons à maîtriser ce qui entre et sort, sans freiner l'activité.",
+    heroVisual: { src: '/assets/photos/logistique-entrepot.jpg', alt: '' },
+    reperes: [
+      { b: 'Le périmètre', span: 'Savoir qui entre et qui sort' },
+      { b: 'Les flux', span: 'Personnes, véhicules, marchandises' },
+      { b: 'La continuité', span: 'Produire, livrer et vendre sans interruption' },
+    ],
+    enjeuTitle: "La fluidité de l'activité ne doit pas se faire au prix de la sûreté",
+    enjeuText: [
+      "Un site logistique ou une grande surface vit de ses flux : collaborateurs, chauffeurs, clients, prestataires et engins s'y croisent en permanence. Cette liberté de circulation est indispensable à l'exploitation, mais elle profite aussi à ceux qui n'ont rien à y faire.",
+      "Notre approche vise un équilibre simple : un contrôle exigeant aux entrées, aux livraisons et en périphérie, pour pouvoir laisser circuler plus librement à l'intérieur, dans un cadre clair.",
+    ],
+    phasesEyebrow: "Le déroulé d'un incident",
+    phasesTitle: "De la faille discrète à l'incident visible",
+    phases: [
+      { title: 'Les failles du quotidien', text: "Un portail resté ouvert, une issue de secours utilisée comme raccourci, un badge prêté, un contrôle sauté par manque de temps. Les incidents naissent souvent de petites habitudes." },
+      { title: "L'incident", text: "Intrusion, vol de marchandises en réserve ou en rayon, agression d'un collaborateur, sabotage ou accident entre un piéton et un poids lourd : le site doit détecter et réagir, de jour comme de nuit." },
+      { title: 'Les conséquences', text: "Pertes, rupture d'approvisionnement, collaborateurs choqués, responsabilité de l'entreprise, image. Savoir retracer ce qui s'est passé conditionne la suite." },
+    ],
+    phasesFoot: "Notre audit couvre ces trois temps, pas seulement l'incident lui-même.",
+    blocksTitle: 'Un site découpé en zones, chacune avec son niveau de contrôle',
+    blocks: [
+      {
+        eyebrow: 'Périmètre et accès',
+        title: 'Maîtriser les entrées et les sorties',
+        text: "Clôtures, portails, tourniquets, guérite, badges, issues de secours : nous vérifions que chaque accès est réellement contrôlé, que la détection fonctionne et qu'un événement anormal est remonté sans dépendre d'un regard humain permanent.",
+        points: ['Délimitation et détection périmétrique', 'Contrôle des personnes, des véhicules et des livraisons', 'Remontée et traitement des alarmes'],
+        visual: { src: '/assets/photos/logistique-acces.jpg', alt: 'Tourniquets de contrôle d’accès dans un entrepôt' },
+      },
+      {
+        eyebrow: 'Zonage et flux',
+        title: 'Segmenter le site sans le paralyser',
+        text: "Réserves, quais, surface de vente, caisses, locaux techniques : nous identifions les zones sensibles, les flux qui s'y croisent et le niveau de contrôle adapté à chacune. Le but : une circulation fluide là où c'est possible, et des accès maîtrisés là où c'est nécessaire.",
+        points: ['Zones sensibles et techniques', 'Circulation des piétons et des véhicules', 'Signalisation et règles du site'],
+        visual: { src: '/assets/illustrations/site-logistique-zones.svg', alt: 'Plan schématique d’un site logistique découpé en zones' },
+      },
+      {
+        eyebrow: 'Organisation et présence',
+        title: 'Les bonnes personnes, aux bons endroits',
+        text: "Nous évaluons la présence de sécurité, ses missions réelles, la charge qui pèse sur les agents, leur formation au site et les outils dont ils disposent pour tracer les événements. En magasin, nous regardons aussi comment les équipes de vente sont préparées face au vol et aux incivilités.",
+      },
+    ],
+    mandat: {
+      label: 'Production et distribution',
+      title: "L'audit d'un site de production et de distribution",
+      contexte: "Un site de plusieurs bâtiments en Suisse romande, où plusieurs centaines de personnes et un trafic intense de poids lourds se croisent chaque jour.",
+      mission: "Un audit dimensionné avec le client : périmètre, profondeur d'analyse et livrables ont été définis ensemble, selon ses contraintes budgétaires et les résultats attendus. Deux spécialistes ont analysé le zonage, les flux et les mesures organisationnelles, techniques et humaines.",
+      resultat: "Une synthèse des vulnérabilités évaluées une à une et un plan de recommandations regroupé par thème, dont trois mesures clés pour la direction.",
+      visual: { src: '/assets/photos/logistique-audit.jpg', alt: 'Consultant DBA Sécurité en cours d’audit dans un entrepôt' },
+    },
+    livrableTitle: 'Une feuille de route que la direction peut arbitrer',
+    livrableText: "Nous mettons chaque mesure en regard du risque qu'elle réduit, pour que vous puissiez arbitrer entre budget, exploitation et niveau de sûreté.",
+    livrables: [
+      'Synthèse pour la direction et mesures clés',
+      'Analyse par zone du site',
+      'Vulnérabilités évaluées une à une',
+      'Recommandations regroupées par thème et par priorité',
+      "Accompagnement pour les appels d'offres et la mise en œuvre",
+    ],
+    faqs: [
+      { q: 'Auditez-vous aussi les grandes surfaces et les magasins ?', a: "Oui. Nous examinons la surface de vente, les caisses, la réserve, les livraisons et les issues de secours, ainsi que la préparation des équipes face au vol et aux incivilités." },
+      { q: 'Comment l’audit est-il dimensionné ?', a: "Il est adapté à chaque client. Nous définissons ensemble le périmètre, la profondeur d'analyse et les livrables, selon vos contraintes budgétaires et les résultats que vous attendez." },
+      { q: 'Un audit perturbe-t-il l’exploitation ?', a: "Non. La visite se fait pendant l'activité normale, avec un interlocuteur désigné. C'est même le meilleur moment pour observer les flux réels." },
+      { q: 'Traitez-vous aussi la cybersécurité ?', a: "Non. Nous nous concentrons sur la sûreté physique. Nous signalons toutefois les points où elle touche à l'informatique, comme l'accès aux locaux techniques." },
+      { q: 'Pouvez-vous nous aider à rédiger un appel d’offres ?', a: "Oui. Nous pouvons traduire les recommandations en cahier des charges pour vos prestataires de gardiennage ou de systèmes de sécurité, puis vous aider à comparer les offres." },
+    ],
+    related: [
+      { label: 'Audit & conseil en sûreté', slug: '/audit-et-conseil-surete' },
+      { label: 'Défense en profondeur : protéger un site couche par couche', slug: 'defense-en-profondeur-securite-physique' },
+      { label: "Appel d'offres sécurité : rédiger un bon cahier des charges", slug: 'appel-offres-securite-cahier-des-charges' },
+    ],
+    cta: { title: 'Parlons de votre site', text: "Nous définissons ensemble le périmètre de l'audit et les zones à examiner en priorité." },
+  },
+};
