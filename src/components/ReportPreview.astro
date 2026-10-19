@@ -1,0 +1,167 @@
+---
+// Extrait fictif et impersonnel d'un rapport d'audit DBA : synthèse chiffrée, maturité en trois regards,
+// recommandations par horizon. Montre la forme du livrable sans livrer la grille d'évaluation.
+import { localeFromPath } from '../data/i18n';
+
+const en = localeFromPath(Astro.url.pathname) === 'en';
+
+const T = en
+  ? {
+      aria: 'Fictitious excerpt from a security audit report',
+      title: 'Security audit report', sub: 'Fictitious example · excerpt',
+      s1: '1. Executive summary', msgTitle: 'Key message',
+      msg: 'The site has recent equipment and a working monitoring and response chain. What is missing is not hardware, but the framework that makes it enforceable: written rules, assigned roles and prepared teams.',
+      kpis: [
+        { n: '38', l: 'Rated hazards', s: '4 at high level or above' },
+        { n: '12', l: 'Findings', s: 'across 6 analysis blocks' },
+        { n: '10', l: 'Measures', s: 'spread over 12 months' },
+        { n: '30', l: 'Estimated effort days', s: 'for implementation' },
+      ],
+      s2: '2. Where the site stands, from three angles',
+      lvl: (n: number) => `Level ${n} of 3`,
+      domains: [
+        { d: 'Human', n: 1, v: 'Committed teams, little preparation' },
+        { d: 'Technical', n: 2, v: 'Good equipment, a few blind spots' },
+        { d: 'Organisational', n: 1, v: 'Habits rather than written rules' },
+      ],
+      scale: ['0 - non-existent', '1 - informal', '2 - written and applied', '3 - written, applied and checked'],
+      s3: '3. Measures & recommendations', cols: ['No.', 'Recommendation', 'Horizon'],
+      hz: { i: 'Immediate', s: 'Structural', f: 'Long-term' },
+      recos: [
+        ['Formalise the priority security procedures', 'i'],
+        ['Train the most exposed staff', 'i'],
+        ['Restrict out-of-hours access', 'i'],
+        ['Extend video coverage to sensitive areas', 's'],
+        ['Assign security responsibilities by role', 's'],
+        ['Adopt a security charter', 'f'],
+      ],
+      hzLegend: 'Immediate: quick, low-dependency measures · Structural: require design and roll-out · Long-term: culture and framework',
+      note: 'Illustrative excerpt. Each report is tailored to the site and to the assignment.',
+    }
+  : {
+      aria: "Extrait fictif d'un rapport d'audit de sûreté",
+      title: "Rapport d'audit de sûreté", sub: 'Exemple fictif · extrait',
+      s1: '1. Synthèse pour la direction', msgTitle: 'Message central',
+      msg: "Le site dispose d'équipements récents et d'une chaîne de surveillance et d'intervention qui fonctionne. Ce qui manque n'est pas le matériel, c'est le cadre qui le rend opposable : des règles écrites, des rôles attribués et des équipes préparées.",
+      kpis: [
+        { n: '38', l: 'Dangers cotés', s: 'dont 4 au niveau élevé ou supérieur' },
+        { n: '12', l: 'Constats', s: "sur 6 blocs d'analyse" },
+        { n: '10', l: 'Mesures', s: 'réparties sur 12 mois' },
+        { n: '30', l: 'Jours-effort estimés', s: 'pour la mise en œuvre' },
+      ],
+      s2: '2. Où en est le site, en trois regards',
+      lvl: (n: number) => `Niveau ${n} sur 3`,
+      domains: [
+        { d: 'Humain', n: 1, v: 'Des équipes engagées, peu préparées' },
+        { d: 'Technique', n: 2, v: 'Du bon matériel, quelques angles morts' },
+        { d: 'Organisationnel', n: 1, v: "Des usages plutôt que des règles écrites" },
+      ],
+      scale: ['0 - inexistant', '1 - informel', '2 - écrit et appliqué', '3 - écrit, appliqué et contrôlé'],
+      s3: '3. Mesures & recommandations', cols: ['N°', 'Recommandation', 'Horizon'],
+      hz: { i: 'Immédiat', s: 'Structurel', f: 'De fond' },
+      recos: [
+        ['Formaliser les procédures de sûreté prioritaires', 'i'],
+        ['Former les collaborateurs les plus exposés', 'i'],
+        ["Restreindre l'accès en dehors des heures", 'i'],
+        ['Étendre la couverture vidéo aux zones sensibles', 's'],
+        ['Attribuer les responsabilités de sûreté par fonction', 's'],
+        ['Établir une charte de sûreté', 'f'],
+      ],
+      hzLegend: 'Immédiat : mesures rapides et peu dépendantes · Structurel : conception et déploiement · De fond : culture et cadre',
+      note: "Extrait fictif, à titre d'illustration. Chaque rapport est adapté au site et au mandat.",
+    };
+---
+<div class="rp" role="img" aria-label={T.aria}>
+  <div class="rp-bar">
+    <img class="rp-logo" src="/assets/logo-dba-white.png" alt="" />
+    <div><b>{T.title}</b><span>{T.sub}</span></div>
+  </div>
+
+  <div class="rp-body">
+    <p class="rp-h">{T.s1}</p>
+    <p class="rp-msg"><b>{T.msgTitle}.</b> {T.msg}</p>
+    <div class="rp-kpis">
+      {T.kpis.map((k) => (
+        <div class="rp-kpi"><span class="rp-n">{k.n}</span><span class="rp-l">{k.l}</span><span class="rp-s">{k.s}</span></div>
+      ))}
+    </div>
+
+    <p class="rp-h">{T.s2}</p>
+    <div class="rp-domains">
+      {T.domains.map((d) => (
+        <div class="rp-dom">
+          <span class="rp-dname">{d.d}</span>
+          <span class="rp-meter">{[1, 2, 3].map((i) => <i class:list={{ on: i <= d.n }}></i>)}</span>
+          <span class="rp-lvl">{T.lvl(d.n)}</span>
+          <span class="rp-verdict">{d.v}</span>
+        </div>
+      ))}
+    </div>
+    <p class="rp-scale">{T.scale.map((s) => <span>{s}</span>)}</p>
+
+    <p class="rp-h">{T.s3}</p>
+    <table class="rp-table">
+      <thead><tr>{T.cols.map((c) => <th>{c}</th>)}</tr></thead>
+      <tbody>
+        {T.recos.map(([r, h], i) => (
+          <tr>
+            <td><span class="rp-num">R{i + 1}</span></td>
+            <td>{r}</td>
+            <td><span class={`rp-hz rp-hz--${h}`}>{T.hz[h as 'i' | 's' | 'f']}</span></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <p class="rp-legend">{T.hzLegend}</p>
+    <p class="rp-note">{T.note}</p>
+  </div>
+</div>
+
+<style>
+  .rp { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: 0 30px 60px rgba(13,20,90,.12); overflow: hidden; }
+  .rp-bar { display: flex; align-items: center; gap: 12px; background: var(--navy); color: #fff; padding: 16px 28px; }
+  .rp-logo { height: 34px; width: auto; flex-shrink: 0; }
+  .rp-bar b { display: block; font-size: 15px; }
+  .rp-bar span { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+  .rp-body { padding: 26px 28px 24px; }
+  .rp-h { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--navy); margin: 26px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--navy); }
+  .rp-h:first-child { margin-top: 0; }
+  .rp-msg { font-size: 14.5px; color: var(--text-muted); margin: 0 0 16px; }
+  .rp-msg b { color: var(--navy); }
+
+  .rp-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .rp-kpi { display: flex; flex-direction: column; background: var(--soft); border-top: 3px solid var(--navy); border-radius: 6px; padding: 12px 14px; }
+  .rp-n { font-size: 1.9rem; font-weight: 700; color: var(--gold-strong); line-height: 1.1; }
+  .rp-l { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--navy); margin-top: 4px; }
+  .rp-s { font-size: 12px; color: var(--text-muted); }
+
+  .rp-domains { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .rp-dom { display: flex; flex-direction: column; gap: 6px; border: 1px solid var(--border); border-top: 3px solid var(--navy); border-radius: 6px; padding: 12px 14px; }
+  .rp-dname { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); }
+  .rp-meter { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+  .rp-meter i { height: 7px; border-radius: 4px; background: var(--mist); }
+  .rp-meter i.on { background: var(--gold); }
+  .rp-lvl { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); }
+  .rp-verdict { font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.35; }
+  .rp-scale { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 11.5px; color: var(--text-muted); margin: 8px 0 0; }
+
+  .rp-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .rp-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #fff; background: var(--navy); padding: 9px 12px; }
+  .rp-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
+  .rp-table td:first-child, .rp-table th:first-child { width: 58px; }
+  .rp-table td:last-child, .rp-table th:last-child { width: 120px; }
+  .rp-num { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: var(--navy); color: #fff; font-size: 12px; font-weight: 700; }
+  .rp-hz { display: inline-block; font-size: 12.5px; font-weight: 600; padding: 4px 10px; border-radius: 5px; color: #3a2a05; }
+  .rp-hz--i { background: #EDB55A; }
+  .rp-hz--s { background: #F6E8B1; }
+  .rp-hz--f { background: #D3E9D1; color: #1f4a26; }
+  .rp-legend { font-size: 12px; color: var(--text-muted); margin: 10px 0 0; }
+  .rp-note { font-size: 12px; color: var(--text-muted); font-style: italic; margin: 14px 0 0; padding-top: 12px; border-top: 1px dashed var(--border); }
+
+  @media (max-width: 760px) {
+    .rp-kpis { grid-template-columns: 1fr 1fr; }
+    .rp-domains { grid-template-columns: 1fr; }
+    .rp-body { padding: 20px 18px; }
+    .rp-table td:last-child, .rp-table th:last-child { width: auto; }
+  }
+</style>

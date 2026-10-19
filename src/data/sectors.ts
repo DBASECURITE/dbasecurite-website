@@ -75,10 +75,10 @@ export const bijouterieHorlogerie: Sector = {
     livrableTitle: 'Un rapport clair, pensé pour décider',
     livrableText: "Vous recevez une lecture rapide pour la direction et le détail pour vos équipes. Chaque recommandation est priorisée et proportionnée à vos contraintes.",
     livrables: [
-      'Synthèse pour la direction avec un score de sûreté',
+      'Synthèse pour la direction : message central et chiffres clés',
       'Analyse de la menace propre à votre boutique',
       'Points forts et vulnérabilités, évalués un par un',
-      'Recommandations classées par priorité',
+      'Recommandations classées par horizon de mise en œuvre',
       'Restitution orale et accompagnement de la mise en œuvre',
     ],
     faqs: [

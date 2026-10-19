@@ -69,10 +69,10 @@ export const bijouterieHorlogerieEn: Sector = {
     livrableTitle: 'A clear report, designed for decision-making',
     livrableText: 'You receive a quick read for management and the detail for your teams. Each recommendation is prioritised and proportionate to your constraints.',
     livrables: [
-      'Executive summary with a security score',
+      'Executive summary: key message and key figures',
       'Analysis of the threat specific to your store',
       'Strengths and vulnerabilities, assessed one by one',
-      'Recommendations ranked by priority',
+      'Recommendations ranked by implementation horizon',
       'Oral debrief and support with implementation',
     ],
     faqs: [
