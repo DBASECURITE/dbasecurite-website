@@ -202,13 +202,11 @@ const faqLd = {
 
 <!-- APERÇU DU LIVRABLE -->
 <section class="section">
-  <div class="container">
-    <div class="livr-head">
-      <div>
-        <p class="eyebrow">{L.deliver}</p>
-        <h2>{p.livrableTitle}</h2>
-        <p class="lead">{p.livrableText}</p>
-      </div>
+  <div class="container livr">
+    <div class="split-text">
+      <p class="eyebrow">{L.deliver}</p>
+      <h2>{p.livrableTitle}</h2>
+      <p class="lead">{p.livrableText}</p>
       <ul class="ticks">{p.livrables.map((l) => <li><Icon name="check" size={17} /> <span>{l}</span></li>)}</ul>
     </div>
     <ReportPreview />
@@ -309,9 +307,7 @@ const faqLd = {
   .case-note { font-size: 13px; margin-top: 22px; font-style: italic; }
 
   /* LIVRABLE */
-  .livr-head { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; margin-bottom: 40px; }
-  .livr-head h2 { margin-bottom: 14px; }
-  .livr-head .ticks { margin: 0; }
+  .livr { display: grid; grid-template-columns: 1fr minmax(0, 520px); gap: 56px; align-items: center; }
 
   /* FAQ / LIENS */
   .faq-wrap { max-width: 820px; }
@@ -336,7 +332,7 @@ const faqLd = {
     .ph-col + .ph-col { padding-left: 0; border-left: 0; border-top: 1px solid var(--border); }
     .split { grid-template-columns: 1fr; gap: 28px; }
     .split-media, .split--rev .split-media { order: -1; }
-    .livr-head { grid-template-columns: 1fr; gap: 20px; }
+    .livr { grid-template-columns: 1fr; gap: 28px; }
     .reperes-grid { grid-template-columns: 1fr; gap: 16px; }
     .reperes-grid > div + div::before { display: none; }
     .sh { min-height: 70vh; }

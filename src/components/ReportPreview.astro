@@ -1,5 +1,5 @@
 ---
-// Extrait fictif et impersonnel d'un rapport d'audit DBA : synthèse chiffrée, maturité en trois regards,
+// Version compacte (une reco par horizon au moins). Extrait fictif et impersonnel d'un rapport d'audit DBA : synthèse chiffrée, maturité en trois regards,
 // recommandations par horizon. Montre la forme du livrable sans livrer la grille d'évaluation.
 import { localeFromPath } from '../data/i18n';
 
@@ -17,7 +17,7 @@ const T = en
         { n: '10', l: 'Measures', s: 'spread over 12 months' },
         { n: '30', l: 'Estimated effort days', s: 'for implementation' },
       ],
-      s2: '2. Where the site stands, from three angles',
+      s2: '2. Where the site stands, from three angles', s2short: 'Maturity by area', s3short: 'Recommendations by horizon',
       lvl: (n: number) => `Level ${n} of 3`,
       domains: [
         { d: 'Human', n: 1, v: 'Committed teams, little preparation' },
@@ -49,7 +49,7 @@ const T = en
         { n: '10', l: 'Mesures', s: 'réparties sur 12 mois' },
         { n: '30', l: 'Jours-effort estimés', s: 'pour la mise en œuvre' },
       ],
-      s2: '2. Où en est le site, en trois regards',
+      s2: '2. Où en est le site, en trois regards', s2short: 'Maturité par domaine', s3short: 'Recommandations par horizon',
       lvl: (n: number) => `Niveau ${n} sur 3`,
       domains: [
         { d: 'Humain', n: 1, v: 'Des équipes engagées, peu préparées' },
@@ -78,90 +78,72 @@ const T = en
   </div>
 
   <div class="rp-body">
-    <p class="rp-h">{T.s1}</p>
-    <p class="rp-msg"><b>{T.msgTitle}.</b> {T.msg}</p>
     <div class="rp-kpis">
       {T.kpis.map((k) => (
-        <div class="rp-kpi"><span class="rp-n">{k.n}</span><span class="rp-l">{k.l}</span><span class="rp-s">{k.s}</span></div>
+        <div class="rp-kpi"><span class="rp-n">{k.n}</span><span class="rp-l">{k.l}</span></div>
       ))}
     </div>
 
-    <p class="rp-h">{T.s2}</p>
+    <p class="rp-h">{T.s2short}</p>
     <div class="rp-domains">
       {T.domains.map((d) => (
         <div class="rp-dom">
           <span class="rp-dname">{d.d}</span>
           <span class="rp-meter">{[1, 2, 3].map((i) => <i class:list={{ on: i <= d.n }}></i>)}</span>
-          <span class="rp-lvl">{T.lvl(d.n)}</span>
-          <span class="rp-verdict">{d.v}</span>
+          <span class="rp-lvl">{d.n}/3</span>
         </div>
       ))}
     </div>
-    <p class="rp-scale">{T.scale.map((s) => <span>{s}</span>)}</p>
 
-    <p class="rp-h">{T.s3}</p>
-    <table class="rp-table">
-      <thead><tr>{T.cols.map((c) => <th>{c}</th>)}</tr></thead>
-      <tbody>
-        {T.recos.map(([r, h], i) => (
-          <tr>
-            <td><span class="rp-num">R{i + 1}</span></td>
-            <td>{r}</td>
-            <td><span class={`rp-hz rp-hz--${h}`}>{T.hz[h as 'i' | 's' | 'f']}</span></td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-    <p class="rp-legend">{T.hzLegend}</p>
+    <p class="rp-h">{T.s3short}</p>
+    <ul class="rp-recos">
+      {[0, 1, 3, 5].map((k) => T.recos[k]).map(([r, h], i) => (
+        <li>
+          <span class="rp-num">R{i + 1}</span>
+          <span class="rp-rtext">{r}</span>
+          <span class={`rp-hz rp-hz--${h}`}>{T.hz[h as 'i' | 's' | 'f']}</span>
+        </li>
+      ))}
+    </ul>
     <p class="rp-note">{T.note}</p>
   </div>
 </div>
 
 <style>
-  .rp { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: 0 30px 60px rgba(13,20,90,.12); overflow: hidden; }
-  .rp-bar { display: flex; align-items: center; gap: 12px; background: var(--navy); color: #fff; padding: 16px 28px; }
-  .rp-logo { height: 34px; width: auto; flex-shrink: 0; }
-  .rp-bar b { display: block; font-size: 15px; }
-  .rp-bar span { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
-  .rp-body { padding: 26px 28px 24px; }
-  .rp-h { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--navy); margin: 26px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--navy); }
-  .rp-h:first-child { margin-top: 0; }
-  .rp-msg { font-size: 14.5px; color: var(--text-muted); margin: 0 0 16px; }
-  .rp-msg b { color: var(--navy); }
+  .rp { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: 0 24px 50px rgba(13,20,90,.12); overflow: hidden; font-size: 13px; }
+  .rp-bar { display: flex; align-items: center; gap: 10px; background: var(--navy); color: #fff; padding: 12px 18px; }
+  .rp-logo { height: 26px; width: auto; flex-shrink: 0; }
+  .rp-bar b { display: block; font-size: 13.5px; }
+  .rp-bar span { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+  .rp-body { padding: 16px 18px 14px; }
 
-  .rp-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-  .rp-kpi { display: flex; flex-direction: column; background: var(--soft); border-top: 3px solid var(--navy); border-radius: 6px; padding: 12px 14px; }
-  .rp-n { font-size: 1.9rem; font-weight: 700; color: var(--gold-strong); line-height: 1.1; }
-  .rp-l { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--navy); margin-top: 4px; }
-  .rp-s { font-size: 12px; color: var(--text-muted); }
+  .rp-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .rp-kpi { display: flex; flex-direction: column; background: var(--soft); border-top: 2px solid var(--navy); border-radius: 5px; padding: 8px 10px; }
+  .rp-n { font-size: 1.35rem; font-weight: 700; color: var(--gold-strong); line-height: 1.1; }
+  .rp-l { font-size: 9.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--navy); line-height: 1.3; margin-top: 2px; }
 
-  .rp-domains { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .rp-dom { display: flex; flex-direction: column; gap: 6px; border: 1px solid var(--border); border-top: 3px solid var(--navy); border-radius: 6px; padding: 12px 14px; }
-  .rp-dname { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); }
-  .rp-meter { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
-  .rp-meter i { height: 7px; border-radius: 4px; background: var(--mist); }
+  .rp-h { font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--navy); margin: 14px 0 8px; padding-bottom: 5px; border-bottom: 1.5px solid var(--navy); }
+
+  .rp-domains { display: flex; flex-direction: column; gap: 6px; }
+  .rp-dom { display: grid; grid-template-columns: 112px 1fr 30px; align-items: center; gap: 10px; }
+  .rp-dname { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--navy); }
+  .rp-meter { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+  .rp-meter i { height: 6px; border-radius: 3px; background: var(--mist); }
   .rp-meter i.on { background: var(--gold); }
-  .rp-lvl { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); }
-  .rp-verdict { font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.35; }
-  .rp-scale { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 11.5px; color: var(--text-muted); margin: 8px 0 0; }
+  .rp-lvl { font-size: 11px; color: var(--text-muted); text-align: right; }
 
-  .rp-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  .rp-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #fff; background: var(--navy); padding: 9px 12px; }
-  .rp-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
-  .rp-table td:first-child, .rp-table th:first-child { width: 58px; }
-  .rp-table td:last-child, .rp-table th:last-child { width: 120px; }
-  .rp-num { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: var(--navy); color: #fff; font-size: 12px; font-weight: 700; }
-  .rp-hz { display: inline-block; font-size: 12.5px; font-weight: 600; padding: 4px 10px; border-radius: 5px; color: #3a2a05; }
+  .rp-recos { list-style: none; margin: 0; padding: 0; }
+  .rp-recos li { display: grid; grid-template-columns: 26px 1fr auto; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--border); }
+  .rp-num { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--navy); color: #fff; font-size: 10px; font-weight: 700; }
+  .rp-rtext { color: var(--text); line-height: 1.35; }
+  .rp-hz { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; color: #3a2a05; white-space: nowrap; }
   .rp-hz--i { background: #EDB55A; }
   .rp-hz--s { background: #F6E8B1; }
   .rp-hz--f { background: #D3E9D1; color: #1f4a26; }
-  .rp-legend { font-size: 12px; color: var(--text-muted); margin: 10px 0 0; }
-  .rp-note { font-size: 12px; color: var(--text-muted); font-style: italic; margin: 14px 0 0; padding-top: 12px; border-top: 1px dashed var(--border); }
+  .rp-note { font-size: 11px; color: var(--text-muted); font-style: italic; margin: 10px 0 0; }
 
-  @media (max-width: 760px) {
+  @media (max-width: 480px) {
     .rp-kpis { grid-template-columns: 1fr 1fr; }
-    .rp-domains { grid-template-columns: 1fr; }
-    .rp-body { padding: 20px 18px; }
-    .rp-table td:last-child, .rp-table th:last-child { width: auto; }
+    .rp-dom { grid-template-columns: 96px 1fr 28px; }
   }
 </style>
