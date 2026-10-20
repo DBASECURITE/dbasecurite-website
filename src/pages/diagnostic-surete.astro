@@ -27,8 +27,8 @@ const payload = JSON.stringify({ branches, recommendations, levels });
   <script define:vars={{ email: site.email }}>
     const data = JSON.parse(document.getElementById('diag-data').textContent);
     const app = document.getElementById('diag-app');
-    // À remplacer par l'URL du formulaire Brevo une fois créé (comme le contact).
-    const BREVO_DIAG_ACTION = '';
+    // Formulaire Brevo "Diagnostic sûreté - site" (liste DBA - Diagnostic sûreté).
+    const BREVO_DIAG_ACTION = 'https://87714af1.sibforms.com/serve/MUIFAE7FCSu9lT_iaCpEOX1qaVZKun80xZiL-WQgIkTkxEdxmVwJmrEtECQtQ1JE3MrNWdF3hdMfgxx9tNZX3irkoMfa1dt2VlwDmR4jouv5963TQdN3Vpix-HmCoBlfq_q31uDYCHdvY1993_Jbm26uuJmrwTwgUEZRXue9xvdZ4HrLjCw9wAR1e5cV5lCqt-hvDB9_swrbjOrE';
     const ICONS = {
       calendar: '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>',
       shield: '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/></svg>',
@@ -122,7 +122,8 @@ const payload = JSON.stringify({ branches, recommendations, levels });
           const p = new URLSearchParams();
           p.append('EMAIL', mail);
           p.append('MESSAGE', resume);
-          p.append('SUJET', 'Diagnostic sûreté');
+          p.append('email_address_check', ''); // honeypot anti-spam
+          p.append('locale', 'fr');
           fetch(BREVO_DIAG_ACTION, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: p, keepalive: true }).catch(() => {});
         } else {
           const body = encodeURIComponent(resume + '\n\nMerci de me recontacter.');
