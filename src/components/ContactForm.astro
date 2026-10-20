@@ -66,6 +66,21 @@ const t = en
   // Formulaire Brevo "Contact DBA" (liste DBA - Contacts site).
   const BREVO_CONTACT_ACTION = 'https://87714af1.sibforms.com/serve/MUIFAK2kKNIbyys01ibPJXgDZtDlr-0GL1n5QMfeR_hoQk2OFWWj-8V8ND_m4_9nFWTG0mJCQ-v2jl1pSYJS8pvR6PNFjkkhTdko-tSWyd95Gzl_KVI1Y1vcsP142AjV_HKPDM5eTsBcbTvFVHQ-rHG5_xdQzO9vVuQp4qKcckByz0TA0kaPN06zDw9Vm4GQrsvk_n6q8rhd-j3S';
 
+  // Pré-remplissage depuis le diagnostic : /contact?diag=<message>&sujet=<valeur>.
+  try {
+    const qp = new URLSearchParams(location.search);
+    const diag = qp.get('diag');
+    if (diag) {
+      const ta = document.getElementById('cf-message');
+      if (ta && !ta.value.trim()) ta.value = diag;
+    }
+    const suj = qp.get('sujet');
+    if (suj) {
+      const sel = document.getElementById('cf-sujet');
+      if (sel && [...sel.options].some((o) => o.value === suj)) sel.value = suj;
+    }
+  } catch (_) { /* noop */ }
+
   // Normalise un numéro suisse en chiffres internationaux (41XXXXXXXXX), sinon null.
   function normalizeCH(raw) {
     if (!raw) return null;

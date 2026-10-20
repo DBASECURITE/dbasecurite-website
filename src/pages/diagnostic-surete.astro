@@ -79,6 +79,13 @@ const payload = JSON.stringify({ branches, recommendations, levels });
       state.answers.forEach((a) => { if (a.score <= 1 && !weak.includes(a.pillar)) weak.push(a.pillar); });
       const recos = weak.map((p) => data.recommendations[p]).filter(Boolean).slice(0, 3);
 
+      // Transmet le résumé du diagnostic au formulaire de contact (message pré-rempli + sujet).
+      const sujetDiag = { evenement: 'Sécurité événementielle', site: 'Audit / concept de sûreté' }[state.branch] || '';
+      const msgDiag = `Bonjour,\n\nJ'ai réalisé le diagnostic de sûreté en ligne (${b.label}).\nRésultat : ${level.title} (${Math.round(pct * 100)}%).`
+        + (recos.length ? `\nPoints de vigilance : ${recos.join(' / ')}.` : '')
+        + `\n\nJ'aimerais en discuter avec un expert.`;
+      const contactHref = `/contact?sujet=${encodeURIComponent(sujetDiag)}&diag=${encodeURIComponent(msgDiag)}`;
+
       app.innerHTML = `
         <div class="diag-card diag-result lvl-${level.key}">
           <p class="diag-step">Votre résultat</p>
@@ -96,7 +103,7 @@ const payload = JSON.stringify({ branches, recommendations, levels });
             </div>` : `
             <p class="diag-norec">${ICONS.check} Aucun point critique détecté. Un œil expert vous aidera à maintenir ce niveau.</p>`}
           <div class="diag-cta">
-            <a href="/contact" class="btn btn--gold">Discutez-en avec un expert ${ICONS.arrow}</a>
+            <a href="${contactHref}" class="btn btn--gold">Discutez-en avec un expert ${ICONS.arrow}</a>
             <button class="diag-restart" data-restart>Recommencer</button>
           </div>
         </div>`;
